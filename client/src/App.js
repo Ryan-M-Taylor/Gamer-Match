@@ -1,3 +1,4 @@
+import './App.css';
 import React from 'react';
 import {
   ApolloClient,
@@ -15,6 +16,7 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Questions from './components/Questions';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -59,6 +61,10 @@ function App() {
               <Route
                 path="/signup"
                 element={<Signup />}
+              />
+              <Route
+                path="/questions"
+                element={<Questions />}
               />
               <Route
                 path="/me"
