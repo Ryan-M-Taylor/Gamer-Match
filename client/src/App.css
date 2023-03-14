@@ -1,0 +1,25 @@
+.main-container{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+
+/* .login-container{
+    display: flex;
+    justify-content: center;
+} */
+
+.login-text{
+    color: white;
+}
+
+.login-btn{
+    background-color: white;
+}
+
+
+/* Questions Page */
+
+.greeting{
+    font-size: 28px;
+}
