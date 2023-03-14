@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navbar';
+import MultipleSelectCheckmarks from './components/GameForm';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,8 +42,8 @@ function App() {
             // element={}
           />
           <Route 
-            path='*'
-            element={<h1 className='display-2'>Wrong page!</h1>}
+            // path='*'
+            // element={<MultipleSelectCheckmarks/>}
           />
         </Routes>
       </>
