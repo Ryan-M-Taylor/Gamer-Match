@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
+import Questions from './Questions';
 
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
@@ -17,7 +18,7 @@ const Home = () => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: '1px dotted #1a1a1a' }}
         >
-          Insert component
+          <Questions />
         </div>
         <div className="col-12 col-md-8 mb-3">
           Component
