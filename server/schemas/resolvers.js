@@ -1,77 +1,112 @@
-// import user model
-const { User } = require("../models");
-// import sign token function from auth
-const { signToken } = require("../utils/auth");
+const { AuthenticationError } = require('apollo-server-express');
+const { User, Thought } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    // get a single user by either their id or their username
-    async me(_, __, { user }) {
-      if (!user) {
-        return null;
+    users: async () => {
+      return User.find().populate('thoughts');
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate('thoughts');
+    },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate('thoughts');
       }
-
-      const userData = await User.findOne({ _id: user._id })
-        .select("-__v -password")
-        .populate("savedBooks");
-
-      return userData;
+      throw new AuthenticationError('You need to be logged in!');
     },
   },
-  Mutation: {
-    // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
-    async addUser(_, userInput) {
-      const user = await User.create(userInput);
 
-      if (!user) {
-        return { message: "Something is wrong!" };
-      }
+  Mutation: {
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
-    // login a user, sign a token, and send it back (to client/src/components/LoginForm.js)
-    async login(_, { email, password }) {
+    login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
-        return { message: "Can't find this user" };
+        throw new AuthenticationError('No user found with this email address');
       }
 
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
-        return { message: "Wrong password!" };
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const token = signToken(user);
+
       return { token, user };
     },
-    // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
-    // user comes from `req.user` created in the auth middleware function
-    async saveBook(parent, { bookData }, context) {
-      if (context.user) {
-          const updatedUser = await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $push: { savedBooks: bookData } },
-            { new: true}
-          )
-          return updatedUser;
-        } 
-        throw new AuthenticationError("You need to be logged in!");
+    // addThought: async (parent, { thoughtText }, context) => {
+    //   if (context.user) {
+    //     const thought = await Thought.create({
+    //       thoughtText,
+    //       thoughtAuthor: context.user.username,
+    //     });
 
-    },
-    // remove a book from `savedBooks`
-    async removeBook(parent, { bookId }, context) {
-      const updatedUser = await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $pull: { savedBooks: { bookId } } },
-        { new: true }
-      )
-      if (!updatedUser) {
-        return { message: "Couldn't find user with this id!" };
-      }
-      return updatedUser;
-    },
+    //     await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $addToSet: { thoughts: thought._id } }
+    //     );
+
+    //     return thought;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+    // addComment: async (parent, { thoughtId, commentText }, context) => {
+    //   if (context.user) {
+    //     return Thought.findOneAndUpdate(
+    //       { _id: thoughtId },
+    //       {
+    //         $addToSet: {
+    //           comments: { commentText, commentAuthor: context.user.username },
+    //         },
+    //       },
+    //       {
+    //         new: true,
+    //         runValidators: true,
+    //       }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+    // removeThought: async (parent, { thoughtId }, context) => {
+    //   if (context.user) {
+    //     const thought = await Thought.findOneAndDelete({
+    //       _id: thoughtId,
+    //       thoughtAuthor: context.user.username,
+    //     });
+
+    //     await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $pull: { thoughts: thought._id } }
+    //     );
+
+    //     return thought;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+    // removeComment: async (parent, { thoughtId, commentId }, context) => {
+    //   if (context.user) {
+    //     return Thought.findOneAndUpdate(
+    //       { _id: thoughtId },
+    //       {
+    //         $pull: {
+    //           comments: {
+    //             _id: commentId,
+    //             commentAuthor: context.user.username,
+    //           },
+    //         },
+    //       },
+    //       { new: true }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
   },
 };
 
