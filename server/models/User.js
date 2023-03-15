@@ -19,15 +19,33 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  
+  userFriends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
+
+  favoriteConsole: [
+    {
+      type: String
+    }
+  ],
+  competive: {
+    type: Boolean
+  },
+  coOp:{
+    type: Boolean
+  },
+  genres: [
+    {
+      type: String
+    }
+  ]
+
 });
 
-// userFriends: [
-//   {
-//     type: Schema.Types.ObjectId,
-//     ref: 'User',
-//   }
-// ],
+
 
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {

@@ -19,7 +19,6 @@ export const QUERY_ME = gql`
       userFriends {
         _id
         username
-        email
       }
     }
   }

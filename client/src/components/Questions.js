@@ -2,15 +2,68 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
 // import {Signup} from './components/Signup';
 
 const Questions = (props) => {
-  const [question, setQuestions] = useState({});
+  // const [question, setQuestions] = useState({});
+
+  const [selectedOption, setSelectedOption] = useState('');
+
+  const { answer } = item;
+
+  // const handleChange = e => {
+  //   e.persist();
+  //   console.log(e.target.value);
+
+  //   setItem(prevState => ({
+  //     ...prevState,
+  //     kindOfStand: e.target.value
+  //   }));
+  // };
+
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   alert(`${kindOfStand}`);
+  // };
+  // const onClick = (ev) => {
+  //   //TO-DO SEND/click value
+  //   console.log("selectedOption", selectedOption);
+  // };
+
+  // function onValueChange(event) {
+  //   setSelectedOption(event.target.value);
+  // }
+
+  const handleChange = e => {
+    e.persist();
+    console.log(e.target.value);
+
+    setSelectedOption(prevState => ({
+      ...prevState,
+      answer: e.target.value
+    }));
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    alert(`${answer}`);
+  };
+
+
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
+  //   try {
+
+  //   } catch (e) {
+
+  //   }
+  // }
 
   return (
     <div>
       <div>
-        <h1 className="greeting">Hey newUser123, let other users get to know you!</h1>
+        <h4 className="greeting">Hey newUser123, let other users get to know you!</h4>
         <Form>
           {["checkbox"].map((type) => (
             <div key={`inline-${type}`} className="mb-3">
@@ -42,6 +95,9 @@ const Questions = (props) => {
                 type={type}
                 id={`inline-${type}-4`}
               />
+              <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+                Submit
+              </Button>
             </div>
           ))}
         </Form>
@@ -74,6 +130,9 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
+                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+                  Submit
+                </Button>
               </div>
             ))}
           </Form>
@@ -82,7 +141,7 @@ const Questions = (props) => {
 
       <div>
         <div>
-          <h1>Do you to play solo or in teams?</h1>
+          <h4>Do you to play solo or in teams?</h4>
           <Form>
             {["checkbox"].map((type) => (
               <div key={`inline-${type}`} className="mb-3">
@@ -107,6 +166,9 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
+                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+                  Submit
+                </Button>
               </div>
             ))}
           </Form>
@@ -115,7 +177,7 @@ const Questions = (props) => {
 
       <div>
         <div>
-          <h1>What genres do you like?</h1>
+          <h4>What genres do you like?</h4>
           <Form>
             {["checkbox"].map((type) => (
               <div key={`inline-${type}`} className="mb-3">
@@ -182,6 +244,9 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
+                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+                  Submit
+                </Button>
               </div>
             ))}
           </Form>
