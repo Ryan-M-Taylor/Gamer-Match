@@ -86,7 +86,7 @@ const Profile = () => {
 <div className='start-helmet'>
 
 {/* <div id="helmet"> */}
-<img id="helmet" src={helmet2} alt="Logo" />
+{/* <img id="helmet" src={helmet2} alt="Logo" /> */}
     
 </div>
 
@@ -100,10 +100,10 @@ const Profile = () => {
 
 </div>
 
-<video autoplay muted loop id="myVideo" src={video} type="video/mp4">
+{/* <video autoplay muted loop id="myVideo" src={video} type="video/mp4">
     <source src={video} autoplay muted loop type="video/mp4"/>
     Your browser does not support HTML5 video.
-  </video>
+  </video> */}
 
 {/* </div> */}
 {/* ------------------EXPERIMENTAL CODE ABOVE------------------- */}
