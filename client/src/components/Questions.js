@@ -1,266 +1,88 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-import Form from "react-bootstrap/Form";
-import Button from 'react-bootstrap/Button';
-// import {Signup} from './components/Signup';
+import React, { useState } from 'react';
 
-const Questions = (props) => {
-  // const [question, setQuestions] = useState({});
+const Questions = () => {
+  const [selectedCheckboxes1, setSelectedCheckboxes1] = useState([]);
+  const [selectedCheckboxes2, setSelectedCheckboxes2] = useState([]);
+  const [selectedCheckbox3, setSelectedCheckbox3] = useState('');
 
-  // const [selectedOption, setSelectedOption] = useState('');
+  const handleCheckboxChange1 = (event) => {
+    const checkboxValue = event.target.value;
+    if (event.target.checked) {
+      setSelectedCheckboxes1([...selectedCheckboxes1, checkboxValue]);
+    } else {
+      setSelectedCheckboxes1(selectedCheckboxes1.filter((value) => value !== checkboxValue));
+    }
+  };
 
-  // const { answer } = item;
+  const handleCheckboxChange2 = (event) => {
+    const checkboxValue = event.target.value;
+    if (event.target.checked) {
+      setSelectedCheckboxes2([...selectedCheckboxes2, checkboxValue]);
+    } else {
+      setSelectedCheckboxes2(selectedCheckboxes2.filter((value) => value !== checkboxValue));
+    }
+  };
 
-  // const handleChange = e => {
-  //   e.persist();
-  //   console.log(e.target.value);
+  const handleRadioChange3 = (event) => {
+    setSelectedCheckbox3(event.target.value);
+  };
 
-  //   setItem(prevState => ({
-  //     ...prevState,
-  //     kindOfStand: e.target.value
-  //   }));
-  // };
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   alert(`${kindOfStand}`);
-  // };
-  // const onClick = (ev) => {
-  //   //TO-DO SEND/click value
-  //   console.log("selectedOption", selectedOption);
-  // };
-
-  // function onValueChange(event) {
-  //   setSelectedOption(event.target.value);
-  // }
-
-  // const handleChange = e => {
-  //   e.persist();
-  //   console.log(e.target.value);
-
-  //   setSelectedOption(prevState => ({
-  //     ...prevState,
-  //     answer: e.target.value
-  //   }));
-  // };
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   alert(`${answer}`);
-  // };
-
-
-  // const handleFormSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-
-  //   } catch (e) {
-
-  //   }
-  // }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(selectedCheckboxes1);
+    console.log(selectedCheckboxes2);
+    console.log(selectedCheckbox3);
+    // submit the form data here
+  };
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div>
-        <h4 className="greeting">Hey newUser123, let other users get to know you!</h4>
-        <Form>
-          {["checkbox"].map((type) => (
-            <div key={`inline-${type}`} className="mb-3">
-              <Form.Check
-                inline
-                label="Xbox"
-                name="group1"
-                type={type}
-                id={`inline-${type}-1`}
-              />
-              <Form.Check
-                inline
-                label="Playstation"
-                name="group1"
-                type={type}
-                id={`inline-${type}-2`}
-              />
-              <Form.Check
-                inline
-                label="PC"
-                name="group1"
-                type={type}
-                id={`inline-${type}-3`}
-              />
-              <Form.Check
-                inline
-                label="Nintendo-Switch"
-                name="group1"
-                type={type}
-                id={`inline-${type}-4`}
-              />
-
-              {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
-                {/* Submit
-              </Button> */}
-              
-            </div>
-          ))}
-        </Form>
+        <h3>Question 1</h3>
+        <label>
+          <input type="checkbox" value="Option 1" onChange={handleCheckboxChange1} />
+          Option 1
+        </label>
+        <label>
+          <input type="checkbox" value="Option 2" onChange={handleCheckboxChange1} />
+          Option 2
+        </label>
+        <label>
+          <input type="checkbox" value="Option 3" onChange={handleCheckboxChange1} />
+          Option 3
+        </label>
       </div>
-
       <div>
-        <div>
-          <h2>Do you prefer to play competitive or just for fun?</h2>
-          <Form>
-            {["checkbox"].map((type) => (
-              <div key={`inline-${type}`} className="mb-3">
-                <Form.Check
-                  inline
-                  label="Competitive"
-                  name="group2"
-                  type={type}
-                  id={`inline-${type}-1`}
-                />
-                <Form.Check
-                  inline
-                  label="Fun"
-                  name="group2"
-                  type={type}
-                  id={`inline-${type}-2`}
-                />
-                <Form.Check
-                  inline
-                  label="Both"
-                  name="group2"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />
-
-                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
-                  {/* Submit
-                </Button> */}
-
-              </div>
-            ))}
-          </Form>
-        </div>
+        <h3>Question 2</h3>
+        <label>
+          <input type="checkbox" value="Option 1" onChange={handleCheckboxChange2} />
+          Option 1
+        </label>
+        <label>
+          <input type="checkbox" value="Option 2" onChange={handleCheckboxChange2} />
+          Option 2
+        </label>
+        <label>
+          <input type="checkbox" value="Option 3" onChange={handleCheckboxChange2} />
+          Option 3
+        </label>
       </div>
-
       <div>
-        <div>
-          <h4>Do you to play solo or in teams?</h4>
-          <Form>
-            {["checkbox"].map((type) => (
-              <div key={`inline-${type}`} className="mb-3">
-                <Form.Check
-                  inline
-                  label="Solo"
-                  name="group3"
-                  type={type}
-                  id={`inline-${type}-1`}
-                />
-                <Form.Check
-                  inline
-                  label="Teams"
-                  name="group3"
-                  type={type}
-                  id={`inline-${type}-2`}
-                />
-                <Form.Check
-                  inline
-                  label="Both"
-                  name="group3"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />
-
-                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
-                  {/* Submit
-                </Button> */}
-
-              </div>
-            ))}
-          </Form>
-        </div>
+        <h3>Question 3</h3>
+        <label>
+          <input type="radio" name="question3" value="Option 1" checked={selectedCheckbox3 === 'Option 1'} onChange={handleRadioChange3} />
+          Option 1
+        </label>
+        <label>
+          <input type="radio" name="question3" value="Option 2" checked={selectedCheckbox3 === 'Option 2'} onChange={handleRadioChange3} />
+          Option 2
+        </label>
       </div>
-
-      <div>
-        <div>
-          <h4>What genres do you like?</h4>
-          <Form>
-            {["checkbox"].map((type) => (
-              <div key={`inline-${type}`} className="mb-3">
-                <Form.Check
-                  inline
-                  label="Shooter"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-1`}
-                />
-                <Form.Check
-                  inline
-                  label="Racing"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-2`}
-                />
-                <Form.Check
-                  inline
-                  label="Puzzle"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />
-                <Form.Check
-                  inline
-                  label="Fighting"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />
-                <Form.Check
-                  inline
-                  label="Action adventure"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />{" "}
-                <Form.Check
-                  inline
-                  label="Sports"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />
-                <Form.Check
-                  inline
-                  label="Battle Royale"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />
-                <Form.Check
-                  inline
-                  label="Simulation"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />
-                <Form.Check
-                  inline
-                  label="MOBA"
-                  name="group4"
-                  type={type}
-                  id={`inline-${type}-3`}
-                />
-
-                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
-
-                  Submit
-                </Button> */}
-              </div>
-            ))}
-          </Form>
-        </div>
-      </div>
-    </div>
+      <div>Selected checkboxes for question 1: {selectedCheckboxes1.join(', ')}</div>
+      <div>Selected checkboxes for question 2: {selectedCheckboxes2.join(', ')}</div>
+      <div>Selected checkbox for question 3: {selectedCheckbox3}</div>
+      <button type="submit">Submit</button>
+    </form>
   );
 };
 
