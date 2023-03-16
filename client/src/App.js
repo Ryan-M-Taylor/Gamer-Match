@@ -17,6 +17,10 @@ import Profile from './components/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Questions from './components/Questions';
+import Nintendo from './components/Nintendo';
+import Playstation from './components/Playstation';
+import Xbox from './components/Xbox';
+import PC from './components/Pc';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -73,6 +77,22 @@ function App() {
               <Route
                 path="/profiles/:username"
                 element={<Profile />}
+              />
+                <Route
+                path="/playstation"
+                element={<Playstation />}
+              />
+                    <Route
+                path="/xbox"
+                element={<Xbox />}
+              />
+                    <Route
+                path="/nintendo"
+                element={<Nintendo />}
+              />
+                    <Route
+                path="/pc"
+                element={<PC />}
               />
             </Routes>
           </div>
