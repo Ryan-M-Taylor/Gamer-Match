@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
-const PostSchema = new Schema({
+const postSchema = new Schema({
   postText: {
     type: String,
     required: 'You need to leave a post!',

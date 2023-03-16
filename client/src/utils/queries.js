@@ -19,6 +19,7 @@ export const QUERY_POSTS = gql`
     posts {
       _id
       postText
+      postChannel
       postAuthor
       createdAt
     }
