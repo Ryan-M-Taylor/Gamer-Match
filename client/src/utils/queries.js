@@ -42,38 +42,6 @@ export const QUERY_SINGLE_POST = gql`
   }
 `;
 
-export const ADD_POST = gql`
-  mutation addPost($postText: String!) {
-    addPost(postText: $postText) {
-      _id
-      postText
-      postAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-      }
-    }
-  }
-`;
-
-export const ADD_COMMENT = gql`
-  mutation addComment($postId: ID!, $commentText: String!) {
-    addComment(postId: $postId, commentText: $commentText) {
-      _id
-      postText
-      postAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
-    }
-  }
-`;
-
-
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {

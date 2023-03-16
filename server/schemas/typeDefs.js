@@ -7,7 +7,7 @@ type User {
     username: String
     email: String
     password: String
-    userFriends: [User]
+    # userFriends: [User]
 
     # posts: [Posts]!
   }
