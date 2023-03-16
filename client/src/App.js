@@ -13,9 +13,11 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 
+import MyNavbar from './components/Navbar';
+
 import Profile from './components/Profile';
 import Header from './components/Header';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import Questions from './components/Questions';
 import Nintendo from './components/Nintendo';
 import Playstation from './components/Playstation';
@@ -52,6 +54,7 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
+          <MyNavbar />
           <div className="container">
             <Routes>
               <Route
@@ -97,7 +100,7 @@ function App() {
               />
             </Routes>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
     </ApolloProvider>
