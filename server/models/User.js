@@ -25,6 +25,12 @@ const userSchema = new Schema({
       ref: 'User',
     }
   ],
+  posts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Post',
+    },
+  ],
 
   favoriteConsole: [
     {
@@ -34,7 +40,7 @@ const userSchema = new Schema({
   competive: {
     type: Boolean
   },
-  coOp:{
+  coOp: {
     type: Boolean
   },
   genres: [
@@ -42,17 +48,13 @@ const userSchema = new Schema({
       type: String
     }
   ]
-
 });
-
-
 
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
-
   next();
 });
 

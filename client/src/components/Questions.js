@@ -8,9 +8,9 @@ import Button from 'react-bootstrap/Button';
 const Questions = (props) => {
   // const [question, setQuestions] = useState({});
 
-  const [selectedOption, setSelectedOption] = useState('');
+  // const [selectedOption, setSelectedOption] = useState('');
 
-  const { answer } = item;
+  // const { answer } = item;
 
   // const handleChange = e => {
   //   e.persist();
@@ -35,20 +35,20 @@ const Questions = (props) => {
   //   setSelectedOption(event.target.value);
   // }
 
-  const handleChange = e => {
-    e.persist();
-    console.log(e.target.value);
+  // const handleChange = e => {
+  //   e.persist();
+  //   console.log(e.target.value);
 
-    setSelectedOption(prevState => ({
-      ...prevState,
-      answer: e.target.value
-    }));
-  };
+  //   setSelectedOption(prevState => ({
+  //     ...prevState,
+  //     answer: e.target.value
+  //   }));
+  // };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    alert(`${answer}`);
-  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   alert(`${answer}`);
+  // };
 
 
   // const handleFormSubmit = async (event) => {
@@ -95,7 +95,7 @@ const Questions = (props) => {
                 type={type}
                 id={`inline-${type}-4`}
               />
-              <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+              <Button variant="primary" type="submit" /* onSubmit={handleFormSubmit} */>
                 Submit
               </Button>
             </div>
@@ -130,7 +130,7 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+                <Button variant="primary" type="submit" /* onSubmit={handleFormSubmit} */>
                   Submit
                 </Button>
               </div>
@@ -166,7 +166,7 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+                <Button variant="primary" type="submit" /* onSubmit={handleFormSubmit} */>
                   Submit
                 </Button>
               </div>
@@ -244,7 +244,7 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+                <Button variant="primary" type="submit" /* onSubmit={handleFormSubmit} */>
                   Submit
                 </Button>
               </div>

@@ -62,6 +62,7 @@ function App() {
                 path="/signup"
                 element={<Signup />}
               />
+              
               <Route
                 path="/questions"
                 element={<Questions />}
