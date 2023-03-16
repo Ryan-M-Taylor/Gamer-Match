@@ -29,6 +29,7 @@ const resolvers = {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
+      console.log("token",token)
       return { token, user };
     },
     // addFriend: async (parent, { userId, friendId }) => {
@@ -56,6 +57,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+      console.log("token",token)
 
       return { token, user };
     },
@@ -64,6 +66,7 @@ const resolvers = {
         const post = await Post.create({
           postText,
           postAuthor: context.user.username,
+          postChannel: "Xbox"
         });
 
         await User.findOneAndUpdate(
