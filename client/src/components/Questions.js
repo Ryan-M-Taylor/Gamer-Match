@@ -10,7 +10,7 @@ const Questions = (props) => {
 
   const [selectedOption, setSelectedOption] = useState('');
 
-  const { answer } = item;
+  // const { answer } = item;
 
   // const handleChange = e => {
   //   e.persist();
@@ -47,7 +47,7 @@ const Questions = (props) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert(`${answer}`);
+    // alert(`${answer}`);
   };
 
 
@@ -95,9 +95,9 @@ const Questions = (props) => {
                 type={type}
                 id={`inline-${type}-4`}
               />
-              <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
-                Submit
-              </Button>
+              {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
+                {/* Submit
+              </Button> */}
             </div>
           ))}
         </Form>
@@ -130,9 +130,9 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
-                  Submit
-                </Button>
+                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
+                  {/* Submit
+                </Button> */}
               </div>
             ))}
           </Form>
@@ -166,9 +166,9 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
-                  Submit
-                </Button>
+                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
+                  {/* Submit
+                </Button> */}
               </div>
             ))}
           </Form>
@@ -244,9 +244,9 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
                   Submit
-                </Button>
+                </Button> */}
               </div>
             ))}
           </Form>
