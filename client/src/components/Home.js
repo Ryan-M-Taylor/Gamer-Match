@@ -8,7 +8,8 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-center">
-        </div>
+        
+      </div>
     </main>
   );
 };
