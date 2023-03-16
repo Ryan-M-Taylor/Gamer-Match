@@ -17,7 +17,7 @@ import MyNavbar from './components/Navbar';
 
 import Profile from './components/Profile';
 import Header from './components/Header';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import Questions from './components/Questions';
 import Nintendo from './components/Nintendo';
 import Playstation from './components/Playstation';
@@ -100,7 +100,7 @@ function App() {
               />
             </Routes>
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
     </ApolloProvider>
