@@ -13,6 +13,8 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 
+import MyNavbar from './components/Navbar';
+
 import Profile from './components/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -52,6 +54,7 @@ function App() {
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
+          <MyNavbar />
           <div className="container">
             <Routes>
               <Route
