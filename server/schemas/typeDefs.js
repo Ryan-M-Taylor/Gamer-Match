@@ -9,6 +9,7 @@ type User {
     password: String
     # userFriends: [User]
 
+    # posts: [Posts]!
   }
 
   type Post {

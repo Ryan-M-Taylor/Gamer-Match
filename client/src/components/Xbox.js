@@ -1,11 +1,7 @@
 import React from "react";
-
 import { useQuery } from '@apollo/client';
-
 import { QUERY_POSTS } from '../utils/queries';
-
 import PostList from '../components/PostList';
-
 
 function Xbox() {
 
