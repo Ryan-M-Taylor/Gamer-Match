@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import Navigation from '../Navigation';
 import Auth from '../../utils/auth';
 
 const Header = () => {
@@ -37,6 +37,7 @@ const Header = () => {
               </Link>
             </>
           )}
+          <Navigation />
         </div>
       </div>
     </header>

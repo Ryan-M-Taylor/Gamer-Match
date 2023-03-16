@@ -95,9 +95,11 @@ const Questions = (props) => {
                 type={type}
                 id={`inline-${type}-4`}
               />
-              <Button variant="primary" type="submit" /* onSubmit={handleFormSubmit} */>
-                Submit
-              </Button>
+
+              {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
+                {/* Submit
+              </Button> */}
+              
             </div>
           ))}
         </Form>
@@ -130,9 +132,11 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" /* onSubmit={handleFormSubmit} */>
-                  Submit
-                </Button>
+
+                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
+                  {/* Submit
+                </Button> */}
+
               </div>
             ))}
           </Form>
@@ -166,9 +170,11 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" /* onSubmit={handleFormSubmit} */>
-                  Submit
-                </Button>
+
+                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}> */}
+                  {/* Submit
+                </Button> */}
+
               </div>
             ))}
           </Form>
@@ -244,9 +250,11 @@ const Questions = (props) => {
                   type={type}
                   id={`inline-${type}-3`}
                 />
-                <Button variant="primary" type="submit" /* onSubmit={handleFormSubmit} */>
+
+                {/* <Button variant="primary" type="submit" onSubmit={handleFormSubmit}>
+
                   Submit
-                </Button>
+                </Button> */}
               </div>
             ))}
           </Form>
