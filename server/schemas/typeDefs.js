@@ -61,9 +61,17 @@ type User {
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     # addFriend(friendId: ID!, friendId: ID!): Friend
-    # removeFriend(friendId: ID!, friendId: ID!): Friend
-    
+    # removeFriend(friendId: ID!, friendId: ID!): Friend   
   }
+
+
+  # type Friend {
+  #   _id: ID
+  #   username: String
+  #   email: String
+  #   # userFriends: [User]
+
+  # }
 
 `;
 

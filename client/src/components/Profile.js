@@ -1,11 +1,12 @@
-import React from 'react';
+// import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import Questions from './Questions';
 // import ThoughtForm from '../components/ThoughtForm';
 // import ThoughtList from '../components/ThoughtList';
-import video from "./video.mp4"
-import helmet2 from "./helmet2.png"
+import React from 'react';
+// import video from "./video.mp4"
+// import helmet2 from "./helmet2.png"
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -86,24 +87,39 @@ const Profile = () => {
 <div className='start-helmet'>
 
 {/* <div id="helmet"> */}
-<img id="helmet" src={helmet2} alt="Logo" />
+{/* <img id="helmet" src={helmet2} alt="Logo" /> */}
     
 </div>
 
 <div className='profile-content'>
 
+
+  
 <div className='friend-list-container'> 
-  <p>Your Friends</p>
+<p>Your Followers</p>
   <ul>  
+    <li>Timmy</li>
+    <li>Jimmy</li>
+    <li>Tim</li>
+    <li>Timothy</li>
   </ul>
 </div>
 
+<div className='friend-list-container'> 
+<p>Who you Follow</p>
+  <ul>  
+    <li>Timmy</li>
+    <li>Jimmy</li>
+    <li>Tim</li>
+    <li>Timothy</li>
+  </ul>
+</div>
 </div>
 
-<video autoplay muted loop id="myVideo" src={video} type="video/mp4">
+{/* <video autoplay muted loop id="myVideo" src={video} type="video/mp4">
     <source src={video} autoplay muted loop type="video/mp4"/>
     Your browser does not support HTML5 video.
-  </video>
+  </video> */}
 
 {/* </div> */}
 {/* ------------------EXPERIMENTAL CODE ABOVE------------------- */}

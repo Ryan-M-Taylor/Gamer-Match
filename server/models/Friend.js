@@ -1,46 +1,31 @@
-// const { Schema, model } = require('mongoose');
-// const dateFormat = require('../utils/dateFormat');
+// const { Schema, model } = require("mongoose");
 
 // const friendSchema = new Schema({
-//   postText: {
-//     type: String,
-//     required: 'You need to leave a post!',
-//     minlength: 1,
-//     maxlength: 280,
-//     trim: true,
-//   },
-//   postAuthor: {
+//   username: {
 //     type: String,
 //     required: true,
-//     trim: true,
+//   },
+//   id: {
+//     type: Number,
+//     required: true,
+//     unique: true,
 //   },
 
-//   postChannel: {
+//   email: {
 //     type: String,
 //     required: true,
-//     trim: true,
+//     unique: true,
 //   },
-//   comments: [
-//     {
-//       commentText: {
-//         type: String,
-//         required: true,
-//         minlength: 1,
-//         maxlength: 280,
-//       },
-//       commentAuthor: {
-//         type: String,
-//         required: true,
-//       },
-//       createdAt: {
-//         type: Date,
-//         default: Date.now,
-//         get: (timestamp) => dateFormat(timestamp),
-//       },
-//     },
-//   ],
+//   // createdAt: {
+//   //     type: Date,
+//   //     default: Date.now
+//   // },
+//   // updatedAt: {
+//   //     type: Date,
+//   //     default: Date.now
+//   // }
 // });
 
-// const Friend = model('Friend', friendSchema);
+// const Friend = model("Friend", friendSchema);
 
 // module.exports = Friend;
