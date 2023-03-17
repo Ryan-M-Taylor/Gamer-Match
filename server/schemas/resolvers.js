@@ -19,7 +19,7 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id })
+        return User.findOne({ _id: context.user._id }).populate(['userFriends','posts'])
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -38,18 +38,14 @@ const resolvers = {
       console.log("token",token)
       return { token, user };
     },
-    addFriend(req, res) {
-      User.findOneAndUpdate({ _id: req.params.userId }, { $addToSet: { friends: req.params.friendId } }, { new: true })
-        .then((dbUserData) => {
-          if (!dbUserData) {
-            return res.status(404).json({ message: 'No user with this id!' });
-          }
-          res.json(dbUserData);
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json(err);
-        });
+    addFriend: async (parent, {friendId}, context) => {
+      console.log("context user id", context.user._id)
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { userFriends: friendId } },
+        { new: true }
+      );
+      return updatedUser;
     },
     // removeFriend: async (parent, { userId, friendId }, { models }) => {
     //   const user = await models.User.findById(userId);
