@@ -4,8 +4,6 @@ require('dotenv').config();
 const secret = process.env.MY_SECRET;
 const expiration = process.env.EXPIRATION;
 
-console.log("dotenv", [secret, expiration])
-
 module.exports = {
   authMiddleware: function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
