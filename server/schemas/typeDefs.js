@@ -8,7 +8,7 @@ type User {
     email: String
     password: String
     userFriends: [User]
-#     posts: Schema.Types.ObjectId
+#     # posts: Schema.Types.ObjectId
 #     favoriteConsole: String
 #     competive: Boolean
 #     coOp: Boolean
