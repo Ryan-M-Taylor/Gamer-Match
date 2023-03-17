@@ -10,6 +10,11 @@ export const QUERY_ME = gql`
         _id
         username
       }
+      posts
+      favoriteConsole
+      competive
+      coOp
+      genres
     }
   }
 `;
