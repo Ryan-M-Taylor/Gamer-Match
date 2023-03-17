@@ -59,7 +59,8 @@ export const ADD_COMMENT = gql`
 //   mutation($name: String!) {
 //     addFriend(name: $name) {
 //       id
-//       name
+//       username
+//       email
 //     }
 //   }
 //  `;
