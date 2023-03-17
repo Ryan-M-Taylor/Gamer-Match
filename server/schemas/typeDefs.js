@@ -8,13 +8,12 @@ type User {
     email: String
     password: String
     userFriends: [User]
-#     posts: Schema.Types.ObjectId
-#     favoriteConsole: String
-#     competive: Boolean
-#     coOp: Boolean
-#     genres: String
-# # Place exclamations where something is required
-#     # posts: [Posts]!
+    posts: [Post]
+    favoriteConsole: [String]
+    competive: Boolean
+    coOp: Boolean
+    genres: [String]
+# Place exclamations where something is required
   }
 
   type Post {
