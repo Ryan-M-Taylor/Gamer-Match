@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Post } = require('../models');
+const { User, Post, Friend } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -19,10 +19,16 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id })
+        return User.findOne({ _id: context.user._id }).populate(['userFriends','posts'])
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    // friends: async () => {
+    //   return Friend.find()
+    // },
+    // friend: async (parent, { username }) => {
+    //   return User.findOne({ username })
+    // },
   },
 
   Mutation: {
@@ -32,6 +38,25 @@ const resolvers = {
       console.log("token",token)
       return { token, user };
     },
+    addFriend: async (parent, {friendId}, context) => {
+      console.log("context user id", context.user._id)
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { userFriends: friendId } },
+        { new: true }
+      );
+      return updatedUser;
+    },
+    // removeFriend: async (parent, { userId, friendId }, { models }) => {
+    //   const user = await models.User.findById(userId);
+    //   const friendIndex = user.friends.findIndex(f => f._id.toString() === friendId);
+    //   if (friendIndex === -1) {
+    //     throw new Error('Friend not found');
+    //   }
+    //   user.friends.splice(friendIndex, 1);
+    //   await user.save();
+    //   return { message: 'Friend deleted' };
+    // },
     // addFriend: async (parent, { userId, friendId }) => {
     //   try {
     //     // const { userId, friendId } = args; 

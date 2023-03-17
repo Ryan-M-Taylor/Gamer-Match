@@ -7,8 +7,13 @@ type User {
     username: String
     email: String
     password: String
-    # userFriends: [User]
-
+    userFriends: [User]
+    posts: [Post]
+    favoriteConsole: [String]
+    competive: Boolean
+    coOp: Boolean
+    genres: [String]
+# Place exclamations where something is required
   }
 
   type Post {
@@ -60,10 +65,10 @@ type User {
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
-    # addFriend(friendId: ID!, friendId: ID!): Friend
-    # removeFriend(friendId: ID!, friendId: ID!): Friend
-    
+    addFriend(userId: ID!, friendId: ID!): User
+    # removeFriend(friendId: ID!, friendId: ID!): Friend   
   }
+
 
 `;
 
