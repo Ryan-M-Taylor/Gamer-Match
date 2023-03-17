@@ -6,13 +6,14 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      password
       userFriends {
         _id
         username
       }
       posts
       favoriteConsole
-      competive
+      competitive
       coOp
       genres
     }

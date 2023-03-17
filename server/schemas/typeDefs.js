@@ -10,7 +10,7 @@ type User {
     userFriends: [User]
     posts: [Post]
     favoriteConsole: [String]
-    competive: Boolean
+    competitive: Boolean
     coOp: Boolean
     genres: [String]
 # Place exclamations where something is required
