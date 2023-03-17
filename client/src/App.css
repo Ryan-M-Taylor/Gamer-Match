@@ -119,8 +119,16 @@ color:rgb(0, 0, 0);
 
 
 .profile-content{
+    display: flex;
     width: 90vh;
     height: 90vh;
+}
+
+
+.friend-list-container{
+    border: solid black;
+    height: fit-content;
+    padding:20px;
 }
 
 

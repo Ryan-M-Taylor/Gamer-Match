@@ -53,5 +53,15 @@ export const ADD_COMMENT = gql`
       }
     }
   }
-`;
+  `;
+
+//   export const ADD_FRIEND = gql`
+//   mutation($name: String!) {
+//     addFriend(name: $name) {
+//       id
+//       username
+//       email
+//     }
+//   }
+//  `;
 
