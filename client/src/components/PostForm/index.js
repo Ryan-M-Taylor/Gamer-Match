@@ -77,7 +77,7 @@ const PostForm = (props) => {
             className={`m-0 ${
               characterCount === 280 || error ? 'text-danger' : ''
             }`}
-          >
+          > -webkit-text-stroke: 2px black;
             Character Count: {characterCount}/280
           </p>
           <form
