@@ -66,3 +66,16 @@ export const ADD_FRIEND = gql`
   }
   `;
 
+
+export const ADD_USER_FRIEND = gql`
+query getFriends{
+  user(username: $username) {
+  friends {
+      _id
+      username
+      email
+    }
+} 
+}
+`;
+
