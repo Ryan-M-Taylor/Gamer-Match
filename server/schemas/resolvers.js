@@ -1,14 +1,16 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Post} = require('../models');
+
+const { User, Post } = require('../models');
+
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate(['userFriends','posts'])
+      return User.find().populate(['userFriends', 'posts'])
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate(['userFriends','posts'])
+      return User.findOne({ username }).populate(['userFriends', 'posts'])
     },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -19,7 +21,7 @@ const resolvers = {
     },
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate(['userFriends','posts'])
+        return User.findOne({ _id: context.user._id }).populate(['userFriends', 'posts'])
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -35,14 +37,26 @@ const resolvers = {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
-      console.log("token",token)
+      console.log("token", token)
       return { token, user };
     },
-    addFriend: async (parent, {friendId}, context) => {
+    addFriend: async (parent, { friendId }, context) => {
       console.log("context user id", context.user._id)
       const updatedUser = await User.findOneAndUpdate(
         { _id: context.user._id },
         { $addToSet: { userFriends: friendId } },
+        { new: true }
+      );
+      return updatedUser;
+    },
+
+    updatePreferences: async (parent, { favoriteConsole, coOp, competitive, genres }, context) => {
+      const updatedUser = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { favoriteConsole: {$each: favoriteConsole }}},
+        { $addToSet: { genres: {$each: genres }}},
+        {$set: {coOp: coOp}},
+        {$set: {competitive: competitive}},
         { new: true }
       );
       return updatedUser;
@@ -82,7 +96,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
-      console.log("token",token)
+      console.log("token", token)
 
       return { token, user };
     },

@@ -6,11 +6,16 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      posts {
+        _id
+        postText
+        postAuthor
+        createdAt
+      }
       userFriends {
         _id
         username
       }
-      posts
       favoriteConsole
       competitive
       coOp
@@ -59,6 +64,13 @@ export const QUERY_USER = gql`
         username
         email
       }
+      posts {
+      _id
+      postText
+      postChannel
+      postAuthor
+      createdAt
+    }
     }
   }
 
