@@ -3,25 +3,28 @@ import PostList from "./PostList";
 import PostForm from "./PostForm";
 import { QUERY_POSTS } from "../utils/queries";
 import { useQuery } from "@apollo/client";
+import { SiNintendoswitch } from "react-icons/si";
 
 function Nintendo() {
-
     const { loading, data } = useQuery(QUERY_POSTS);
     const posts = data?.posts || [];
     const ninPosts = posts.filter((post) => post.postChannel === "Nintendo");
     const postChannel = 'Nintendo'
-    return (
-        <div>
-            <h1>Nintendo</h1>
-            <div>
-                <PostForm postChannel={postChannel}/>
-            </div>
-            <PostList
+
+  return (
+    <div className="nintendo">
+      <h1>
+        Nintendo <SiNintendoswitch />
+      </h1>
+      <div>
+      <PostForm postChannel={postChannel}/>
+      </div>
+      <PostList
                 posts={ninPosts}
                 title="Nintendo"
             />
-        </div>
-    )
+    </div>
+  );
 }
 
-export default Nintendo
+export default Nintendo;

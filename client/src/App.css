@@ -150,3 +150,24 @@ color:rgb(0, 0, 0);
      Nav.Link, .side-links{
         color: white;
      }
+
+     .xbox {
+        color: #107C10;
+     }
+
+     .playstation {
+        color: #00439C;
+     }
+
+     .nintendo{
+        color: #e60012;
+     }
+
+     .nintendo-post {
+        background-color: #e60012;
+        color: white;
+     }
+
+     .pc {
+        color: #7289da;
+     }

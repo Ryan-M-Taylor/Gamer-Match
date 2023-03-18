@@ -67,23 +67,23 @@ function Navigation() {
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link className="navigation-text" href="/playstation" onClick={handlePlaystationClick}>
-                Playstation
+              <Nav.Link className="navigation-text playstation" href="/playstation" onClick={handlePlaystationClick}>
+                <p className='playstation'>Playstation</p>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link className="navigation-text" href="/nintendo" onClick={handleNintendoClick}>
-                Nintendo
+                <p className='nintendo'>Nintendo</p>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link className="navigation-text" href="/xbox" onClick={handleXboxClick}>
-                Xbox
+                <p className='xbox'>Xbox</p>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link className="navigation-text" href="/pc" onClick={handlePCClick}>
-                PC
+                <p className='pc'>PC</p>
               </Nav.Link>
             </Nav.Item>
           </Nav>
