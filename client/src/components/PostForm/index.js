@@ -12,29 +12,31 @@ const PostForm =  () => {
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addPost, { error }] = useMutation(ADD_POST, {
-    update(cache, { data: { addPost } }) {
-      try {
-        const { posts } = cache.readQuery({ query: QUERY_POSTS });
-        console.log("Post cache", cache.readQuery({ query: QUERY_POSTS }))
-        cache.writeQuery({
-          query: QUERY_POSTS,
-          data: { posts: [addPost, ...posts] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
+  const [addPost, { error }] = useMutation(ADD_POST);
 
-      // update me object's cache
-      console.log("Cache error" , cache.readQuery({ query: QUERY_ME }))
-      // console.log(QUERY_ME)
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, posts: [...me.posts, addPost] } },
-      });
-    },
-  });
+  // const [addPost, { error }] = useMutation(ADD_POST, {
+  //   update(cache, { data: { addPost } }) {
+  //     try {
+  //       const { posts } = cache.readQuery({ query: QUERY_POSTS });
+  //       console.log("Post cache", cache.readQuery({ query: QUERY_POSTS }))
+  //       cache.writeQuery({
+  //         query: QUERY_POSTS,
+  //         data: { posts: [addPost, ...posts] },
+  //       });
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+
+  //     // update me object's cache
+  //     console.log("Cache error" , cache.readQuery({ query: QUERY_ME }))
+  //     // console.log(QUERY_ME)
+  //     const { me } = cache.readQuery({ query: QUERY_ME });
+  //     cache.writeQuery({
+  //       query: QUERY_ME,
+  //       data: { me: { ...me, posts: [...me.posts, addPost] } },
+  //     });
+  //   },
+  // });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -48,6 +50,7 @@ const PostForm =  () => {
       });
 
       setPostText('');
+      window.location.reload();
     } catch (err) {
       console.error(err);
     }
