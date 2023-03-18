@@ -14,6 +14,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 
 import MyNavbar from './components/Navbar';
+import FriendList from './components/FriendList';
 
 import Profile from './components/Profile';
 import Header from './components/Header';
@@ -83,10 +84,10 @@ function App() {
                 path="/profiles/:username"
                 element={<Profile />}
               />
-              {/* <Route
-                path="/friendspage"
-                element={<FriendsPage />}
-              /> */}
+              <Route
+                path="/friendlist"
+                element={<FriendList />}
+              />
                 <Route
                 path="/playstation"
                 element={<Playstation />}
