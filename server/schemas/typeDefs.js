@@ -61,7 +61,7 @@ type User {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     removeUser(userId: ID!): User
-    addPost(postText: String!): Post
+    addPost(postText: String!, postChannel: String!): Post
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post

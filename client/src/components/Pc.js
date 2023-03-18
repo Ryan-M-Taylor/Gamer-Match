@@ -7,14 +7,16 @@ import PostForm from "./PostForm";
 function PC() {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
+  const pcPosts = posts.filter((post) => post.postChannel === "PC");
+  const postChannel = 'PC';
 
   return (
     <div>
       <h1>PC</h1>
       <div>
-        <PostForm />
+        <PostForm postChannel={postChannel}/>
       </div>
-      <PostList posts={posts} title="Some Feed for Thought(s)..." />
+      <PostList posts={pcPosts} title="PC" />
     </div>
   );
 }

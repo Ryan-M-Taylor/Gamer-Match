@@ -8,16 +8,17 @@ function Nintendo() {
 
     const { loading, data } = useQuery(QUERY_POSTS);
     const posts = data?.posts || [];
-
+    const ninPosts = posts.filter((post) => post.postChannel === "Nintendo");
+    const postChannel = 'Nintendo'
     return (
         <div>
             <h1>Nintendo</h1>
             <div>
-                <PostForm />
+                <PostForm postChannel={postChannel}/>
             </div>
             <PostList
-                posts={posts}
-                title="Some Feed for Thought(s)..."
+                posts={ninPosts}
+                title="Nintendo"
             />
         </div>
     )
