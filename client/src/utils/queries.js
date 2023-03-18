@@ -81,7 +81,7 @@ export const QUERY_USER = gql`
     user(username: $username) {
     friends {
         _id
-        usernamQUER
+        username
         email
       }
   } 
