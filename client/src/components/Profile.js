@@ -9,6 +9,7 @@ import React from "react";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
+import FriendList from "./FriendList";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -100,6 +101,8 @@ const Profile = () => {
               <li>Timothy</li>
             </ul>
           </div>
+
+          <FriendList />
         </div>
       </div>
     </div>
