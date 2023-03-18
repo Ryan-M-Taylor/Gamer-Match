@@ -6,13 +6,18 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      posts {
+        _id
+        postText
+        postAuthor
+        createdAt
+      }
       userFriends {
         _id
         username
       }
-      posts
       favoriteConsole
-      competive
+      competitive
       coOp
       genres
     }
@@ -59,19 +64,26 @@ export const QUERY_USER = gql`
         username
         email
       }
+      posts {
+      _id
+      postText
+      postChannel
+      postAuthor
+      createdAt
+    }
     }
   }
 
 `;
 
-//   export const QUERY_FRIENDS = gql`
-//   query getFriends{
-//     user(username: $username) {
-//     friends {
-//         _id
-//         username
-//         email
-//       }
-//   } 
-//   }
-// `;
+  export const QUERY_FRIENDS = gql`
+  query getFriends{
+    user(username: $username) {
+    friends {
+        _id
+        usernamQUER
+        email
+      }
+  } 
+  }
+`;

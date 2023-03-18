@@ -7,7 +7,7 @@ import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const PostForm = () => {
+const PostForm =  () => {
   const [postText, setPostText] = useState('');
 
   const [characterCount, setCharacterCount] = useState(0);
@@ -27,6 +27,7 @@ const PostForm = () => {
 
       // update me object's cache
       console.log("Cache error" , cache.readQuery({ query: QUERY_ME }))
+      // console.log(QUERY_ME)
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,

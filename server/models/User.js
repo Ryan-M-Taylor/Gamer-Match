@@ -37,7 +37,7 @@ const userSchema = new Schema({
       type: String
     }
   ],
-  competive: {
+  competitive: {
     type: Boolean
   },
   coOp: {
