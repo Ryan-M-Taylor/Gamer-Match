@@ -12,7 +12,7 @@ export const QUERY_ME = gql`
       }
       posts
       favoriteConsole
-      competive
+      competitive
       coOp
       genres
     }
@@ -64,14 +64,14 @@ export const QUERY_USER = gql`
 
 `;
 
-//   export const QUERY_FRIENDS = gql`
-//   query getFriends{
-//     user(username: $username) {
-//     friends {
-//         _id
-//         username
-//         email
-//       }
-//   } 
-//   }
-// `;
+  export const QUERY_FRIENDS = gql`
+  query getFriends{
+    user(username: $username) {
+    friends {
+        _id
+        usernamQUER
+        email
+      }
+  } 
+  }
+`;
