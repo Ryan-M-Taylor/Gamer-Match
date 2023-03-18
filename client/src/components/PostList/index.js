@@ -25,7 +25,7 @@ const PostList = ({
                 >
                   {post.postAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    posted on {post.createdAt}
+                    posted on {post.createdAt} to {post.postChannel}
                   </span>
                 </Link>
               ) : (
