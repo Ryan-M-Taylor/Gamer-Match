@@ -55,16 +55,8 @@ export const ADD_COMMENT = gql`
   }
   `;
 
-// export const UPDATE_PREFERENCES = gql`
-//   mutation updatePreferences($postId: ID!, $commentText: String!) {
-//     updatePreferences(favoriteConsole: $favoriteConsole, coOp: $coOp, competitive: $competitive , genres: $genres) {
-//       _id
-      
-//     }
-//   }
-//   `;
-
 export const ADD_FRIEND = gql`
+
   mutation($name: String!) {
     addFriend(name: $name) {
       id
@@ -72,5 +64,5 @@ export const ADD_FRIEND = gql`
       email
     }
   }
- `;
+  `;
 
