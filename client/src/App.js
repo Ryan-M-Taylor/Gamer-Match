@@ -24,7 +24,6 @@ import Nintendo from './components/Nintendo';
 import Playstation from './components/Playstation';
 import Xbox from './components/Xbox';
 import PC from './components/Pc';
-// import FriendsPage from './components/FriendsPage';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({

@@ -1,16 +1,12 @@
 // import React from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import Questions from './Questions';
-// import ThoughtForm from '../components/ThoughtForm';
-// import ThoughtList from '../components/ThoughtList';
-import React from 'react';
-// import video from "./video.mp4"
-// import helmet2 from "./helmet2.png"
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import Questions from "./Questions";
+import React from "react";
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -20,7 +16,7 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
- 
+
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
@@ -29,8 +25,8 @@ const Profile = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log("user", user.username)
-  // if (!user?.username) why doesn't 
+  console.log("user", user.username);
+  // if (!user?.username) why doesn't
   if (!user?.username) {
     return (
       <h4>
@@ -61,9 +57,7 @@ const Profile = () => {
     //   </div>
     // </div>
 
-
-
-<div>
+    <div>
       {/* <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
@@ -82,52 +76,32 @@ const Profile = () => {
         )}
       </div> */}
 
-{/* ------------------EXPERIMENTAL CODE BENEATH------------------- */}
+      {/* ------------------EXPERIMENTAL CODE BENEATH------------------- */}
 
-<div className='start-helmet'>
+      <div className="start-helmet">
+        <div className="profile-content">
+          <div className="friend-list-container">
+            <p>Your Followers</p>
+            <ul>
+              <li>Timmy</li>
+              <li>Jimmy</li>
+              <li>Tim</li>
+              <li>Timothy</li>
+            </ul>
+          </div>
 
-{/* <div id="helmet"> */}
-{/* <img id="helmet" src={helmet2} alt="Logo" /> */}
-    
-</div>
-
-<div className='profile-content'>
-
-
-  
-<div className='friend-list-container'> 
-<p>Your Followers</p>
-  <ul>  
-    <li>Timmy</li>
-    <li>Jimmy</li>
-    <li>Tim</li>
-    <li>Timothy</li>
-  </ul>
-</div>
-
-<div className='friend-list-container'> 
-<p>Who you Follow</p>
-  <ul>  
-    <li>Timmy</li>
-    <li>Jimmy</li>
-    <li>Tim</li>
-    <li>Timothy</li>
-  </ul>
-</div>
-</div>
-
-{/* <video autoplay muted loop id="myVideo" src={video} type="video/mp4">
-    <source src={video} autoplay muted loop type="video/mp4"/>
-    Your browser does not support HTML5 video.
-  </video> */}
-
-{/* </div> */}
-{/* ------------------EXPERIMENTAL CODE ABOVE------------------- */}
-
-
-
+          <div className="friend-list-container">
+            <p>Who you Follow</p>
+            <ul>
+              <li>Timmy</li>
+              <li>Jimmy</li>
+              <li>Tim</li>
+              <li>Timothy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-
   );
 };
 
