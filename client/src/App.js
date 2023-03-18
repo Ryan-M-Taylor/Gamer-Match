@@ -25,6 +25,9 @@ import Playstation from './components/Playstation';
 import Xbox from './components/Xbox';
 import PC from './components/Pc';
 
+import SinglePost from './components/SinglePost';
+// import FriendsPage from './components/FriendsPage';
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -70,7 +73,7 @@ function App() {
                 path="/signup"
                 element={<Signup />}
               />
-              
+
               <Route
                 path="/questions"
                 element={<Questions />}
@@ -87,21 +90,25 @@ function App() {
                 path="/friendlist"
                 element={<FriendList />}
               />
-                <Route
+              <Route
                 path="/playstation"
                 element={<Playstation />}
               />
-                    <Route
+              <Route
                 path="/xbox"
                 element={<Xbox />}
               />
-                    <Route
+              <Route
                 path="/nintendo"
                 element={<Nintendo />}
               />
-                    <Route
+              <Route
                 path="/pc"
                 element={<PC />}
+              />
+              <Route
+                path="/posts/:postId"
+                element={<SinglePost />}
               />
             </Routes>
           </div>
