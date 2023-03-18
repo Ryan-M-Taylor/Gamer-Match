@@ -10,6 +10,7 @@ function Playstation() {
     const posts = data?.posts || [];
     const postChannel = 'Playstation'
     const psPosts = posts.filter((post) => post.postChannel === "Playstation");
+    
   return (
     <div className="playstation">
       <h1>
