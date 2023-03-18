@@ -6,8 +6,10 @@ import { useQuery } from "@apollo/client";
 import { SiNintendoswitch } from "react-icons/si";
 
 function Nintendo() {
-  const { loading, data } = useQuery(QUERY_POSTS);
-  const posts = data?.posts || [];
+    const { loading, data } = useQuery(QUERY_POSTS);
+    const posts = data?.posts || [];
+    const ninPosts = posts.filter((post) => post.postChannel === "Nintendo");
+    const postChannel = 'Nintendo'
 
   return (
     <div className="nintendo">
@@ -15,9 +17,12 @@ function Nintendo() {
         Nintendo <SiNintendoswitch />
       </h1>
       <div>
-        <PostForm />
+      <PostForm postChannel={postChannel}/>
       </div>
-      <PostList posts={posts} title="Some Feed for Thought(s)..." />
+      <PostList
+                posts={ninPosts}
+                title="Nintendo"
+            />
     </div>
   );
 }

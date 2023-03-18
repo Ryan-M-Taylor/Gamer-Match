@@ -25,8 +25,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($postText: String!) {
-    addPost(postText: $postText) {
+  mutation addPost($postText: String!, $postChannel: String!) {
+    addPost(postText: $postText, postChannel: $postChannel) {
       _id
       postText
       postAuthor
@@ -65,4 +65,17 @@ export const ADD_FRIEND = gql`
     }
   }
   `;
+
+
+export const ADD_USER_FRIEND = gql`
+query getFriends{
+  user(username: $username) {
+  friends {
+      _id
+      username
+      email
+    }
+} 
+}
+`;
 

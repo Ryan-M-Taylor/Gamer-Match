@@ -6,8 +6,10 @@ import PostForm from "./PostForm";
 import { SiXbox } from "react-icons/si";
 
 function Xbox() {
-  const { loading, data } = useQuery(QUERY_POSTS);
-  const posts = data?.posts || [];
+    const { loading, data } = useQuery(QUERY_POSTS);
+    const posts = data?.posts || [];
+    const xboxPosts = posts.filter((post) => post.postChannel === "Xbox");
+    const postChannel = 'Xbox'
 
   return (
     <div className="xbox">
@@ -15,9 +17,12 @@ function Xbox() {
         Xbox <SiXbox />
       </h1>
       <div>
-        <PostForm />
+      <PostForm postChannel={postChannel} />
       </div>
-      <PostList posts={posts} title="Some Feed for Thought(s)..." />
+      <PostList
+                posts={xboxPosts}
+                title="Xbox"
+            />
     </div>
   );
 }

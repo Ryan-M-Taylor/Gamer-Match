@@ -7,9 +7,10 @@ import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const PostForm =  () => {
+const PostForm = (props) => {
   const [postText, setPostText] = useState('');
-
+  const [postChannel, setPostChannel] = useState(props.postChannel);
+  console.log(postChannel)
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST);
@@ -40,11 +41,12 @@ const PostForm =  () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("postChannel", postChannel)
     try {
       const { data } = await addPost({
         variables: {
           postText,
+          postChannel: postChannel,
           postAuthor: Auth.getProfile().data.username,
         },
       });
