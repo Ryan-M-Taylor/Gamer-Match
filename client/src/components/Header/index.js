@@ -14,27 +14,6 @@ const Header = () => {
             <p className="description">Link up with fellow gamers</p>
           </Link>
         </div>
-        {/* <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info" to="/me">
-                {Auth.getProfile().data.username}'s profile
-              </Link>
-              <button className="btn btn-lg btn-light" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-info login" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light signup" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
-        </div> */}
         <Navigation />
       </div>
     </header>
