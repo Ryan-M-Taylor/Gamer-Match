@@ -18,6 +18,10 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
 
+
+  console.log(user)
+  console.log(user.genres)
+
   const userId = user._id;
   const friends = user.userFriends;
 
@@ -35,7 +39,7 @@ const Profile = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log("user", user.username);
+
   // if (!user?.username) why doesn't
   if (!user?.username) {
     return (
@@ -85,7 +89,7 @@ const Profile = () => {
   // };
 
   // ----------------------ADD FRIEND LOGIC ABOVE------------------------------------
-
+console.log("favoriteconsolelist", user)
   return (
     <div>
       <div className="flex-row justify-center mb-3">
@@ -94,7 +98,24 @@ const Profile = () => {
             ? `You are currently viewing ${user.username}'s Profile ${user._id}`
             : `Hi ${user.username}!`}
         </h2>
-        <p>Competitive or Casual : {user.competitive ? "Casual" : "-Competetive"}</p>
+
+        
+        <ul>
+          <li>{user.favoriteConsole}</li>
+          {user.favoriteConsole.map((elem) => (
+            <li key={elem._id}>{elem.favoriteConsole}</li>
+          ))}
+        </ul>
+
+        <ul>
+          <li>{user.genres}</li>
+          {user.genres.map((elem) => (
+            <li key={elem._id}>{elem.genres}</li>
+          ))}
+        </ul>
+
+
+        <p>Casual or Competitive : {user.competitive ? "Casual" : "Competetive"}</p>
         <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p>        
         <div className="col-12 col-md-10 mb-5">
           {/* ------------- */}

@@ -2,7 +2,7 @@
 .main-container{
     display: flex;
     justify-content: center;
-    background-color: rgb(47, 44, 44);
+    background-color: #060C1F;
 }
 
 .login-text{
@@ -11,12 +11,8 @@
 }
 
 .login-btn{
-    background-color: rgb(47, 44, 44);
+    background-color: #060C1F;
     color: white;
-}
-
-body {
-    background-color: grey;
 }
 
 
@@ -29,8 +25,11 @@ body {
 
 .app-name{
     margin-top: 20px;
-    color: white;
-    font-size: 75px;
+    font-size: 65px;
+}
+
+.app-name:hover {
+    text-decoration: underline;
 }
 
 .app-name, .description{
@@ -38,10 +37,19 @@ body {
     justify-content: center;
     z-index: 4;
     font-family: 'Orbitron', sans-serif;
+    color: white;
 }
 
-.description{
-color: white;
+@media screen and (max-width: 576px) {
+    .app-name{
+        font-size: 47px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .app-name{
+        font-size: 40px;
+    }
 }
 
 
@@ -61,12 +69,8 @@ color: white;
 /* Signup Page */
 
 .signup-form {
-    background-color: rgb(47, 44, 44);
+    background-color: #060C1F;
     color: white;
-}
-
-.card-body {
-  
 }
 
 /* Login Page */
@@ -171,6 +175,11 @@ color: white;
         background-color: #107C10;
      }
 
+     .xbox h1 {
+        background-color: #107C10;
+        color: white;
+     }
+
      .xbox .card-header{
         background-color: #107C10;
      }
@@ -182,11 +191,16 @@ color: white;
 
      .playstation {
         color: #00439C;
-     }
-
+    }
+    
      .playstation a{
         background-color: #00439C;
         color: white;
+     }
+
+     .playstation h1 {
+        background-color: #00439C;
+        color: white
      }
 
      .playstation .card-header{
@@ -207,6 +221,11 @@ color: white;
         color: white;
      }
 
+     .nintendo h1 {
+        background-color: #e60012;
+        color: white;
+     }
+
      .nintendo .card-header {
         background-color: #e60012;
      }
@@ -217,29 +236,34 @@ color: white;
      }
 
      .pc {
-        color: #7289da;
+        color: #5663F7;
      }
 
      .pc a {
         color: white;
-        background-color: #7289da;
+        background-color: #5663F7;
+     }
+
+     .pc h1 {
+        background-color: #5663F7;
+        color: white;
      }
 
      .pc .card-header {
-        background-color: #7289da;
+        background-color: #5663F7;
      }
 
      .pc .btn {
         color: white;
-        background-color: #7289da;
+        background-color: #5663F7;
      }
 
      .login {
-        color: gray;
+        color: #0ff;
      }
 
      .signup {
-        color: white;
+        color: #ffff01;
      }
 
      .nav-links p:hover {
