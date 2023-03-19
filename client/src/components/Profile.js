@@ -85,8 +85,6 @@ const Profile = () => {
 
       <div className="start-helmet">
         <div className="profile-content">
-        
-         
         </div>
       </div>
     </div>
