@@ -53,10 +53,12 @@ const resolvers = {
     updatePreferences: async (parent, { favoriteConsole, coOp, competitive, genres }, context) => {
       const updatedUser = await User.findOneAndUpdate(
         { _id: context.user._id },
-        { $addToSet: { favoriteConsole: {$each: favoriteConsole }}},
-        { $addToSet: { genres: {$each: genres }}},
-        {$set: {coOp: coOp}},
-        {$set: {competitive: competitive}},
+        {
+          $addToSet: { favoriteConsole: { $each: favoriteConsole } },
+          $addToSet: { genres: { $each: genres } },
+          $set: { coOp: coOp },
+          $set: { competitive: competitive }
+        },
         { new: true }
       );
       return updatedUser;
@@ -81,7 +83,7 @@ const resolvers = {
     //     throw new Error('Error adding friend:', error.message);
     //   }
     // },
-    
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

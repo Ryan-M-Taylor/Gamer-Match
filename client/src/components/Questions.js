@@ -1,89 +1,121 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Questions = () => {
-  const [selectedCheckboxes1, setSelectedCheckboxes1] = useState([]);
-  const [selectedCheckboxes2, setSelectedCheckboxes2] = useState([]);
-  const [selectedCheckbox3, setSelectedCheckbox3] = useState('');
+const CheckboxList = () => {
+  const [answer1, setAnswer1] = useState([]);
+  const [answer2, setAnswer2] = useState([]);
+  const [answer3, setAnswer3] = useState("");
+  const [answer4, setAnswer4] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleCheckboxChange1 = (event) => {
-    const checkboxValue = event.target.value;
+    const option = event.target.value;
     if (event.target.checked) {
-      setSelectedCheckboxes1([...selectedCheckboxes1, checkboxValue]);
+      setAnswer1([...answer1, option]);
     } else {
-      setSelectedCheckboxes1(selectedCheckboxes1.filter((value) => value !== checkboxValue));
+      setAnswer1(answer1.filter((item) => item !== option));
     }
   };
 
   const handleCheckboxChange2 = (event) => {
-    const checkboxValue = event.target.value;
+    const option = event.target.value;
     if (event.target.checked) {
-      setSelectedCheckboxes2([...selectedCheckboxes2, checkboxValue]);
+      setAnswer2([...answer2, option]);
     } else {
-      setSelectedCheckboxes2(selectedCheckboxes2.filter((value) => value !== checkboxValue));
+      setAnswer2(answer2.filter((item) => item !== option));
     }
   };
-
-  const handleRadioChange3 = (event) => {
-    setSelectedCheckbox3(event.target.value);
+  
+  const handleCheckboxChange3 = (event) => {
+    setAnswer3(event.target.value);
+  };
+  
+  const handleCheckboxChange4 = (event) => {
+    setAnswer4(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(selectedCheckboxes1);
-    console.log(selectedCheckboxes2);
-    console.log(selectedCheckbox3);
-    // submit the form data here
+    if (answer1 && answer2.length && answer3) {
+      console.log("Answer 1:", answer1);
+      console.log("Answer 2:", answer2);
+      console.log("Answer 3:", answer3);
+      console.log("Answer 4:", answer4);
+      setAnswer1([]);
+      setAnswer2([]);
+      setAnswer3("");
+      setAnswer4("");
+      setFormSubmitted(true);
+    } else {
+      alert("Please answer all questions.");
+    }
   };
+
+  if (formSubmitted) {
+    return <Link to="/me" />;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <h3>Question 1</h3>
         <label>
-          <input type="checkbox" value="Option 1" onChange={handleCheckboxChange1} />
-          Option 1
+          Xbox
+          <input type="checkbox" name="question1" value="Option 1" checked={answer1.includes("Option 1")} onChange={handleCheckboxChange1} />
         </label>
         <label>
-          <input type="checkbox" value="Option 2" onChange={handleCheckboxChange1} />
-          Option 2
+          Playstion
+          <input type="checkbox" name="question1" value="Option 2" checked={answer1.includes("Option 2")} onChange={handleCheckboxChange1} />
         </label>
         <label>
-          <input type="checkbox" value="Option 3" onChange={handleCheckboxChange1} />
-          Option 3
+          Nintendo
+          <input type="checkbox" name="question1" value="Option 3" checked={answer1.includes("Option 3")} onChange={handleCheckboxChange1} />
+        </label>
+        <label>
+          PC
+          <input type="checkbox" name="question1" value="Option 4" checked={answer1.includes("Option 4")} onChange={handleCheckboxChange1} />
         </label>
       </div>
       <div>
         <h3>Question 2</h3>
         <label>
-          <input type="checkbox" value="Option 1" onChange={handleCheckboxChange2} />
           Option 1
+          <input type="checkbox" name="question2" value="Option 1" checked={answer2.includes("Option 1")} onChange={handleCheckboxChange2} />
         </label>
         <label>
-          <input type="checkbox" value="Option 2" onChange={handleCheckboxChange2} />
           Option 2
+          <input type="checkbox" name="question2" value="Option 2" checked={answer2.includes("Option 2")} onChange={handleCheckboxChange2} />
         </label>
         <label>
-          <input type="checkbox" value="Option 3" onChange={handleCheckboxChange2} />
           Option 3
+          <input type="checkbox" name="question2" value="Option 3" checked={answer2.includes("Option 3")} onChange={handleCheckboxChange2} />
         </label>
       </div>
       <div>
         <h3>Question 3</h3>
         <label>
-          <input type="radio" name="question3" value="Option 1" checked={selectedCheckbox3 === 'Option 1'} onChange={handleRadioChange3} />
           Option 1
+          <input type="checkbox" name="question3" value="Option 1" checked={answer3 === "Option 1"} onChange={handleCheckboxChange3} />
         </label>
         <label>
-          <input type="radio" name="question3" value="Option 2" checked={selectedCheckbox3 === 'Option 2'} onChange={handleRadioChange3} />
           Option 2
+          <input type="checkbox" name="question3" value="Option 2" checked={answer3 === "Option 2"} onChange={handleCheckboxChange3} />
         </label>
       </div>
-      <div>Selected checkboxes for question 1: {selectedCheckboxes1.join(', ')}</div>
-      <div>Selected checkboxes for question 2: {selectedCheckboxes2.join(', ')}</div>
-      <div>Selected checkbox for question 3: {selectedCheckbox3}</div>
+      <div>
+        <h3>Question 4</h3>
+        <label>
+          Option 1
+          <input type="checkbox" name="question4" value="Option 1" checked={answer4 === "Option 1"} onChange={handleCheckboxChange4} />
+        </label>
+        <label>
+          Option 2
+          <input type="checkbox" name="question4" value="Option 2" checked={answer4 === "Option 2"} onChange={handleCheckboxChange4} />
+        </label>
+      </div>
       <button type="submit">Submit</button>
     </form>
   );
 };
 
-export default Questions;
+export default CheckboxList;
