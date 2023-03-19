@@ -55,12 +55,6 @@ const CheckboxList = () => {
         setAnswer2([]);
         setAnswer3("");
         setAnswer4("");
-
-        console.log(answer1)
-        console.log(answer2)
-        console.log(answer3)
-        console.log(answer4)
-
         setFormSubmitted(true);
 
         return <Navigate to="/me" />
