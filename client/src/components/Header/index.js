@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../Navigation";
+import './header.css'
 
 const Header = () => {
 
@@ -8,9 +9,9 @@ const Header = () => {
 
     <header className="header-div">
       <div className="d-flex flex-column align-items-center">
-        <div className="app-name">
+        <div>
           <Link className="" to="/">
-            <h1 className="app-name">Gamer Match</h1>
+            <h1 className="app-name main-div1">Gamer Match</h1>
             <p className="description">Link up with fellow gamers</p>
           </Link>
         </div>
