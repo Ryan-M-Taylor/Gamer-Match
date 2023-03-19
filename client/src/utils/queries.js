@@ -76,14 +76,13 @@ export const QUERY_USER = gql`
 
 `;
 
-  export const QUERY_FRIENDS = gql`
-  query getFriends{
-    user(username: $username) {
-    friends {
-        _id
-        username
-        email
-      }
-  } 
-  }
-`;
+//   export const QUERY_FRIENDS = gql`
+//   query friends{
+//     user(username: $username) {
+//     userFriends {
+//         _id
+//         username
+//       }
+//   } 
+//   }
+// `;
