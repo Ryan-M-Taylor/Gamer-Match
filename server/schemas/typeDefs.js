@@ -66,7 +66,7 @@ type User {
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     addFriend(friendId: ID!): User
-    updatePreferences(favoriteConsole: [String], coOp: Boolean, genres: [String], competitive: Boolean): User
+    updatePreferences(favoriteConsole: [String], coOp: Boolean, competitive: Boolean, genres: [String]): User
     # removeFriend(friendId: ID!, friendId: ID!): Friend   
   }
 

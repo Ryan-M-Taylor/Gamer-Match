@@ -57,8 +57,8 @@ const resolvers = {
       const updatedUser = await User.findOneAndUpdate(
         { _id: context.user._id },
         {
-          $addToSet: { favoriteConsole: { $each: favoriteConsole } },
-          $addToSet: { genres: { $each: genres } },
+          $addToSet: { favoriteConsole: { $each: favoriteConsole }, genres: { $each: genres } },
+          // $addToSet: { genres: { $each: genres } },
           $set: { competitive: competitive, coOp: coOp },
           // $set: { coOp: coOp },
         },
