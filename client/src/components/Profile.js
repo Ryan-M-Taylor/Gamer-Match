@@ -22,7 +22,7 @@ const Profile = () => {
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
-    return <Navigate to="/me" />;
+    return (<Navigate to="/me"/>);
   }
 
   if (loading) {
@@ -61,48 +61,32 @@ const Profile = () => {
     // </div>
 
     <div>
-      {/* <div className="flex-row justify-center mb-3">
+      <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+        {userParam ? `You are currently viewing ${user.username}'s Profile` : `Hi ${user.username}!`}
         </h2>
 
         <div className="col-12 col-md-10 mb-5">
           Insert component here
+        <FriendList />
         </div>
-        {!userParam && (
+        {userParam && (
+    
           <div
             className="col-12 col-md-10 mb-3 p-3"
             style={{ border: '1px dotted #1a1a1a' }}
           >
-            Insert another component here
+            <button onClick={alert}>Add Friend</button>
           </div>
         )}
-      </div> */}
+      </div>
 
       {/* ------------------EXPERIMENTAL CODE BENEATH------------------- */}
 
       <div className="start-helmet">
         <div className="profile-content">
-          <div className="friend-list-container">
-            <ul>
-              <li>Timmy</li>
-              <li>Jimmy</li>
-              <li>Tim</li>
-              <li>Timothy</li>
-            </ul>
-          </div>
-
-          <div className="friend-list-container">
-            <p>Who you Follow</p>
-            <ul>
-              <li>Timmy</li>
-              <li>Jimmy</li>
-              <li>Tim</li>
-              <li>Timothy</li>
-            </ul>
-          </div>
-
-          <FriendList />
+        
+         
         </div>
       </div>
     </div>
