@@ -58,7 +58,7 @@ function App() {
         <div>
           <Header />
        
-          <div className="d-flex container-fluid justify-content-center mt-3">
+          <div className="d-flex container-fluid justify-content-center mt-3 mb-5">
             <Routes>
               <Route
                 path="/"
