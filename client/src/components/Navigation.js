@@ -69,12 +69,12 @@ function Navigation() {
         {Auth.loggedIn() ? (
           <>
             <Nav.Item>
-              <Nav.Link className="" href="/me">
+              <Nav.Link className="login" href="/me">
                 {Auth.getProfile().data.username}'s profile
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link className="" onClick={logout}>
+              <Nav.Link className="signup" onClick={logout}>
                 Logout
               </Nav.Link>
             </Nav.Item>
