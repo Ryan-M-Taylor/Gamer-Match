@@ -1,15 +1,17 @@
 // import React from 'react';
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-// import Questions from "./Questions";
 import React from "react";
-// import PostList from "./PostList";
-
-
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
-
 import Auth from "../utils/auth";
 import FriendList from "./FriendList";
+
+
+  import { useMutation } from '@apollo/client';
+  import { ADD_USER_FRIEND } from '../utils/mutations';
+  import { QUERY_FRIENDS } from '../utils/queries';
+
+
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -39,6 +41,21 @@ const Profile = () => {
     );
   }
 
+
+
+  // POSSIBLE BUTTON CODE
+
+  
+  const AddFriendButton = ({ userId, friendId }) => {
+    const [addUserFriend] = useMutation(ADD_USER_FRIEND, {
+      variables: { userId, friendId },
+    });
+  
+    const handleAddFriend = () => {
+      addUserFriend();
+    };
+  };
+
   return (
     // <div>
     //   <div className="flex-row justify-center mb-3">
@@ -60,10 +77,17 @@ const Profile = () => {
     //   </div>
     // </div>
 
+
+
+
+
+
+    
+
     <div>
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-        {userParam ? `You are currently viewing ${user.username}'s Profile` : `Hi ${user.username}!`}
+        {userParam ? `You are currently viewing ${user.username}'s Profile ` : `Hi ${user.username}!`} 
         </h2>
 
         <div className="col-12 col-md-10 mb-5">
