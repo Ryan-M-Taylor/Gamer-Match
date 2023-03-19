@@ -40,6 +40,7 @@ const CheckboxList = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (answer1 && answer2 && answer3 && answer4) {
       try {
         await updatePreferences({
@@ -55,6 +56,7 @@ const CheckboxList = () => {
         setAnswer2([]);
         setAnswer3("");
         setAnswer4("");
+
         setFormSubmitted(true);
 
         return <Navigate to="/me" />;
@@ -152,9 +154,9 @@ const CheckboxList = () => {
             </label>
           </div>
           <div>
-            <h3>Do you play competitively or casually?</h3>
+            <h3>Do you play casually or competitively?</h3>
             <label>
-              Option 1
+              Casual
               <input
                 type="checkbox"
                 name="question3"
@@ -164,7 +166,7 @@ const CheckboxList = () => {
               />
             </label>
             <label>
-              Option 2
+              Competitive
               <input
                 type="checkbox"
                 name="question3"
@@ -177,7 +179,7 @@ const CheckboxList = () => {
           <div>
             <h3>Do you like playing Co-Op?</h3>
             <label>
-              Co-Op
+              Solo
               <input
                 type="checkbox"
                 name="question4"
@@ -187,7 +189,7 @@ const CheckboxList = () => {
               />
             </label>
             <label>
-              Solo
+              Co-Op
               <input
                 type="checkbox"
                 name="question4"
