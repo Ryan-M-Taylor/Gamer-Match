@@ -103,9 +103,31 @@
 
 
 
+// POSSIBLE BUTTON CODE
 
-
-
+// import React from 'react';
+//   import { useMutation } from '@apollo/client';
+//   import { Button } from 'react-bootstrap';
+//   import { ADD_USER_FRIEND } from '../utils/mutations';
+//   // import { QUERY_FRIENDS } from '../utils/queries';
+  
+//   const AddFriendButton = ({ userId, friendId }) => {
+//     const [addUserFriend] = useMutation(ADD_USER_FRIEND, {
+//       variables: { userId, friendId },
+//     });
+  
+//     const handleAddFriend = () => {
+//       addUserFriend();
+//     };
+  
+//     return (
+//       <Button variant="primary" onClick={handleAddFriend}>
+//         Add Friend
+//       </Button>
+//     );
+//   };
+  
+//   export default AddFriendButton;
 
 
 
@@ -115,9 +137,10 @@
 
 import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 // import { ADD_FRIEND } from '../../utils/mutations';
 import { QUERY_FRIENDS, QUERY_ME } from '../../utils/queries';
+// import { ADD_USER_FRIEND, QUERY_ME } from '../../utils/queries';
 // import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 
