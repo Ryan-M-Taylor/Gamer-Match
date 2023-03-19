@@ -36,7 +36,7 @@ const CheckboxList = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (answer1 && answer2.length && answer3) {
+    if (answer1 && answer2.length && answer3 && answer4) {
       console.log("Answer 1:", answer1);
       console.log("Answer 2:", answer2);
       console.log("Answer 3:", answer3);
@@ -58,7 +58,7 @@ const CheckboxList = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <h3>Question 1</h3>
+        <h3>What are your favorite console?</h3>
         <label>
           Xbox
           <input type="checkbox" name="question1" value="Option 1" checked={answer1.includes("Option 1")} onChange={handleCheckboxChange1} />
@@ -77,39 +77,39 @@ const CheckboxList = () => {
         </label>
       </div>
       <div>
-        <h3>Question 2</h3>
+        <h3>What are your favorite game genres? </h3>
         <label>
-          Option 1
+          Sports
           <input type="checkbox" name="question2" value="Option 1" checked={answer2.includes("Option 1")} onChange={handleCheckboxChange2} />
         </label>
         <label>
-          Option 2
+          Shooter
           <input type="checkbox" name="question2" value="Option 2" checked={answer2.includes("Option 2")} onChange={handleCheckboxChange2} />
         </label>
         <label>
-          Option 3
+          RPG
           <input type="checkbox" name="question2" value="Option 3" checked={answer2.includes("Option 3")} onChange={handleCheckboxChange2} />
         </label>
       </div>
       <div>
-        <h3>Question 3</h3>
+        <h3>Do you enjoy Co-Op or Solo?</h3>
         <label>
-          Option 1
+          Co-Op
           <input type="checkbox" name="question3" value="Option 1" checked={answer3 === "Option 1"} onChange={handleCheckboxChange3} />
         </label>
         <label>
-          Option 2
+          Solo
           <input type="checkbox" name="question3" value="Option 2" checked={answer3 === "Option 2"} onChange={handleCheckboxChange3} />
         </label>
       </div>
       <div>
-        <h3>Question 4</h3>
+        <h3>Do you play competitively or casually?</h3>
         <label>
-          Option 1
+          Competitive
           <input type="checkbox" name="question4" value="Option 1" checked={answer4 === "Option 1"} onChange={handleCheckboxChange4} />
         </label>
         <label>
-          Option 2
+          Casual
           <input type="checkbox" name="question4" value="Option 2" checked={answer4 === "Option 2"} onChange={handleCheckboxChange4} />
         </label>
       </div>
