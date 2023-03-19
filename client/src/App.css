@@ -5,11 +5,6 @@
     background-color: black;
 }
 
-/* .login-container{
-    display: flex;
-    justify-content: center;
-} */
-
 .login-text{
     color: white;
     text-align: center;
@@ -21,12 +16,10 @@
 
 
 
-
-
 /* Indexjs Page (App name) */
 
 .header-div{
-    /* background-color: black; */
+  border-bottom: solid;
 }
 
 .app-name{
@@ -43,20 +36,12 @@
 color:rgb(0, 0, 0);
 }
 
-.login-and-signup-btn{
-    display: flex;
-    justify-content: center;
-}
-
 
 /* Navigation Page */
 
-.container{
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
+.auth-btn {
+    background-color: #00439C;
 }
-
 
 
 /* Questions Page */
@@ -69,15 +54,16 @@ color:rgb(0, 0, 0);
 
 /* Profile Page */
 
-
-
-
-
-
-
-
-
-
+/* footer */
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 4px;
+    text-align: center;
+    background-color: #002274;
+  }
 
 
 /* ----------------START EXPERIMENTAL CODE--------------------------- */
@@ -155,19 +141,74 @@ color:rgb(0, 0, 0);
         color: #107C10;
      }
 
+     .xbox a{
+        color: white;
+        background-color: #107C10;
+     }
+
+     .xbox .card-header{
+        background-color: #107C10;
+     }
+
+     .xbox .btn {
+        background-color: #107C10;
+        color: white;
+     }
+
      .playstation {
         color: #00439C;
+     }
+
+     .playstation a{
+        background-color: #00439C;
+        color: white;
+     }
+
+     .playstation .card-header{
+        background-color: #00439C;
+     }
+
+     .playstation .btn {
+        background-color: #00439C;
+        color: white;
      }
 
      .nintendo{
         color: #e60012;
      }
 
-     .nintendo-post {
+     .nintendo a {
+        background-color: #e60012;
+        color: white;
+     }
+
+     .nintendo .card-header {
+        background-color: #e60012;
+     }
+
+     .nintendo .btn {
         background-color: #e60012;
         color: white;
      }
 
      .pc {
         color: #7289da;
+     }
+
+     .pc a {
+        color: white;
+        background-color: #7289da;
+     }
+
+     .pc .card-header {
+        background-color: #7289da;
+     }
+
+     .pc .btn {
+        color: white;
+        background-color: #7289da;
+     }
+
+     .app-name {
+        color: black;
      }

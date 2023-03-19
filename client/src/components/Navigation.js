@@ -8,6 +8,8 @@ import Nintendo from './Nintendo';
 import Xbox from './Xbox';
 import PC from './Pc';
 import Profile from './Profile';
+import Auth from '../utils/auth';
+import { Link } from "react-router-dom";
 
 function Navigation() {
   const [showPlaystation, setShowPlaystation] = useState(true);
@@ -56,11 +58,33 @@ function Navigation() {
     setShowPC(false);
   }
 
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   return (
     <>
-      <Navbar className="navigation-bar">
-        <Container>
           <Nav className="me-auto">
+          {Auth.loggedIn() ? (
+            <>
+              <Link className="btn btn-md" to="/me">
+                {Auth.getProfile().data.username}'s profile
+              </Link>
+              <button className="btn btn-md" onClick={logout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link className="btn btn-md login" to="/login">
+                Login
+              </Link>
+              <Link className="btn btn-md signup" to="/signup">
+                Signup
+              </Link>
+            </>
+          )}
           <Nav.Item>
               <Nav.Link className="navigation-text" href="/profile" onClick={handleProfileClick}>
                 Profile
@@ -87,8 +111,6 @@ function Navigation() {
               </Nav.Link>
             </Nav.Item>
           </Nav>
-        </Container>
-      </Navbar>
     </>
   );
 }

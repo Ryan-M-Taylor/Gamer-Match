@@ -81,10 +81,10 @@ const PostForm = (props) => {
             Character Count: {characterCount}/280
           </p>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="d-flex flex-column justify-content-center justify-space-between-md align-items-center"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
+            <div className="col-12">
               <textarea
                 name="postText"
                 placeholder="Here's a new post..."
@@ -95,8 +95,8 @@ const PostForm = (props) => {
               ></textarea>
             </div>
 
-            <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+            <div className="col-12 mb-4">
+              <button className="btn btn-block" type="submit">
                 Add Post
               </button>
             </div>
