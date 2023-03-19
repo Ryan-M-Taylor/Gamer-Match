@@ -12,7 +12,7 @@ function Xbox() {
     const postChannel = 'Xbox'
 
   return (
-    <div className="xbox d-flex flex-column align-items-center">
+    <div className="xbox text-center">
       <h1>
         Xbox <SiXbox />
       </h1>

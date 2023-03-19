@@ -12,7 +12,7 @@ function PC() {
   const postChannel = 'PC';
 
   return (
-    <div className="pc d-flex flex-column align-items-center">
+    <div className="pc text-center">
       <h1>
         PC <FaMouse />
       </h1>

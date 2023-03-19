@@ -2,7 +2,7 @@
 .main-container{
     display: flex;
     justify-content: center;
-    background-color: black;
+    background-color: rgb(47, 44, 44);
 }
 
 .login-text{
@@ -11,29 +11,37 @@
 }
 
 .login-btn{
-    background-color: white;
+    background-color: rgb(47, 44, 44);
+    color: white;
 }
 
+body {
+    background-color: grey;
+}
 
 
 /* Indexjs Page (App name) */
 
 .header-div{
   border-bottom: solid;
+  background-color: #060C1F;
 }
 
 .app-name{
     margin-top: 20px;
+    color: white;
+    font-size: 75px;
 }
 
 .app-name, .description{
     display: flex;
     justify-content: center;
     z-index: 4;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .description{
-color:rgb(0, 0, 0);
+color: white;
 }
 
 
@@ -50,6 +58,19 @@ color:rgb(0, 0, 0);
     font-size: 28px;
 }
 
+/* Signup Page */
+
+.signup-form {
+    background-color: rgb(47, 44, 44);
+    color: white;
+}
+
+.card-body {
+  
+}
+
+/* Login Page */
+
 
 
 /* Profile Page */
@@ -62,7 +83,7 @@ color:rgb(0, 0, 0);
     left: 0;
     padding: 4px;
     text-align: center;
-    background-color: #002274;
+    background-color: #060C1F;
     color: white;
   }
 
@@ -130,6 +151,9 @@ color:rgb(0, 0, 0);
         justify-content: flex-end;
      }
 
+     .form-input {
+        width: 100%;
+     }
 
 
      /* Profile Nav-bar */
@@ -210,6 +234,14 @@ color:rgb(0, 0, 0);
         background-color: #7289da;
      }
 
-     .app-name {
-        color: black;
+     .login {
+        color: gray;
+     }
+
+     .signup {
+        color: white;
+     }
+
+     .nav-links p:hover {
+        text-decoration: underline;
      }
