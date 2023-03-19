@@ -23,7 +23,18 @@ export const ADD_USER = gql`
         }
     }
 `;
-
+export const UPDATE_PREFERENCES = gql`
+  mutation updatePreferences($favoriteConsole: [String], $coOp: Boolean, $genres: [String], $competitive: Boolean) {
+    updatePreferences(favoriteConsole: $favoriteConsole, coOp: $coOp, genres: $genres, competitive: $competitive) {
+      coOp
+      competitive
+      favoriteConsole
+      genres
+      username
+      _id
+    }
+  }
+`;
 export const ADD_POST = gql`
   mutation addPost($postText: String!, $postChannel: String!) {
     addPost(postText: $postText, postChannel: $postChannel) {
