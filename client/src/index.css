@@ -1,6 +1,7 @@
 body {
   /* font-family: 'Rubik', sans-serif; */
-  font-family: 'Antic', sans-serif;
+  /* font-family: 'Antic', sans-serif; */
+  font-family: 'Orbitron', sans-serif;
 }
 
 h1,
@@ -10,7 +11,8 @@ h4,
 h5,
 h6 {
   /* font-family: 'Rubik Mono One', sans-serif; */
-  font-family: 'Antic', sans-serif;
+  /* font-family: 'Antic', sans-serif; */
+  font-family: 'Orbitron', sans-serif;
 }
 
 .small {
