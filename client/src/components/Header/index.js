@@ -12,8 +12,8 @@ const Header = () => {
         <div>
           <Link className="" to="/">
             <h1 className="app-name main-div1">Gamer Match</h1>
-            <p className="description">Link up with fellow gamers</p>
           </Link>
+            <p className="description">Link up with fellow gamers</p>
         </div>
         <Navigation />
       </div>
