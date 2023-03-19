@@ -13,12 +13,11 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 
-import MyNavbar from './components/Navbar';
 import FriendList from './components/FriendList';
 
 import Profile from './components/Profile';
 import Header from './components/Header';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 import Questions from './components/Questions';
 import Nintendo from './components/Nintendo';
 import Playstation from './components/Playstation';
@@ -56,10 +55,10 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div>
           <Header />
-          <MyNavbar />
-          <div className="container">
+       
+          <div className="d-flex container-fluid justify-content-center mt-3">
             <Routes>
               <Route
                 path="/"
@@ -112,7 +111,7 @@ function App() {
               />
             </Routes>
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>
