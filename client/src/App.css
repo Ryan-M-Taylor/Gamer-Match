@@ -15,10 +15,6 @@
     color: white;
 }
 
-body {
-    /* background-color: rgba(128, 128, 128, 0.37); */
-}
-
 
 /* Indexjs Page (App name) */
 
@@ -263,11 +259,11 @@ body {
      }
 
      .login {
-        color: gray;
+        color: #0ff;
      }
 
      .signup {
-        color: white;
+        color: #ffff01;
      }
 
      .nav-links p:hover {
