@@ -66,8 +66,9 @@ const Profile = () => {
         {userParam ? `You are currently viewing ${user.username}'s Profile` : `Hi ${user.username}!`}
         </h2>
 
+        {user.competitive ? "" : "-Competetive"}
         <div className="col-12 col-md-10 mb-5">
-          Insert component here
+         
         <FriendList />
         </div>
         {userParam && (

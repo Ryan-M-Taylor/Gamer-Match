@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { UPDATE_PREFERENCES } from "../utils/mutations";
 
 const CheckboxList = () => {
   const [answer1, setAnswer1] = useState([]);
@@ -7,6 +9,8 @@ const CheckboxList = () => {
   const [answer3, setAnswer3] = useState("");
   const [answer4, setAnswer4] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const [updatePreferences] = useMutation(UPDATE_PREFERENCES);
 
   const handleCheckboxChange1 = (event) => {
     const option = event.target.value;
@@ -34,88 +38,108 @@ const CheckboxList = () => {
     setAnswer4(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (answer1 && answer2.length && answer3 && answer4) {
-      console.log("Answer 1:", answer1);
-      console.log("Answer 2:", answer2);
-      console.log("Answer 3:", answer3);
-      console.log("Answer 4:", answer4);
-      setAnswer1([]);
-      setAnswer2([]);
-      setAnswer3("");
-      setAnswer4("");
-      setFormSubmitted(true);
+    if (answer1 && answer2 && answer3 && answer4) {
+      try {
+        await updatePreferences({
+          variables: {
+            favoriteConsole: answer1,
+            genres: answer2,
+            competitive: answer3 === "Option 1",
+            coOp: answer4 === "Option 1"
+          }
+        });
+        console.log("Preferences updated successfully!");
+        setAnswer1([]);
+        setAnswer2([]);
+        setAnswer3("");
+        setAnswer4("");
+
+        console.log(answer1)
+        console.log(answer2)
+        console.log(answer3)
+        console.log(answer4)
+
+        setFormSubmitted(true);
+
+        return <Navigate to="/me" />
+      } catch (error) {
+        console.error("Error updating preferences:", error);
+      }
     } else {
       alert("Please answer all questions.");
     }
   };
 
-  if (formSubmitted) {
-    return <Link to="/me" />;
-  }
-
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h3>What are your favorite console?</h3>
-        <label>
-          Xbox
-          <input type="checkbox" name="question1" value="Option 1" checked={answer1.includes("Option 1")} onChange={handleCheckboxChange1} />
-        </label>
-        <label>
-          Playstion
-          <input type="checkbox" name="question1" value="Option 2" checked={answer1.includes("Option 2")} onChange={handleCheckboxChange1} />
-        </label>
-        <label>
-          Nintendo
-          <input type="checkbox" name="question1" value="Option 3" checked={answer1.includes("Option 3")} onChange={handleCheckboxChange1} />
-        </label>
-        <label>
-          PC
-          <input type="checkbox" name="question1" value="Option 4" checked={answer1.includes("Option 4")} onChange={handleCheckboxChange1} />
-        </label>
-      </div>
-      <div>
-        <h3>What are your favorite game genres? </h3>
-        <label>
-          Sports
-          <input type="checkbox" name="question2" value="Option 1" checked={answer2.includes("Option 1")} onChange={handleCheckboxChange2} />
-        </label>
-        <label>
-          Shooter
-          <input type="checkbox" name="question2" value="Option 2" checked={answer2.includes("Option 2")} onChange={handleCheckboxChange2} />
-        </label>
-        <label>
-          RPG
-          <input type="checkbox" name="question2" value="Option 3" checked={answer2.includes("Option 3")} onChange={handleCheckboxChange2} />
-        </label>
-      </div>
-      <div>
-        <h3>Do you enjoy Co-Op or Solo?</h3>
-        <label>
-          Co-Op
-          <input type="checkbox" name="question3" value="Option 1" checked={answer3 === "Option 1"} onChange={handleCheckboxChange3} />
-        </label>
-        <label>
-          Solo
-          <input type="checkbox" name="question3" value="Option 2" checked={answer3 === "Option 2"} onChange={handleCheckboxChange3} />
-        </label>
-      </div>
-      <div>
-        <h3>Do you play competitively or casually?</h3>
-        <label>
-          Competitive
-          <input type="checkbox" name="question4" value="Option 1" checked={answer4 === "Option 1"} onChange={handleCheckboxChange4} />
-        </label>
-        <label>
-          Casual
-          <input type="checkbox" name="question4" value="Option 2" checked={answer4 === "Option 2"} onChange={handleCheckboxChange4} />
-        </label>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
+    <div>
+      {formSubmitted ? (
+        <div>
+          <p>Form submitted! Redirecting to homepage...</p>
+          <Navigate to="/me">Click here</Navigate>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <div>
+            <h3>What is your favorite console?</h3>
+            <label>
+              Xbox
+              <input type="checkbox" name="question1" value="Option 1" checked={answer1.includes("Option 1")} onChange={handleCheckboxChange1} />
+            </label>
+            <label>
+              Playstion
+              <input type="checkbox" name="question1" value="Option 2" checked={answer1.includes("Option 2")} onChange={handleCheckboxChange1} />
+            </label>
+            <label>
+              Nintendo
+              <input type="checkbox" name="question1" value="Option 3" checked={answer1.includes("Option 3")} onChange={handleCheckboxChange1} />
+            </label>
+            <label>
+              PC
+              <input type="checkbox" name="question1" value="Option 4" checked={answer1.includes("Option 4")} onChange={handleCheckboxChange1} />
+            </label>
+          </div>
+          <div>
+            <h3>What are your favorite genres?</h3>
+            <label>
+              Option 1
+              <input type="checkbox" name="question2" value="Option 1" checked={answer2.includes("Option 1")} onChange={handleCheckboxChange2} />
+            </label>
+            <label>
+              Option 2
+              <input type="checkbox" name="question2" value="Option 2" checked={answer2.includes("Option 2")} onChange={handleCheckboxChange2} />
+            </label>
+            <label>
+              Option 3
+              <input type="checkbox" name="question2" value="Option 3" checked={answer2.includes("Option 3")} onChange={handleCheckboxChange2} />
+            </label>
+          </div>
+          <div>
+            <h3>Do you play competitively or casually?</h3>
+            <label>
+              Option 1
+              <input type="checkbox" name="question3" value="Option 1" checked={answer3 === "Option 1"} onChange={handleCheckboxChange3} />
+            </label>
+            <label>
+              Option 2
+              <input type="checkbox" name="question3" value="Option 2" checked={answer3 === "Option 2"} onChange={handleCheckboxChange3} />
+            </label>
+          </div>
+          <div>
+            <h3>Do you like playing Co-Op?</h3>
+            <label>
+              Co-Op
+              <input type="checkbox" name="question4" value="Option 1" checked={answer4 === "Option 1"} onChange={handleCheckboxChange4} />
+            </label>
+            <label>
+              Solo
+              <input type="checkbox" name="question4" value="Option 2" checked={answer4 === "Option 2"} onChange={handleCheckboxChange4} />
+            </label>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      )}
+    </div>)};
 
 export default CheckboxList;
