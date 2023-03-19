@@ -1,12 +1,15 @@
 // import React from 'react';
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import Questions from "./Questions";
+// import Questions from "./Questions";
 import React from "react";
+// import PostList from "./PostList";
+
 
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
+import FriendList from "./FriendList";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -81,7 +84,6 @@ const Profile = () => {
       <div className="start-helmet">
         <div className="profile-content">
           <div className="friend-list-container">
-            <p>Your Followers</p>
             <ul>
               <li>Jimmy</li>
               <li>Jimmy</li>
@@ -99,6 +101,8 @@ const Profile = () => {
               <li>Timothy</li>
             </ul>
           </div>
+
+          <FriendList />
         </div>
       </div>
     </div>
