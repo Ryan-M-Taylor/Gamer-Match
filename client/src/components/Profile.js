@@ -83,7 +83,7 @@ const Profile = () => {
           <div className="friend-list-container">
             <p>Your Followers</p>
             <ul>
-              <li>Timmy</li>
+              <li>Jimmy</li>
               <li>Jimmy</li>
               <li>Tim</li>
               <li>Timothy</li>
