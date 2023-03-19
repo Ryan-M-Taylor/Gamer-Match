@@ -6,23 +6,20 @@ import PostForm from "./PostForm";
 import { SiPlaystation } from "react-icons/si";
 
 function Playstation() {
-    const { loading, data } = useQuery(QUERY_POSTS);
-    const posts = data?.posts || [];
-    const postChannel = 'Playstation'
-    const psPosts = posts.filter((post) => post.postChannel === "Playstation");
-    
+  const { loading, data } = useQuery(QUERY_POSTS);
+  const posts = data?.posts || [];
+  const postChannel = "Playstation";
+  const psPosts = posts.filter((post) => post.postChannel === "Playstation");
+
   return (
-    <div className="playstation">
+    <div className="playstation d-flex flex-column align-items-center">
       <h1>
         Playstation <SiPlaystation />
       </h1>
       <div>
-      <PostForm postChannel={postChannel}/>
+        <PostForm postChannel={postChannel} />
       </div>
-      <PostList
-                posts={psPosts}
-                title="Playstation"
-            />
+      <PostList posts={psPosts} title="Playstation" />
     </div>
   );
 }
