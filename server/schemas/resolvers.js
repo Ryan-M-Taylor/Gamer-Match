@@ -19,6 +19,9 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
+    // friends: async (parent, {username}) => {
+    //   return User.find(username).populate(['userFriends'])
+    // },
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate(['userFriends', 'posts'])

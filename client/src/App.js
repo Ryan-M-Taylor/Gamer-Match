@@ -14,6 +14,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 
 import FriendList from './components/FriendList';
+// import FriendList from './components/FriendList';
 
 import Profile from './components/Profile';
 import Header from './components/Header';

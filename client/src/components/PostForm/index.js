@@ -69,8 +69,6 @@ const PostForm = (props) => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
-
       {Auth.loggedIn() ? (
         <>
           <p
@@ -89,7 +87,7 @@ const PostForm = (props) => {
                 name="postText"
                 placeholder="Here's a new post..."
                 value={postText}
-                className="form-input w-100"
+                className="form-input"
                 style={{ lineHeight: '1.5', resize: 'vertical' }}
                 onChange={handleChange}
               ></textarea>
