@@ -12,7 +12,7 @@ function Playstation() {
   const psPosts = posts.filter((post) => post.postChannel === "Playstation");
 
   return (
-    <div className="playstation d-flex flex-column align-items-center">
+    <div className="playstation text-center">
       <h1>
         Playstation <SiPlaystation />
       </h1>

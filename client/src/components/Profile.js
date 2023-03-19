@@ -94,7 +94,8 @@ const Profile = () => {
             ? `You are currently viewing ${user.username}'s Profile ${user._id}`
             : `Hi ${user.username}!`}
         </h2>
-
+        <p>Competitive or Casual : {user.competitive ? "Casual" : "-Competetive"}</p>
+        <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p>        
         <div className="col-12 col-md-10 mb-5">
           {/* ------------- */}
 
@@ -123,7 +124,6 @@ const Profile = () => {
       </div>
           </div>
           )}
-
         </div>
         {userParam && (
           <div

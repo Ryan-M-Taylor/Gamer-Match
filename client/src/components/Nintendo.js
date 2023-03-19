@@ -12,7 +12,7 @@ function Nintendo() {
     const postChannel = 'Nintendo'
 
   return (
-    <div className="nintendo d-flex flex-column align-items-center">
+    <div className="nintendo text-center">
       <h1>
         Nintendo <SiNintendoswitch />
       </h1>
