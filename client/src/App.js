@@ -55,10 +55,10 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
+        <div className='mh-100'>
           <Header />
        
-          <div className="d-flex container-fluid justify-content-center mt-3">
+          <div className="d-flex container-fluid justify-content-center mt-3 mb-5">
             <Routes>
               <Route
                 path="/"

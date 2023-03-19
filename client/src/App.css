@@ -56,13 +56,14 @@ color:rgb(0, 0, 0);
 
 /* footer */
 .footer {
-    position: absolute;
+    position:relative;
     right: 0;
     bottom: 0;
     left: 0;
     padding: 4px;
     text-align: center;
     background-color: #002274;
+    color: white;
   }
 
 
