@@ -56,11 +56,12 @@ const resolvers = {
         {
           $addToSet: { favoriteConsole: { $each: favoriteConsole } },
           $addToSet: { genres: { $each: genres } },
-          $set: { coOp: coOp },
-          $set: { competitive: competitive }
+          $set: { competitive: competitive, coOp: coOp },
+          // $set: { coOp: coOp },
         },
         { new: true }
       );
+      console.log("Preferences", [favoriteConsole, coOp, competitive, genres])
       return updatedUser;
     },
     // removeFriend: async (parent, { userId, friendId }, { models }) => {
