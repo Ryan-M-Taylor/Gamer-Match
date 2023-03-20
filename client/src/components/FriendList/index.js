@@ -27,9 +27,9 @@ const FriendList = (props) => {
           <p>You have no friends yet.</p>
         ) : (
           <ListGroup>
-            {props.friends.map((friends) => {
-              return React.createElement(ListGroup.Item, { key: props.friends._id }, props.friends.username);
-            })}
+            {props.friends.map((friend,i) => 
+              <ListGroup.Item key={`friend-list-${i}`}>{friend.username}</ListGroup.Item>
+            )}
           </ListGroup>
         )}
       </div>
