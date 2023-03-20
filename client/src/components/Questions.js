@@ -84,8 +84,8 @@ const CheckboxList = () => {
               <input
                 type="checkbox"
                 name="question1"
-                value="Option 1"
-                checked={answer1.includes("Option 1")}
+                value="Xbox"
+                checked={answer1.includes("Xbox")}
                 onChange={handleCheckboxChange1}
               />
             </label>
@@ -94,8 +94,8 @@ const CheckboxList = () => {
               <input
                 type="checkbox"
                 name="question1"
-                value="Option 2"
-                checked={answer1.includes("Option 2")}
+                value="Playstion"
+                checked={answer1.includes("Playstion")}
                 onChange={handleCheckboxChange1}
               />
             </label>
@@ -104,8 +104,8 @@ const CheckboxList = () => {
               <input
                 type="checkbox"
                 name="question1"
-                value="Option 3"
-                checked={answer1.includes("Option 3")}
+                value="Nintendo"
+                checked={answer1.includes("Nintendo")}
                 onChange={handleCheckboxChange1}
               />
             </label>
@@ -114,8 +114,8 @@ const CheckboxList = () => {
               <input
                 type="checkbox"
                 name="question1"
-                value="Option 4"
-                checked={answer1.includes("Option 4")}
+                value="PC"
+                checked={answer1.includes("PC")}
                 onChange={handleCheckboxChange1}
               />
             </label>
@@ -123,32 +123,32 @@ const CheckboxList = () => {
           <div>
             <h3>What are your favorite genres?</h3>
             <label>
-              Option 1
+              Shooter
               <input
                 type="checkbox"
                 name="question2"
-                value="Option 1"
-                checked={answer2.includes("Option 1")}
+                value="Shooter"
+                checked={answer2.includes("Shooter")}
                 onChange={handleCheckboxChange2}
               />
             </label>
             <label>
-              Option 2
+              Sports
               <input
                 type="checkbox"
                 name="question2"
-                value="Option 2"
-                checked={answer2.includes("Option 2")}
+                value="Sports"
+                checked={answer2.includes("Sports")}
                 onChange={handleCheckboxChange2}
               />
             </label>
             <label>
-              Option 3
+              RPG
               <input
                 type="checkbox"
                 name="question2"
-                value="Option 3"
-                checked={answer2.includes("Option 3")}
+                value="RPG"
+                checked={answer2.includes("RPG")}
                 onChange={handleCheckboxChange2}
               />
             </label>
