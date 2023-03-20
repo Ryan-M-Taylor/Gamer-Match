@@ -27,7 +27,7 @@ const Profile = () => {
   const friends = user.userFriends;
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
-
+  
   const handleAddFriend = () => {
     addFriend({ variables: { _id: userId } });
   };
