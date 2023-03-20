@@ -27,7 +27,9 @@ const Profile = () => {
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
   
   const handleAddFriend = () => {
-    addFriend({ variables: { _id: userId } });
+    console.log("USER ID!!!!!!!!" + userId)
+    console.log("USER NAME!!!!!!" + userParam)
+    addFriend({ variables: { friendId: userId } });
   };
 
   // navigate to personal profile page if username is yours
@@ -153,8 +155,8 @@ const Profile = () => {
                     <h2>Your Friends:</h2>
 
                     <ul>
-                      {user.userFriends?.map((friend) => (
-                        <li key={friend._id}>{friend.username}</li>
+                      {user.userFriends?.map((friend, i) => (
+                        <li key={`friend-${friend._id}-${i}`}>{friend.username}</li>
                       ))}
                     </ul>
                   </div>
