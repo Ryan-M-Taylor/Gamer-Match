@@ -79,6 +79,13 @@
 
 /* Profile Page */
 
+.profile-nav {
+width: 100%;
+ }
+
+ .profile-nav-collapse {
+   width: 100%;
+ }
 /* footer */
 .footer {
     position: fixed;
