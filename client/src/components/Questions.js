@@ -143,26 +143,6 @@ const CheckboxList = () => {
               />
             </label>
             <label>
-              RPG
-              <input
-                type="checkbox"
-                name="question2"
-                value="RPG"
-                checked={answer2.includes("RPG")}
-                onChange={handleCheckboxChange2}
-              />
-            </label>
-            <label>
-              Sandbox
-              <input
-                type="checkbox"
-                name="question2"
-                value="Sandbox"
-                checked={answer2.includes("Sandbox")}
-                onChange={handleCheckboxChange2}
-              />
-            </label>
-            <label>
             Real-time strategy (RTS)
               <input
                 type="checkbox"
@@ -189,16 +169,6 @@ const CheckboxList = () => {
                 name="question2"
                 value="RPG"
                 checked={answer2.includes("RPG")}
-                onChange={handleCheckboxChange2}
-              />
-            </label>
-            <label>
-            Simulation 
-              <input
-                type="checkbox"
-                name="question2"
-                value="Simulation"
-                checked={answer2.includes("Simulation")}
                 onChange={handleCheckboxChange2}
               />
             </label>

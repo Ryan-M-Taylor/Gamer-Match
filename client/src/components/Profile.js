@@ -18,9 +18,8 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
 
-
-  console.log(user)
-  console.log(user.genres)
+  console.log(user);
+  console.log(user.genres);
 
   const userId = user._id;
   const friends = user.userFriends;
@@ -89,7 +88,7 @@ const Profile = () => {
   // };
 
   // ----------------------ADD FRIEND LOGIC ABOVE------------------------------------
-console.log("favoriteconsolelist", user)
+  console.log("favoriteconsolelist", user);
   return (
     <div>
       <div className="flex-row justify-center mb-3">
@@ -99,24 +98,28 @@ console.log("favoriteconsolelist", user)
             : `Hi ${user.username}!`}
         </h2>
 
+        <ul>
+          {[
+            user.favoriteConsole, // Include the user's favorite console as the first item
+            ...user.favoriteConsole, // Spread the array of favorite consoles after the first item
+          ].map((elem, index) => (
+            <li key={index}>{elem}</li>
+          ))}
+        </ul>
         
         <ul>
-          <li>{user.favoriteConsole}</li>
-          {user.favoriteConsole?.map((elem) => (
-            <li key={elem._id}>{elem.favoriteConsole}</li>
+          {[
+            user.genres, // Include the user's favorite console as the first item
+            ...user.genres, // Spread the array of favorite consoles after the first item
+          ].map((elem, index) => (
+            <li key={index}>{elem}</li>
           ))}
         </ul>
 
-        <ul>
-          <li>{user.genres}</li>
-          {user.genres?.map((elem) => (
-            <li key={elem._id}>{elem.genres}</li>
-          ))}
-        </ul>
-
-
-        <p>Casual or Competitive : {user.competitive ? "Casual" : "Competetive"}</p>
-        <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p>        
+        <p>
+          Casual or Competitive : {user.competitive ? "Casual" : "Competetive"}
+        </p>
+        <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p>
         <div className="col-12 col-md-10 mb-5">
           {/* ------------- */}
 
@@ -126,24 +129,24 @@ console.log("favoriteconsolelist", user)
               <button onClick={handleAddFriend}>Add Friend</button>
             </div>
           ) : (
-            <div>This is your profile
-          <FriendList friends={friends} />
+            <div>
+              This is your profile
+              <FriendList friends={friends} />
+              <div className="start-helmet">
+                <div className="profile-content">
+                  <div>
+                    <h1>Hello, {user.username}!</h1>
+                    <h2>Your Friends:</h2>
 
-          <div className="start-helmet">
-        <div className="profile-content">
-          <div>
-            <h1>Hello, {user.username}!</h1>
-            <h2>Your Friends:</h2>
-
-            <ul>
-              {user.userFriends?.map((friend) => (
-                <li key={friend._id}>{friend.username}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-          </div>
+                    <ul>
+                      {user.userFriends?.map((friend) => (
+                        <li key={friend._id}>{friend.username}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           )}
         </div>
         {userParam && (
