@@ -54,7 +54,7 @@ const resolvers = {
       );
       return updatedUser;
     },
-    deleteFriend: async (parent, { friendId }, context) => {
+deleteFriend: async (parent, { friendId }, context) => {
       console.log("delete user id", context.user._id, friendId)
       const deleteUser = await User.findOneAndUpdate(
         { _id: context.user._id },
