@@ -10,6 +10,11 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 import FriendList from "./FriendList";
 
+// -------------Optional Components----------------
+import ProfileNav from "./Profile/ProfileNav"; 
+import ProfileFriends from "./Profile/ProfileFriends"; 
+// -------------Optional Components----------------
+
 const Profile = () => {
   const { username: userParam } = useParams();
   console.log("userParam", userParam);
@@ -23,21 +28,20 @@ const Profile = () => {
   console.log(user);
   console.log(user.genres);
 
-// -------------Add Friend Logic below----------------
+  // -------------Add Friend Logic below----------------
 
   const userId = user._id;
   const friends = user.userFriends;
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
-  
+
   const handleAddFriend = () => {
-    console.log("USER ID!!!!!!!!" + userId)
-    console.log("USER NAME!!!!!!" + userParam)
+    console.log("USER ID!!!!!!!!" + userId);
+    console.log("USER NAME!!!!!!" + userParam);
     addFriend({ variables: { friendId: userId } });
   };
 
-// -------------Add Friend Logic above ----------------
-
+  // -------------Add Friend Logic above ----------------
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -82,9 +86,15 @@ const Profile = () => {
     <div>
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-        {userParam ? `You are currently viewing ${user.username}'s Profile` : `Hi ${user.username}!`}
-        </h2>
 
+
+           {/* // -------------Optional Components---------------- */}
+          <ProfileNav />
+           {/* // -------------Optional Components---------------- */}
+        
+        
+        
+        </h2>
         {/* <ul>
           {[
             user.favoriteConsole, // Include the user's favorite console as the first item
@@ -102,21 +112,21 @@ const Profile = () => {
             <li key={index}>{elem}</li>
           ))}
         </ul> */}
-
+        {userParam
+          ? `You are currently viewing ${user.username}'s Profile ${user._id}`
+          : `Hi ${user.username}!`}{" "}
         <ul>
           <li>{user.favoriteConsole}</li>
           {user.favoriteConsole?.map((elem) => (
             <li key={elem._id}>{elem.favoriteConsole}</li>
           ))}
         </ul>
-
         <ul>
           <li>{user.genres}</li>
           {user.genres?.map((elem) => (
             <li key={elem._id}>{elem.genres}</li>
           ))}
         </ul>
-
         <p>
           Casual or Competitive : {user.competitive ? "Casual" : "Competetive"}
         </p>
@@ -132,17 +142,25 @@ const Profile = () => {
           ) : (
             <div>
               This is your profile
-              <FriendList friends={friends} />
-                  <div>
-                    {/* <h1>Hello, {user.username}!</h1> */}
-                    {/* <h2>Your Friends:</h2> */}
 
-                    {/* <ul>
+              {/* // -------------Optional Components---------------- */}
+              <ProfileFriends />
+               {/* // -------------Optional Components---------------- */}
+
+
+
+
+              <FriendList friends={friends} />
+              <div>
+                {/* <h1>Hello, {user.username}!</h1> */}
+                {/* <h2>Your Friends:</h2> */}
+
+                {/* <ul>
                       {user.userFriends?.map((friend, i) => (
                         <li key={`friend-${friend._id}-${i}`}>{friend.username}</li>
                       ))}
                     </ul> */}
-                  </div>  
+              </div>
             </div>
           )}
         </div>
@@ -183,7 +201,6 @@ export default Profile;
 //   </div>
 // )}
 
-
 // {isAuthenticated ? (
 //   <p>Welcome back!</p>
 // ) : (
@@ -194,22 +211,7 @@ export default Profile;
 //   )
 // )}
 
-
-
-
-
-
-
-
-
-
-
-
-
 // Orginal code below----------------------------------
-
-
-
 
 // {userParam ? (
 //   <div>
