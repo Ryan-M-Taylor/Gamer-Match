@@ -137,14 +137,14 @@ const Profile = () => {
         
         <ul>
           <li>{user.favoriteConsole}</li>
-          {user.favoriteConsole.map((elem) => (
+          {user.favoriteConsole?.map((elem) => (
             <li key={elem._id}>{elem.favoriteConsole}</li>
           ))}
         </ul>
 
         <ul>
           <li>{user.genres}</li>
-          {user.genres.map((elem) => (
+          {user.genres?.map((elem) => (
             <li key={elem._id}>{elem.genres}</li>
           ))}
         </ul>
@@ -171,7 +171,7 @@ const Profile = () => {
             <h2>Your Friends:</h2>
 
             <ul>
-              {user.userFriends.map((friend) => (
+              {user.userFriends?.map((friend) => (
                 <li key={friend._id}>{friend.username}</li>
               ))}
             </ul>
