@@ -25,7 +25,7 @@ const Profile = () => {
   const friends = user.userFriends;
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
-  
+
   const handleAddFriend = () => {
     addFriend({ variables: { _id: userId } });
   };
@@ -98,10 +98,10 @@ const Profile = () => {
             : `Hi ${user.username}!`}
         </h2>
 
-        <ul>
+        {/* <ul>
           {[
             user.favoriteConsole, // Include the user's favorite console as the first item
-            ...user.favoriteConsole, // Spread the array of favorite consoles after the first item
+            user.favoriteConsole, // Spread the array of favorite consoles after the first item
           ].map((elem, index) => (
             <li key={index}>{elem}</li>
           ))}
@@ -113,6 +113,20 @@ const Profile = () => {
             ...user.genres, // Spread the array of favorite consoles after the first item
           ].map((elem, index) => (
             <li key={index}>{elem}</li>
+          ))}
+        </ul> */}
+
+        <ul>
+          <li>{user.favoriteConsole}</li>
+          {user.favoriteConsole?.map((elem) => (
+            <li key={elem._id}>{elem.favoriteConsole}</li>
+          ))}
+        </ul>
+
+        <ul>
+          <li>{user.genres}</li>
+          {user.genres?.map((elem) => (
+            <li key={elem._id}>{elem.genres}</li>
           ))}
         </ul>
 
