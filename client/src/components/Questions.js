@@ -152,6 +152,98 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
+            <label>
+              Sandbox
+              <input
+                type="checkbox"
+                name="question2"
+                value="Sandbox"
+                checked={answer2.includes("Sandbox")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+            <label>
+            Real-time strategy (RTS)
+              <input
+                type="checkbox"
+                name="question2"
+                value="Real-time strategy (RTS)"
+                checked={answer2.includes("Real-time strategy (RTS)")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+            <label>
+            Multiplayer online battle arena (MOBA)
+              <input
+                type="checkbox"
+                name="question2"
+                value="Multiplayer online battle arena (MOBA)"
+                checked={answer2.includes("Multiplayer online battle arena (MOBA)")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+            <label>
+              RPG
+              <input
+                type="checkbox"
+                name="question2"
+                value="RPG"
+                checked={answer2.includes("RPG")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+            <label>
+            Simulation 
+              <input
+                type="checkbox"
+                name="question2"
+                value="Simulation"
+                checked={answer2.includes("Simulation")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+            <label>
+              Puzzle
+              <input
+                type="checkbox"
+                name="question2"
+                value="Puzzle"
+                checked={answer2.includes("Puzzle")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+            <label>
+            Action-adventure
+              <input
+                type="checkbox"
+                name="question2"
+                value="Action-adventure"
+                checked={answer2.includes("Action-adventure")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+            <label>
+            Survival 
+              <input
+                type="checkbox"
+                name="question2"
+                value="Survival"
+                checked={answer2.includes("Survival")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+            <label>
+            Platformer 
+              <input
+                type="checkbox"
+                name="question2"
+                value="Platformer"
+                checked={answer2.includes("Platformer")}
+                onChange={handleCheckboxChange2}
+              />
+            </label>
+
+
           </div>
           <div>
             <h3>Do you play casually or competitively?</h3>
