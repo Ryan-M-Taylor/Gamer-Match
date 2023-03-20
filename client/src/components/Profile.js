@@ -102,14 +102,14 @@ console.log("favoriteconsolelist", user)
         
         <ul>
           <li>{user.favoriteConsole}</li>
-          {user.favoriteConsole.map((elem) => (
+          {user.favoriteConsole?.map((elem) => (
             <li key={elem._id}>{elem.favoriteConsole}</li>
           ))}
         </ul>
 
         <ul>
           <li>{user.genres}</li>
-          {user.genres.map((elem) => (
+          {user.genres?.map((elem) => (
             <li key={elem._id}>{elem.genres}</li>
           ))}
         </ul>
