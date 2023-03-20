@@ -24,11 +24,11 @@ export const ADD_USER = gql`
     }
 `;
 export const UPDATE_PREFERENCES = gql`
-  mutation updatePreferences($favoriteConsole: [String], $coOp: Boolean, $genres: [String], $competitive: Boolean) {
-    updatePreferences(favoriteConsole: $favoriteConsole, coOp: $coOp, genres: $genres, competitive: $competitive) {
+  mutation updatePreferences($favoriteConsole: [String], $coOp: Boolean, $competitive: Boolean, $genres: [String]) {
+    updatePreferences(favoriteConsole: $favoriteConsole, coOp: $coOp, competitive: $competitive, genres: $genres) {
+      favoriteConsole
       coOp
       competitive
-      favoriteConsole
       genres
       username
       _id
