@@ -136,7 +136,7 @@ console.log("favoriteconsolelist", user)
             <h2>Your Friends:</h2>
 
             <ul>
-              {user.userFriends.map((friend) => (
+              {user.userFriends?.map((friend) => (
                 <li key={friend._id}>{friend.username}</li>
               ))}
             </ul>
