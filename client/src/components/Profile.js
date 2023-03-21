@@ -85,15 +85,10 @@ const Profile = () => {
 
     <div>
       <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-
-
-           {/* // -------------Optional Components---------------- */}
-          <ProfileNav />
-           {/* // -------------Optional Components---------------- */}
-        
-        
-        
+        <h2 className="col-12 col-md-10 question-form p-3 mb-5">
+          {userParam
+            ? `You are currently viewing ${user.username}'s Profile ${user._id}`
+            : `Hi ${user.username}!`}
         </h2>
         {/* <ul>
           {[
@@ -116,19 +111,17 @@ const Profile = () => {
           ? `You are currently viewing ${user.username}'s Profile ${user._id}`
           : `Hi ${user.username}!`}{" "}
         <ul>
-          <li>{user.favoriteConsole}</li>
           {user.favoriteConsole?.map((elem) => (
-            <li key={elem._id}>{elem.favoriteConsole}</li>
+            <li key={elem._id}>{elem}</li>
           ))}
         </ul>
         <ul>
-          <li>{user.genres}</li>
           {user.genres?.map((elem) => (
-            <li key={elem._id}>{elem.genres}</li>
+            <li key={elem._id}>{elem}</li>
           ))}
         </ul>
         <p>
-          Casual or Competitive : {user.competitive ? "Casual" : "Competetive"}
+          Casual or Competitive : {user.competitive ? "Casual" : "Competitive"}
         </p>
         <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p>
         <div className="col-12 col-md-10 mb-5">
