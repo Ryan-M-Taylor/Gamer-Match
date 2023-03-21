@@ -43,6 +43,7 @@ export const QUERY_SINGLE_POST = gql`
       postText
       postAuthor
       createdAt
+      postChannel
       comments {
         _id
         commentText

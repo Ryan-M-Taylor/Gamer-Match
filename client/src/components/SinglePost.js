@@ -19,14 +19,14 @@ const SinglePost = () => {
   });
 
   const post = data?.post || {};
-
+console.log('****',post.postChannel)
   if (loading) {
     return <div>Loading...</div>;
   }
   return (
     <div className="my-3">
-      <div className='post-border'>
-      <h3 className="card-header question-form p-2 m-0">
+      <div className={`${post.postChannel}-border`}>
+      <h3 className={`card-header ${post.postChannel}-form p-2 m-0`}>
         {post.postAuthor} <br />
         <span style={{ fontSize: '1rem' }}>
           had this post on {post.createdAt}
@@ -44,7 +44,7 @@ const SinglePost = () => {
       <div>
         <CommentList comments={post.comments} />
       </div>
-      <div className="m-3 p-2 post-border">
+      <div className={`m-3 p-2 ${post.postChannel}`}>
         <CommentForm postId={post._id} />
       </div>
     </div>
