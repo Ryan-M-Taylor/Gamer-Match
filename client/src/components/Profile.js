@@ -9,10 +9,14 @@ import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
 import FriendList from "./FriendList";
+import { ADD_FRIEND } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
+import { SiPlaystation, SiNintendoswitch, SiXbox } from "react-icons/si";
+import { FaMouse } from "react-icons/fa";
 
 // -------------Optional Components----------------
-import ProfileNav from "./Profile/ProfileNav"; 
-import ProfileFriends from "./Profile/ProfileFriends"; 
+import ProfileNav from "./Profile/ProfileNav";
+import ProfileFriends from "./Profile/ProfileFriends";
 // -------------Optional Components----------------
 
 const Profile = () => {
@@ -35,18 +39,24 @@ const Profile = () => {
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
-const handleAddFriend = () => {
-  console.log("USER ID!!!!!!!!" + userId);
-  console.log("USER NAME!!!!!!" + userParam);
-
-  if (!Auth.loggedIn()) {
-    alert("Login to add people!");
-  } else if (friends.map(friend => friend._id === userId)) {
-    alert("You have already added this friend!");
-  } else {
+  const handleAddFriend = () => {
+    console.log("USER ID!!!!!!!!" + userId);
+    console.log("USER NAME!!!!!!" + userParam);
+    
     addFriend({ variables: { friendId: userId } });
-  }
-};
+
+    if (!Auth.loggedIn()) {
+      alert("Login to add people!");
+    }
+  };
+
+
+  const consoleIcons = {
+    Playstation: <SiPlaystation />,
+    Xbox: <SiXbox />,
+    Nintendo: <SiNintendoswitch />,
+    PC: <FaMouse />,
+  };
 
   // -------------Add Friend Logic above ----------------
 
@@ -95,7 +105,15 @@ const handleAddFriend = () => {
         <h2 className="col-12 col-md-10 question-form p-3 mb-5">
           {userParam
             ? `You are currently viewing ${user.username}'s Profile ${user._id}`
-            : `Hi ${user.username}!`}
+            : `Hi ${user.username}!`}{" "}
+          <ul>
+            {user.favoriteConsole?.map((elem) => (
+              <li key={elem._id}>
+                <p className="console-name">{elem}</p>{" "}
+                <p className="console-icons">{consoleIcons[elem]}</p>
+              </li>
+            ))}
+          </ul>
         </h2>
         {/* <ul>
           {[
@@ -118,11 +136,6 @@ const handleAddFriend = () => {
           ? `You are currently viewing ${user.username}'s Profile ${user._id}`
           : `Hi ${user.username}!`}{" "}
         <ul>
-          {user.favoriteConsole?.map((elem) => (
-            <li key={elem._id}>{elem}</li>
-          ))}
-        </ul>
-        <ul>
           {user.genres?.map((elem) => (
             <li key={elem._id}>{elem}</li>
           ))}
@@ -142,14 +155,9 @@ const handleAddFriend = () => {
           ) : (
             <div>
               This is your profile
-
               {/* // -------------Optional Components---------------- */}
               <ProfileFriends />
-               {/* // -------------Optional Components---------------- */}
-
-
-
-
+              {/* // -------------Optional Components---------------- */}
               <FriendList friends={friends} />
               <div>
                 {/* <h1>Hello, {user.username}!</h1> */}
@@ -170,16 +178,3 @@ const handleAddFriend = () => {
 };
 
 export default Profile;
-
-// ORIGNAL ADD FRIEND LOGIC BELOW
-
-//   const handleAddFriend = () => {
-//     console.log("USER ID!!!!!!!!" + userId);
-//     console.log("USER NAME!!!!!!" + userParam);
-//     addFriend({ variables: { friendId: userId } });
-// if(!Auth.loggedIn()){
-//   alert("Login to add people!")
-// }
-//  if(Auth.loggedIn() && friends === addFriend()){
-//  }
-//   };
