@@ -14,10 +14,14 @@ const MainPage = () => {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "0 10%",
+        boxSshadow: "10px 5px 5px red",
+        marginTop: "-16px",
+        borderRight: "solid black 20px",
+        borderLeft: "solid black 20px"
       }}
     >
       
-      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)" }}>
+      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)", color: "black" }}>
         <h1> hard-coded stuff </h1>
           <p> hard-coded stuff</p>
           <p>hard-coded stuff</p>
@@ -25,7 +29,7 @@ const MainPage = () => {
           <p>hard-coded stuff</p>
           <p>hard-coded stuff</p>
       </div>
-      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)" }}>
+      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)", color: "black" }}>
       <h1> hard-coded stuff </h1>
           <p >hard-coded stuff</p>
           <p>hard-coded stuff</p>
@@ -33,7 +37,7 @@ const MainPage = () => {
           <p>hard-coded stuff</p>
           <p>hard-coded stuff</p>
       </div>
-      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)" }}>
+      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)", color: "black" }}>
       <h1> hard-coded stuff </h1>
           <p>hard-coded stuff</p>
           <p>hard-coded stuff</p>
