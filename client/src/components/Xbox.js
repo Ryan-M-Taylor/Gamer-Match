@@ -13,7 +13,7 @@ function Xbox() {
 
   return (
     <div className="xbox text-center">
-      <h1>
+      <h1 className="post-border">
         Xbox <SiXbox />
       </h1>
       <div>

@@ -15,11 +15,12 @@ const PostList = ({
     <div>
       {posts &&
         posts.map((post) => (
-          <div key={post._id} className="card mb-3">
+          <div key={post._id} className="card post-border mb-3">
             <h4 className="card-header p-2 m-0">
               {showUsername ? (
                 <Link
                   to={`/profiles/${post.postAuthor}`}
+                  className='join-btn'
                 >
                   {post.postAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
@@ -39,7 +40,7 @@ const PostList = ({
             </div>
 
             <Link
-              className="btn btn-block btn-squared"
+              className="btn btn-block btn-squared join-btn"
               to={`/posts/${post._id}`}
             >
               Join the discussion on this thread.

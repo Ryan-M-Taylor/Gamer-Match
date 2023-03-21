@@ -13,7 +13,7 @@ function Playstation() {
 
   return (
     <div className="playstation text-center">
-      <h1>
+      <h1 className="post-border">
         Playstation <SiPlaystation />
       </h1>
       <div>
