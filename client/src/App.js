@@ -24,6 +24,7 @@ import Nintendo from './components/Nintendo';
 import Playstation from './components/Playstation';
 import Xbox from './components/Xbox';
 import PC from './components/Pc';
+import MainPage from './components/MainPage';
 
 import SinglePost from './components/SinglePost';
 // import FriendsPage from './components/FriendsPage';
@@ -64,6 +65,10 @@ function App() {
               <Route
                 path="/"
                 element={<Home />}
+              />
+              <Route
+                path="/mainpage"
+                element={<MainPage />}
               />
               <Route
                 path="/login"
