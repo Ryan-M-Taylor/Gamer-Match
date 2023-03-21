@@ -11,11 +11,36 @@ const MainPage = () => {
         height: "100vh",
         width: "100%",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
+        padding: "0 10%",
       }}
     >
-      <h1>STUUUUUUUFFFFFFFF</h1>
+      
+      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)" }}>
+        <h1> hard-coded stuff </h1>
+          <p> hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+      </div>
+      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)" }}>
+      <h1> hard-coded stuff </h1>
+          <p >hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+      </div>
+      <div style={{ width: "25%", backgroundColor: "rgba(255, 255, 255, 0.25)" }}>
+      <h1> hard-coded stuff </h1>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+          <p>hard-coded stuff</p>
+      </div>
     </div>
   );
 };
