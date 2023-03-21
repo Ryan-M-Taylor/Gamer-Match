@@ -373,3 +373,28 @@ width: 100%;
         border: solid 3px #5663F7;
         border-radius: 7px;
     }
+
+
+
+/* -----------------------ACCORDIAN----------------- */
+.prof-accordian-item {
+    width: max-content;
+}
+
+.prof-accordian {
+    width: max-content;
+}
+
+.prof-accordian-head {
+    width: max-content;
+}
+
+.prof-accordian-body {
+    background-color: #060C1F;
+    color: white;
+}
+.prof-accordian-body h3{
+    background-color: #060C1F;
+    color: grey;
+}
+/* -----------------------ACCORDIAN----------------- */
