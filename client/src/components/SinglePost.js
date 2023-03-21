@@ -32,19 +32,19 @@ const SinglePost = () => {
           had this post on {post.createdAt}
         </span>
       </h3>
-      <div className="bg-light py-4">
+      <div>
         <blockquote
-          className="p-4"
+          className="p-3 text-center"
         >
           {post.postText}
         </blockquote>
       </div>
       </div>
 
-      <div className="my-5">
+      <div>
         <CommentList comments={post.comments} />
       </div>
-      <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+      <div className="m-3 p-2 post-border">
         <CommentForm postId={post._id} />
       </div>
     </div>
