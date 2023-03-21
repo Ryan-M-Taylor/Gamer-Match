@@ -35,11 +35,18 @@ const Profile = () => {
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
-  const handleAddFriend = () => {
-    console.log("USER ID!!!!!!!!" + userId);
-    console.log("USER NAME!!!!!!" + userParam);
+const handleAddFriend = () => {
+  console.log("USER ID!!!!!!!!" + userId);
+  console.log("USER NAME!!!!!!" + userParam);
+
+  if (!Auth.loggedIn()) {
+    alert("Login to add people!");
+  } else if (friends.map(friend => friend._id === userId)) {
+    alert("You have already added this friend!");
+  } else {
     addFriend({ variables: { friendId: userId } });
-  };
+  }
+};
 
   // -------------Add Friend Logic above ----------------
 
@@ -164,72 +171,15 @@ const Profile = () => {
 
 export default Profile;
 
-// Experimental Code
+// ORIGNAL ADD FRIEND LOGIC BELOW
 
-// {userParam && Auth.loggedIn() ? (
-//   <div>
-//     This is someone elses profile
-//     <button onClick={handleAddFriend}>Add Friend</button>
-//   </div>
-// ): (
-//   <div>
-//     This is your profile
-//     <FriendList friends={friends} />
-//     <div className="start-helmet">
-//       <div className="profile-content">
-//         <div>
-//           {/* <h1>Hello, {user.username}!</h1> */}
-//           {/* <h2>Your Friends:</h2> */}
-
-//           {/* <ul>
-//             {user.userFriends?.map((friend, i) => (
-//               <li key={`friend-${friend._id}-${i}`}>{friend.username}</li>
-//             ))}
-//           </ul> */}
-//           <div>{friends.length}</div>
-
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// )}
-
-// {isAuthenticated ? (
-//   <p>Welcome back!</p>
-// ) : (
-//   isLoggingIn ? (
-//     <p>Please wait while we log you in...</p>
-//   ) : (
-//     <p>Please log in.</p>
-//   )
-// )}
-
-// Orginal code below----------------------------------
-
-// {userParam ? (
-//   <div>
-//     This is someone elses profile
-//     <button onClick={handleAddFriend}>Add Friend</button>
-//   </div>
-// ) : (
-//   <div>
-//     This is your profile
-//     <FriendList friends={friends} />
-//     <div className="start-helmet">
-//       <div className="profile-content">
-//         <div>
-//           {/* <h1>Hello, {user.username}!</h1> */}
-//           {/* <h2>Your Friends:</h2> */}
-
-//           {/* <ul>
-//             {user.userFriends?.map((friend, i) => (
-//               <li key={`friend-${friend._id}-${i}`}>{friend.username}</li>
-//             ))}
-//           </ul> */}
-//           <div>{friends.length}</div>
-
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// )}
+//   const handleAddFriend = () => {
+//     console.log("USER ID!!!!!!!!" + userId);
+//     console.log("USER NAME!!!!!!" + userParam);
+//     addFriend({ variables: { friendId: userId } });
+// if(!Auth.loggedIn()){
+//   alert("Login to add people!")
+// }
+//  if(Auth.loggedIn() && friends === addFriend()){
+//  }
+//   };
