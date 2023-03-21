@@ -38,21 +38,22 @@ const Profile = () => {
   const handleAddFriend = () => {
     console.log("USER ID!!!!!!!!" + userId);
     console.log("USER NAME!!!!!!" + userParam);
+    
+    addFriend({ variables: { friendId: userId } });
 
     if (!Auth.loggedIn()) {
       alert("Login to add people!");
-    } else if (friends.map((friend) => friend._id === userId)) {
-      alert("You have already added this friend!");
-    } else {
-      addFriend({ variables: { friendId: userId } });
     }
   };
+
+
   const consoleIcons = {
     Playstation: <SiPlaystation />,
     Xbox: <SiXbox />,
     Nintendo: <SiNintendoswitch />,
     PC: <FaMouse />,
   };
+
   // -------------Add Friend Logic above ----------------
 
   // navigate to personal profile page if username is yours
@@ -153,16 +154,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-// ORIGNAL ADD FRIEND LOGIC BELOW
-
-//   const handleAddFriend = () => {
-//     console.log("USER ID!!!!!!!!" + userId);
-//     console.log("USER NAME!!!!!!" + userParam);
-//     addFriend({ variables: { friendId: userId } });
-// if(!Auth.loggedIn()){
-//   alert("Login to add people!")
-// }
-//  if(Auth.loggedIn() && friends === addFriend()){
-//  }
-//   };
