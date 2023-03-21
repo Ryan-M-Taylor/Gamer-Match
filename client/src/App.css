@@ -66,6 +66,25 @@
     font-size: 28px;
 }
 
+.question-form{
+    background-color: #060C1F;
+    color: white;
+    padding: 5px;
+    margin: 3px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.question-form label{
+    margin-right: 10px;
+}
+
+.question-form h3 {
+    
+}
+.question-text{
+}
+
 /* Signup Page */
 
 .signup-form {
