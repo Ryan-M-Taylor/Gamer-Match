@@ -9,8 +9,8 @@ import { ADD_FRIEND } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
 // -------------Optional Components----------------
-import ProfileNav from "./Profile/ProfileNav"; 
-import ProfileFriends from "./Profile/ProfileFriends"; 
+import ProfileNav from "./Profile/ProfileNav";
+import ProfileFriends from "./Profile/ProfileFriends";
 // -------------Optional Components----------------
 
 const Profile = () => {
@@ -33,18 +33,15 @@ const Profile = () => {
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
-const handleAddFriend = () => {
-  console.log("USER ID!!!!!!!!" + userId);
-  console.log("USER NAME!!!!!!" + userParam);
-
-  if (!Auth.loggedIn()) {
-    alert("Login to add people!");
-  } else if (friends.map(friend => friend._id === userId)) {
-    alert("You have already added this friend!");
-  } else {
+  const handleAddFriend = () => {
+    console.log("USER ID!!!!!!!!" + userId);
+    console.log("USER NAME!!!!!!" + userParam);
     addFriend({ variables: { friendId: userId } });
-  }
-};
+
+    if (!Auth.loggedIn()) {
+      alert("Login to add people!");
+    }
+  };
 
   // -------------Add Friend Logic above ----------------
 
@@ -120,14 +117,9 @@ const handleAddFriend = () => {
           ) : (
             <div>
               This is your profile
-
               {/* // -------------Optional Components---------------- */}
               <ProfileFriends />
-               {/* // -------------Optional Components---------------- */}
-
-
-
-
+              {/* // -------------Optional Components---------------- */}
               <FriendList friends={friends} />
               <div>
                 {/* <h1>Hello, {user.username}!</h1> */}
@@ -148,16 +140,3 @@ const handleAddFriend = () => {
 };
 
 export default Profile;
-
-// ORIGNAL ADD FRIEND LOGIC BELOW
-
-//   const handleAddFriend = () => {
-//     console.log("USER ID!!!!!!!!" + userId);
-//     console.log("USER NAME!!!!!!" + userParam);
-//     addFriend({ variables: { friendId: userId } });
-// if(!Auth.loggedIn()){
-//   alert("Login to add people!")
-// }
-//  if(Auth.loggedIn() && friends === addFriend()){
-//  }
-//   };
