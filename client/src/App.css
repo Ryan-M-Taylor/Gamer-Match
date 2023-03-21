@@ -43,6 +43,11 @@
     .app-name{
         font-size: 47px;
     }
+    .nav-links{
+        font-size: 8px;
+       padding-bottom: 0px;
+       padding-top: 15px;
+    }
 }
 
 @media screen and (max-width: 375px) {
@@ -312,3 +317,59 @@ width: 100%;
         z-index: 5;
         height: 45px;
      }
+
+    .Nintendo-form{
+        background-color: #e60012;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .Nintendo-border{
+        border: solid 3px #e60012;
+        border-radius: 7px;
+    }
+
+    .Xbox-form{
+        background-color: #107C10;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .Xbox-border{
+        border: solid 3px #107C10;
+        border-radius: 7px;
+    }
+
+    .Playstation-form{
+        background-color: #00439C;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .Playstation-border{
+        border: solid 3px #00439C;
+        border-radius: 7px;
+    }
+
+    .PC-form{
+        background-color: #5663F7;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .PC-border{
+        border: solid 3px #5663F7;
+        border-radius: 7px;
+    }
