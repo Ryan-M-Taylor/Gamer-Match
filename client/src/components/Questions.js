@@ -76,10 +76,11 @@ const CheckboxList = () => {
           <Navigate to="/me">Click here</Navigate>
         </div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit} className='d-flex flex-column align-items-center'>
+          <div className="question-form">
             <h3>What is your favorite console?</h3>
-            <label>
+          
+            <label className="xbox">
               Xbox
               <input
                 type="checkbox"
@@ -89,17 +90,17 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange1}
               />
             </label>
-            <label>
-              Playstion
+            <label className="playstation">
+              Playstation
               <input
                 type="checkbox"
                 name="question1"
-                value="Playstion"
-                checked={answer1.includes("Playstion")}
+                value="Playstation"
+                checked={answer1.includes("Playstation")}
                 onChange={handleCheckboxChange1}
               />
             </label>
-            <label>
+            <label className="nintendo">
               Nintendo
               <input
                 type="checkbox"
@@ -109,7 +110,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange1}
               />
             </label>
-            <label>
+            <label className="pc">
               PC
               <input
                 type="checkbox"
@@ -120,9 +121,9 @@ const CheckboxList = () => {
               />
             </label>
           </div>
-          <div>
+          <div className="question-form">
             <h3>What are your favorite genres?</h3>
-            <label>
+            <label className="text-primary">
               Shooter
               <input
                 type="checkbox"
@@ -132,7 +133,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
-            <label>
+            <label className="text-secondary">
               Sports
               <input
                 type="checkbox"
@@ -142,7 +143,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
-            <label>
+            <label className="text-success">
             Real-time strategy (RTS)
               <input
                 type="checkbox"
@@ -152,7 +153,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
-            <label>
+            <label className="text-danger">
             Multiplayer online battle arena (MOBA)
               <input
                 type="checkbox"
@@ -162,7 +163,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
-            <label>
+            <label className="text-warning">
               RPG
               <input
                 type="checkbox"
@@ -172,7 +173,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
-            <label>
+            <label className="text-info">
               Puzzle
               <input
                 type="checkbox"
@@ -182,7 +183,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
-            <label>
+            <label className="text-light">
             Action-adventure
               <input
                 type="checkbox"
@@ -192,7 +193,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
-            <label>
+            <label className="text-primary">
             Survival 
               <input
                 type="checkbox"
@@ -202,7 +203,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange2}
               />
             </label>
-            <label>
+            <label className="text-secondary">
             Platformer 
               <input
                 type="checkbox"
@@ -215,9 +216,9 @@ const CheckboxList = () => {
 
 
           </div>
-          <div>
+          <div className="question-form">
             <h3>Do you play casually or competitively?</h3>
-            <label>
+            <label className="login">
               Casual
               <input
                 type="checkbox"
@@ -227,7 +228,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange3}
               />
             </label>
-            <label>
+            <label className="signup">
               Competitive
               <input
                 type="checkbox"
@@ -238,9 +239,9 @@ const CheckboxList = () => {
               />
             </label>
           </div>
-          <div>
+          <div className="question-form">
             <h3>Do you like playing Co-Op?</h3>
-            <label>
+            <label className="login">
               Solo
               <input
                 type="checkbox"
@@ -250,7 +251,7 @@ const CheckboxList = () => {
                 onChange={handleCheckboxChange4}
               />
             </label>
-            <label>
+            <label className="signup">
               Co-Op
               <input
                 type="checkbox"
@@ -261,7 +262,7 @@ const CheckboxList = () => {
               />
             </label>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn login-btn">Submit</button>
         </form>
       )}
     </div>
