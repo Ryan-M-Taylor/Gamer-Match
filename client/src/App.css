@@ -19,7 +19,6 @@
 /* Indexjs Page (App name) */
 
 .header-div{
-  border-bottom: solid;
   background-color: #060C1F;
 }
 
@@ -35,7 +34,7 @@
 .app-name, .description{
     display: flex;
     justify-content: center;
-    z-index: 4;
+    z-index: 5;
     font-family: 'Orbitron', sans-serif;
     color: white;
 }
@@ -303,4 +302,13 @@ width: 100%;
 
      .join-btn:hover {
         color: #060C1F;
+     }
+
+     .nav-links{
+        position: sticky;
+        top: 0;
+        background-color: #060C1F;
+        justify-content: center;
+        z-index: 5;
+        height: 45px;
      }

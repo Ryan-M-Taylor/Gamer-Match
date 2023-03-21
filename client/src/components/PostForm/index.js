@@ -97,7 +97,7 @@ const PostForm = (props) => {
             </div>
 
             <div className="col-12 mb-4">
-              <button className="btn btn-block" type="submit">
+              <button className="btn btn-block join-btn" type="submit">
                 Add Post
               </button>
             </div>
