@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +11,10 @@ import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 
 function Navigation() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
+    
   const [showPlaystation, setShowPlaystation] = useState(true);
   const [showNintendo, setShowNintendo] = useState(false);
   const [showXbox, setShowXbox] = useState(false);
@@ -65,7 +68,9 @@ function Navigation() {
 
 
   return (
-      <Nav className="nav-links align-items-center">
+    <>
+    <Navbar className="nav-links align-items-center">
+      <Nav>
         {Auth.loggedIn() ? (
           <>
             <Nav.Item>
@@ -130,6 +135,8 @@ function Navigation() {
           </Nav.Link>
         </Nav.Item>
       </Nav>
+      </Navbar>
+      </>
   );
 }
 
