@@ -1,12 +1,21 @@
-import React, { useState } from "react";
-import pic1 from "../../components/pic1.jpg"
+import React from "react";
+import backgroundImage from "../../components/pic2.jpg";
 
 const MainPage = () => {
-  
-
   return (
-    <div>
-        <img src={pic1}/>
+    <div
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <h1>STUUUUUUUFFFFFFFF</h1>
     </div>
   );
 };
