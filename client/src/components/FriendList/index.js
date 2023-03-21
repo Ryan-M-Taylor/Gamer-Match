@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { Container, ListGroup } from "react-bootstrap";
 import { DELETE_FRIEND } from "../../utils/mutations";
 import { Navigate, useParams } from "react-router-dom";
+
 const FriendList = (props) => {
   const [deleteFriend, { error }] = useMutation(DELETE_FRIEND);
   const handleDeleteFriend = (friendId) => {
