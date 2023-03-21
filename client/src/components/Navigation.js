@@ -70,12 +70,12 @@ function Navigation() {
           <>
             <Nav.Item>
               <Nav.Link className="login" href="/me">
-                {Auth.getProfile().data.username}'s profile
+                <p className="login">{Auth.getProfile().data.username}'s profile</p>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link className="signup" onClick={logout}>
-                Logout
+                <p className="signup">Logout</p>
               </Nav.Link>
             </Nav.Item>
           </>

@@ -13,7 +13,7 @@ function Nintendo() {
 
   return (
     <div className="nintendo text-center">
-      <h1>
+      <h1 className="post-border">
         Nintendo <SiNintendoswitch />
       </h1>
       <div>

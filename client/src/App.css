@@ -295,3 +295,12 @@ width: 100%;
      .nav-links p:hover {
         text-decoration: underline;
      }
+
+     .post-border{
+        border: solid 3px #060C1F;
+        border-radius: 7px;
+     }
+
+     .join-btn:hover {
+        color: #060C1F;
+     }
