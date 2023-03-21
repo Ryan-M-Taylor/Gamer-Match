@@ -8,6 +8,11 @@ import FriendList from "./FriendList";
 import { ADD_FRIEND } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
+// -------------Optional Components----------------
+import ProfileNav from "./Profile/ProfileNav"; 
+import ProfileFriends from "./Profile/ProfileFriends"; 
+// -------------Optional Components----------------
+
 const Profile = () => {
   const { username: userParam } = useParams();
   console.log("userParam", userParam);
@@ -21,16 +26,20 @@ const Profile = () => {
   console.log(user);
   console.log(user.genres);
 
+  // -------------Add Friend Logic below----------------
+
   const userId = user._id;
   const friends = user.userFriends;
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
-  
+
   const handleAddFriend = () => {
-    console.log("USER ID!!!!!!!!" + userId)
-    console.log("USER NAME!!!!!!" + userParam)
+    console.log("USER ID!!!!!!!!" + userId);
+    console.log("USER NAME!!!!!!" + userParam);
     addFriend({ variables: { friendId: userId } });
   };
+
+  // -------------Add Friend Logic above ----------------
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -41,7 +50,6 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  // if (!user?.username) why doesn't
   if (!user?.username) {
     return (
       <h4>
@@ -51,55 +59,15 @@ const Profile = () => {
     );
   }
 
-  // ---------------------ADD FRIEND LOGIC BELOW-----------------------------------
-
-  // const FriendAdd = (userId) => {
-
-  //   // const { username: userParam } = useParams();
-  //   // console.log("userParam", userParam);
-  //   // const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-  //   //   variables: { username: userParam },
-  //   // });
-
-  //   // const user = data?.me || data?.user || {};
-
-  //   return (
-  //     // <div>
-  //     //   <form onSubmit={handleSubmit}>
-  //     //       {/* <input
-  //     //         type="text"
-  //     //         value={friendName}
-  //     //         onChange={(e) => setFriendName(e.target.value)}
-  //     //       /> */}
-  //     //       <button
-  //     //         type="submit"
-  //     //         value={friendName}
-  //     //         onSubmit={(e) => setFriendName(e.target.value)}
-  //     //       >Add Friend</button>
-
-  //     //     {/* <button type="submit">Add Friend</button> */}
-  //     //   </form>
-  //     //   {error && <p>Error adding friend</p>}
-  //     // </div>
-
-  // <div>
-  // <button onClick={handleAddFriend}>Add Friend</button>
-  // {error && <p>Error adding friend</p>}
-  // </div>
-  //   );
-  // };
-
-  // ----------------------ADD FRIEND LOGIC ABOVE------------------------------------
   console.log("favoriteconsolelist", user);
   return (
     <div>
       <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+        <h2 className="col-12 col-md-10 question-form p-3 mb-5">
           {userParam
             ? `You are currently viewing ${user.username}'s Profile ${user._id}`
             : `Hi ${user.username}!`}
         </h2>
-
         {/* <ul>
           {[
             user.favoriteConsole, // Include the user's favorite console as the first item
@@ -117,23 +85,21 @@ const Profile = () => {
             <li key={index}>{elem}</li>
           ))}
         </ul> */}
-
+        {userParam
+          ? `You are currently viewing ${user.username}'s Profile ${user._id}`
+          : `Hi ${user.username}!`}{" "}
         <ul>
-          <li>{user.favoriteConsole}</li>
           {user.favoriteConsole?.map((elem) => (
-            <li key={elem._id}>{elem.favoriteConsole}</li>
+            <li key={elem._id}>{elem}</li>
           ))}
         </ul>
-
         <ul>
-          <li>{user.genres}</li>
           {user.genres?.map((elem) => (
-            <li key={elem._id}>{elem.genres}</li>
+            <li key={elem._id}>{elem}</li>
           ))}
         </ul>
-
         <p>
-          Casual or Competitive : {user.competitive ? "Casual" : "Competetive"}
+          Casual or Competitive : {user.competitive ? "Casual" : "Competitive"}
         </p>
         <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p>
         <div className="col-12 col-md-10 mb-5">
@@ -147,33 +113,101 @@ const Profile = () => {
           ) : (
             <div>
               This is your profile
-              <FriendList friends={friends} />
-              <div className="start-helmet">
-                <div className="profile-content">
-                  <div>
-                    <h1>Hello, {user.username}!</h1>
-                    <h2>Your Friends:</h2>
 
-                    <ul>
+              {/* // -------------Optional Components---------------- */}
+              <ProfileFriends />
+               {/* // -------------Optional Components---------------- */}
+
+
+
+
+              <FriendList friends={friends} />
+              <div>
+                {/* <h1>Hello, {user.username}!</h1> */}
+                {/* <h2>Your Friends:</h2> */}
+
+                {/* <ul>
                       {user.userFriends?.map((friend, i) => (
                         <li key={`friend-${friend._id}-${i}`}>{friend.username}</li>
                       ))}
-                    </ul>
-                  </div>
-                </div>
+                    </ul> */}
               </div>
             </div>
           )}
         </div>
-        {userParam && (
-          <div
-            className="col-12 col-md-10 mb-3 p-3"
-            style={{ border: "1px dotted #1a1a1a" }}
-          ></div>
-        )}
       </div>
     </div>
   );
 };
 
 export default Profile;
+
+// Experimental Code
+
+// {userParam && Auth.loggedIn() ? (
+//   <div>
+//     This is someone elses profile
+//     <button onClick={handleAddFriend}>Add Friend</button>
+//   </div>
+// ): (
+//   <div>
+//     This is your profile
+//     <FriendList friends={friends} />
+//     <div className="start-helmet">
+//       <div className="profile-content">
+//         <div>
+//           {/* <h1>Hello, {user.username}!</h1> */}
+//           {/* <h2>Your Friends:</h2> */}
+
+//           {/* <ul>
+//             {user.userFriends?.map((friend, i) => (
+//               <li key={`friend-${friend._id}-${i}`}>{friend.username}</li>
+//             ))}
+//           </ul> */}
+//           <div>{friends.length}</div>
+
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// )}
+
+// {isAuthenticated ? (
+//   <p>Welcome back!</p>
+// ) : (
+//   isLoggingIn ? (
+//     <p>Please wait while we log you in...</p>
+//   ) : (
+//     <p>Please log in.</p>
+//   )
+// )}
+
+// Orginal code below----------------------------------
+
+// {userParam ? (
+//   <div>
+//     This is someone elses profile
+//     <button onClick={handleAddFriend}>Add Friend</button>
+//   </div>
+// ) : (
+//   <div>
+//     This is your profile
+//     <FriendList friends={friends} />
+//     <div className="start-helmet">
+//       <div className="profile-content">
+//         <div>
+//           {/* <h1>Hello, {user.username}!</h1> */}
+//           {/* <h2>Your Friends:</h2> */}
+
+//           {/* <ul>
+//             {user.userFriends?.map((friend, i) => (
+//               <li key={`friend-${friend._id}-${i}`}>{friend.username}</li>
+//             ))}
+//           </ul> */}
+//           <div>{friends.length}</div>
+
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+// )}
