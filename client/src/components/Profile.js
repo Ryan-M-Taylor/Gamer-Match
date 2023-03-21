@@ -77,40 +77,14 @@ const Profile = () => {
   console.log("favoriteconsolelist", user);
   return (
     <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 question-form p-3 mb-5">
+      <div>
+        <h2 className="col-12 question-form p-3 mb-2">
           {userParam
             ? `You are currently viewing ${user.username}'s Profile ${user._id}`
-            : `Hi ${user.username}!`}{" "}
-          <ul>
-            {user.favoriteConsole?.map((elem) => (
-              <li key={elem._id}>
-                <p className="console-name">{elem}</p>{" "}
-                <p className="console-icons">{consoleIcons[elem]}</p>
-              </li>
-            ))}
-          </ul>
+            : `Hi ${user.username}!`}{' '}{user.favoriteConsole?.map((elem) => (consoleIcons[elem]))}
+
         </h2>
-        {/* <ul>
-          {[
-            user.favoriteConsole, // Include the user's favorite console as the first item
-            user.favoriteConsole, // Spread the array of favorite consoles after the first item
-          ].map((elem, index) => (
-            <li key={index}>{elem}</li>
-          ))}
-        </ul>
-        
-        <ul>
-          {[
-            user.genres, // Include the user's favorite console as the first item
-            ...user.genres, // Spread the array of favorite consoles after the first item
-          ].map((elem, index) => (
-            <li key={index}>{elem}</li>
-          ))}
-        </ul> */}
-        {userParam
-          ? `You are currently viewing ${user.username}'s Profile ${user._id}`
-          : `Hi ${user.username}!`}{" "}
+        <p>Favorite Genres:</p>
         <ul>
           {user.genres?.map((elem) => (
             <li key={elem._id}>{elem}</li>

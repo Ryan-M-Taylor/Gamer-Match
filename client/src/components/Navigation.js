@@ -63,9 +63,9 @@ function Navigation() {
     Auth.logout();
   };
 
+
   return (
-    <>
-      <Nav className="me-auto nav-links">
+      <Nav className="nav-links align-items-center">
         {Auth.loggedIn() ? (
           <>
             <Nav.Item>
@@ -93,11 +93,6 @@ function Navigation() {
             </Nav.Item>
           </>
         )}
-        {/* <Nav.Item>
-              <Nav.Link className="navigation-text" href="/profile" onClick={handleProfileClick}>
-                Profile
-              </Nav.Link>
-            </Nav.Item> */}
         <Nav.Item>
           <Nav.Link
             className="navigation-text"
@@ -135,7 +130,6 @@ function Navigation() {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-    </>
   );
 }
 
