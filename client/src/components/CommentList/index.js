@@ -8,7 +8,7 @@ const CommentList = ({ comments = [] }) => {
   return (
     <>
       <h4
-        className="p-3 display-inline-block"
+        className="p-1 display-inline-block"
         style={{ borderBottom: '1px dotted #1a1a1a' }}
       >
         Comments
@@ -17,14 +17,14 @@ const CommentList = ({ comments = [] }) => {
         {comments &&
           comments.map((comment) => (
             <div key={comment._id} className="col-12">
-              <div className="post-border mb-1">
+              <div className="mb-1">
                 <h5 className="card-header">
                   {comment.commentAuthor} commented{' '}
                   <span style={{ fontSize: '0.825rem' }}>
                     on {comment.createdAt}
                   </span>
                 </h5>
-                <p className="card-body text-center">{comment.commentText}</p>
+                <p className="p-2 text-center">{comment.commentText}</p>
               </div>
             </div>
           ))}
