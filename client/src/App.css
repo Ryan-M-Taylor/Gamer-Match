@@ -380,3 +380,23 @@ width: 100%;
     color: #060C1F;
 }
 /* -----------------------ACCORDIAN----------------- */
+
+
+.profile-nav-container {
+    border: ridge 10px #060C1F;
+    border-radius: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #060C1F;
+}
+
+
+.prof-btn{
+    border: ridge 10px #060C1F;
+    border-radius: 10px;
+    background-color: rgb(10, 85, 146);
+}
