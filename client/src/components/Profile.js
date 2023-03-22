@@ -81,8 +81,8 @@ const Profile = () => {
         result = (<div>
           {posts &&
             posts.map((post) => (
-              <div key={post._id} className="card post-border mb-3">
-                <h4 className="card-header p-2 m-0">
+              <div key={post._id} className="card post-border mb-3 ">
+                <h4 className={`card-header ${post.postChannel}-form p-2 m-0`}>
                   {post.postAuthor} <br />
                   <span style={{ fontSize: '1rem' }}>
                     posted on {post.createdAt} to {post.postChannel}
@@ -201,8 +201,6 @@ const Profile = () => {
         </p>
         <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p> */}
         <div className="col-12 col-md-10 mb-5">
-          -------------
-
           {userParam ? (
             <div>
               {/* This is someone elses profile */}
