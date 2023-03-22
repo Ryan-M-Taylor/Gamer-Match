@@ -19,23 +19,12 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
-    // friends: async (parent, {username}) => {
-    //   return User.find(username).populate(['userFriends'])
-    // },
     me: async (parent, args, context) => {
-      //console.log("****")
-      //console.log(context.user);
       if (context.user) {
         return User.findOne({ _id: context.user._id }).populate(['userFriends', 'posts'])
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    // friends: async () => {
-    //   return Friend.find()
-    // },
-    // friend: async (parent, { username }) => {
-    //   return User.findOne({ username })
-    // },
   },
 
   Mutation: {
@@ -54,7 +43,7 @@ const resolvers = {
       );
       return updatedUser;
     },
-deleteFriend: async (parent, { friendId }, context) => {
+    deleteFriend: async (parent, { friendId }, context) => {
       console.log("delete user id", context.user._id, friendId)
       const deleteUser = await User.findOneAndUpdate(
         { _id: context.user._id },
@@ -63,40 +52,18 @@ deleteFriend: async (parent, { friendId }, context) => {
       );
       return deleteUser;
     },
-
     updatePreferences: async (parent, { favoriteConsole, coOp, competitive, genres }, context) => {
       const updatedUser = await User.findOneAndUpdate(
         { _id: context.user._id },
         {
           $addToSet: { favoriteConsole: { $each: favoriteConsole }, genres: { $each: genres } },
           $set: { competitive: competitive, coOp: coOp },
-          // $set: { coOp: coOp },
         },
         { new: true }
       );
       console.log("Preferences", [favoriteConsole, coOp, competitive, genres])
       return updatedUser;
     },
-    // removeFriend: async (parent, { userId, friendId }, { models }) => {
-    //   const user = await models.User.findById(userId);
-    //   const friendIndex = user.friends.findIndex(f => f._id.toString() === friendId);
-    //   if (friendIndex === -1) {
-    //     throw new Error('Friend not found');
-    //   }
-    //   user.friends.splice(friendIndex, 1);
-    //   await user.save();
-    //   return { message: 'Friend deleted' };
-    // },
-    // addFriend: async (parent, { userId, friendId }) => {
-    //   try {
-    //     // const { userId, friendId } = args; 
-    //     // find the user by userId and push the friendId to the userFriends array
-    //     const updatedUser = await User.findByIdAndUpdate(userId, { $push: { userFriends: friendId } }, { new: true });
-    //     return updatedUser;
-    //   } catch (error) {
-    //     throw new Error('Error adding friend:', error.message);
-    //   }
-    // },
 
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -150,39 +117,40 @@ deleteFriend: async (parent, { friendId }, context) => {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    removePost: async (parent, { postId }, context) => {
-      if (context.user) {
-        const post = await Post.findOneAndDelete({
-          _id: postId,
-          postAuthor: context.user.username,
-        });
+    // TO BE ADDED IN FUTURE UPDATE
+    // removePost: async (parent, { postId }, context) => {
+    //   if (context.user) {
+    //     const post = await Post.findOneAndDelete({
+    //       _id: postId,
+    //       postAuthor: context.user.username,
+    //     });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { posts: post._id } }
-        );
+    //     await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $pull: { posts: post._id } }
+    //     );
 
-        return post;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    removeComment: async (parent, { postId, commentId }, context) => {
-      if (context.user) {
-        return Post.findOneAndUpdate(
-          { _id: postId },
-          {
-            $pull: {
-              comments: {
-                _id: commentId,
-                commentAuthor: context.user.username,
-              },
-            },
-          },
-          { new: true }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    //     return post;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+    // removeComment: async (parent, { postId, commentId }, context) => {
+    //   if (context.user) {
+    //     return Post.findOneAndUpdate(
+    //       { _id: postId },
+    //       {
+    //         $pull: {
+    //           comments: {
+    //             _id: commentId,
+    //             commentAuthor: context.user.username,
+    //           },
+    //         },
+    //       },
+    //       { new: true }
+    //     );
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
   },
 };
 

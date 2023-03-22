@@ -8,6 +8,7 @@ import { SiXbox } from "react-icons/si";
 function Xbox() {
     const { loading, data } = useQuery(QUERY_POSTS);
     const posts = data?.posts || [];
+    // filters posts to only include those posted to Xbox channel
     const xboxPosts = posts.filter((post) => post.postChannel === "Xbox");
     const postChannel = 'Xbox'
 

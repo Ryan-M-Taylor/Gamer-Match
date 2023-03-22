@@ -13,7 +13,6 @@ type User {
     competitive: Boolean
     coOp: Boolean
     genres: [String]
-# Place exclamations where something is required
   }
 
   type Post {
@@ -46,17 +45,6 @@ type User {
     
   }
 
-  # type Mutation {
-  #   login(email: String!, password: String!): Auth
-  #   addUser(username: String!, email: String!, password: String!): Auth
-  #   removeUser(userId: ID!): User
-  #   addPost(postText: String!): Post
-  #   addComment(postId: ID!, commentText: String!): Post
-  #   removePost(postId: ID!): Post
-  #   removeComment(postId: ID!, commentId: ID!): Post
-  # }
-
-
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
@@ -68,12 +56,7 @@ type User {
     addFriend(friendId: ID!): User
     deleteFriend(friendId: ID!): User
     updatePreferences(favoriteConsole: [String], coOp: Boolean, competitive: Boolean, genres: [String]): User
-    # removeFriend(friendId: ID!, friendId: ID!): Friend   
   }
-
-
 `;
-
-// userFriends: [User]
 
 module.exports = typeDefs;
