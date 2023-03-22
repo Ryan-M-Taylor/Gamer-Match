@@ -75,7 +75,7 @@ function Navigation() {
           <>
             <Nav.Item>
               <Nav.Link className="login" href="/me">
-                <p className="login">{Auth.getProfile().data.username}'s profile</p>
+              <p className="login">{Auth.getProfile().data.username.charAt(0).toUpperCase() + Auth.getProfile().data.username.slice(1)}'s Profile</p>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
