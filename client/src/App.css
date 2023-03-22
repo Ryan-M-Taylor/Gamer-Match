@@ -364,19 +364,70 @@ width: 100%;
 }
 
 .friend-btn{
-    background-color: #060C1F;
-    color: white
+    background-color: #7081b9;
+    color: rgb(247, 247, 247);
+    border: rgb(33, 44, 92) 3px ridge;
+    float: right;
 }
 
 .friend-btn:hover{
     color: #060C1F;
+    background-color: rgb(67, 110, 153);
 }
 
 .friend-list{
-    color: #060C1F;
+    color: white;
+
 }
 
 .friend-list:hover{
     color: #060C1F;
 }
 /* -----------------------ACCORDIAN----------------- */
+
+
+.profile-nav-container {
+    border: ridge 10px #060C1F;
+    border-radius: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #060C1F;
+}
+
+
+.prof-btn{
+    border: ridge 10px #060C1F;
+    border-radius: 10px;
+    background-color: rgb(10, 85, 146);
+}
+
+.favorites0 {
+    border: ridge 5px #060C1F;
+    border-radius: 10px;
+    width: 100%;
+    margin-right: 150px;
+}
+
+.favorites1 {
+    border-bottom: ridge 10px #263770;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #060C1F;
+    color: white;
+}
+
+.friends-card {
+    border: ridge rgb(3, 3, 43) 3px;
+    background-color: #778596;
+}
+
+.trash-icon {
+    font-size: 25px;
+}

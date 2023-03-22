@@ -12,23 +12,19 @@ import { useMutation } from "@apollo/client";
 import { SiPlaystation, SiNintendoswitch, SiXbox } from "react-icons/si";
 import { FaMouse } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
 // -------------Optional Components----------------
 import ProfileNav from "./Profile/ProfileNav";
 // -------------Optional Components----------------
 
+
 const Profile = () => {
   const { username: userParam } = useParams();
-  // console.log("userParam", userParam);
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
   });
 
   const user = data?.me || data?.user || {};
-
-  // console.log(user);
-  // console.log(user.genres);
 
   const userId = user._id;
   const friends = user.userFriends;
@@ -40,17 +36,15 @@ const Profile = () => {
     PC: <FaMouse />,
   };
   const consoles = {
-    Playstation: 'Playstation',
-    Xbox: 'Xbox',
-    Nintendo: 'Nintendo',
-    PC: 'PC'
-  }
+    Playstation: "Playstation",
+    Xbox: "Xbox",
+    Nintendo: "Nintendo",
+    PC: "PC",
+  };
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
-  
+
   const handleAddFriend = () => {
-    // console.log("USER ID!!!!!!!!" + userId);
-    // console.log("USER NAME!!!!!!" + userParam);
     addFriend({ variables: { friendId: userId } });
   };
 
@@ -58,9 +52,8 @@ const Profile = () => {
 
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
 
-if(!Auth.loggedIn()){
-
-}
+  if (!Auth.loggedIn()) {
+  }
 
   const renderPage = () => {
     let result = null;
@@ -68,27 +61,35 @@ if(!Auth.loggedIn()){
     switch (currentPage) {
       case "Profile":
         result = (
-          <div className="border p-4">
-            <h3 className="favorites">My Favorite Genres:</h3>
-            <ul>
-              {user.genres?.map((elem) => (
-                <li key={elem._id}>{elem}</li>
-              ))}
-            </ul>
-            <h3 className="favorites">Playstyle:</h3>
-            <p className="text-center">{user.competitive ? "Casual" : "Competitive"}</p>
-            <h3 className="favorites">Solo or Co-Op:</h3>
-            <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
+          <div className="border">
+            <div className="favorites0">
+              <div className="favorites1">
+                <h3>My Favorite Genres:</h3>
+              </div>
+              <div className="border">
+              <ul>
+                {user.genres?.map((elem) => (
+                  <li key={elem._id}>{elem}</li>
+                ))}
+              </ul>
+              </div>
+
+              <h3 className="favorites1">Playstyle:</h3>
+              <p className="text-center">
+                {user.competitive ? "Casual" : "Competitive"}
+              </p>
+              <h3 className="favorites1">Solo or Co-Op:</h3>
+              <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
+            </div>
           </div>
         );
         break;
       case "Friends":
-        // console.log("friends", friends);
-        result = (<FriendList friends={friends} />);
+        result = <FriendList friends={friends} />;
         break;
       case "Posts":
         result = (
-          <div>
+          <div className="p-1">
             {posts &&
               posts.map((post) => (
                 <div key={post._id} className="card post-border mb-3 ">
@@ -104,7 +105,7 @@ if(!Auth.loggedIn()){
                     <p>{post.postText}</p>
                   </div>
                   <Link
-                  className={`btn btn-block btn-squared ${post.postChannel}-form m-0`}
+                    className={`btn btn-block btn-squared ${post.postChannel}-form m-0`}
                     to={`/posts/${post._id}`}
                   >
                     Join the discussion on this thread.
@@ -158,33 +159,16 @@ if(!Auth.loggedIn()){
     );
   }
 
-  // console.log("favoriteconsolelist", user);
   return (
-    // <div>
-    //   <div className="flex-row justify-center mb-3">
-    //     <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-    //       Viewing {userParam ? `${user.username}'s` : 'your'} profile.
-    //     </h2>
-
-    //     <div className="col-12 col-md-10 mb-5">
-    //       Insert component here
-    //     </div>
-    //     {!userParam && (
-    //       <div
-    //         className="col-12 col-md-10 mb-3 p-3"
-    //         style={{ border: '1px dotted #1a1a1a' }}
-    //       >
-    //         Insert another component here
-    //       </div>
-    //     )}
-    //   </div>
-    // </div>
-
     <div>
       <div className="d-flex flex-column align-items-center">
         <h2 className="col-12 col-md-10 p-3 mb-2 text-center prof-header">
-          {userParam ? `${user.username}'s Profile` : `${user.username}`}{' '}
-          {user.favoriteConsole?.map((elem) => <span className={`${consoles[elem]}-icon`}>{consoleIcons[elem]} </span>)}
+          {userParam ? `${user.username}'s Profile` : `${user.username}`}{" "}
+          {user.favoriteConsole?.map((elem) => (
+            <span className={`${consoles[elem]}-icon`}>
+              {consoleIcons[elem]}{" "}
+            </span>
+          ))}
         </h2>
         {!userParam ? (
           <div className="d-flex flex-column align-items-center">
@@ -198,27 +182,47 @@ if(!Auth.loggedIn()){
         )}
 
         <div className="col-12 col-md-10 mb-5">
+          {/* This is someone elses profile */}
           {userParam ? (
-            <div>
-              {/* This is someone elses profile */}
-              <h3 className="favorites">My Favorite Genres:</h3>
-              <ul>
-                {user.genres?.map((elem) => (
-                  <li key={elem._id}>{elem}</li>
-                ))}
-              </ul>
-              <h3 className="favorites">Casual or Competitive:</h3>
-              <p className="text-center">{user.competitive ? "Casual" : "Competitive"}</p>
-              <h3 className="favorites">Solo or Co-Op:</h3>
-              <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
-              <div className="d-flex justify-content-center">
-              { !Auth.loggedIn() ? (<button className='btn friend-btn'><a href= "/login" style={{color : "white"}}>Login To Add Friend!</a></button>) : (<button className='btn friend-btn' onClick={handleAddFriend}>Add Friend</button>)}
+
+            <div className="border">
+              <div className="favorites0">
+                <div className="favorites1">
+                  <h3>My Favorite Genres:</h3>
+                </div>  
+                <ul>
+                  {user.genres?.map((elem) => (
+                    <li key={elem._id}>{elem}</li>
+                  ))}
+                </ul>
+
+                <h3 className="favorites1">Play Style:</h3>
+                <p className="text-center">
+                  {user.competitive ? "Casual" : "Competitive"}
+                </p>
+                <h3 className="favorites1">Solo or Co-Op:</h3>
+                <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
+                <div className="favorites1 d-flex justify-content-center">
+                  {!Auth.loggedIn() ? (
+                    <button className="btn friend-btn">
+                      <a href="/login" style={{ color: "white" }}>
+                        Login To Add Friend!
+                      </a>
+                    </button>
+                  ) : (
+                    <button
+                      className="btn friend-btn"
+                      onClick={handleAddFriend}
+                    >
+                      Add Friend
+                    </button>
+                  )}
+                </div>
+
               </div>
             </div>
           ) : (
-            <div>
-              {renderPage()}
-            </div>
+            <div>{renderPage()}</div>
           )}
         </div>
       </div>

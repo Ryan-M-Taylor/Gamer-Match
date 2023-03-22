@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/client";
 import { Container, ListGroup } from "react-bootstrap";
 import { DELETE_FRIEND } from "../../utils/mutations";
 // import { Navigate, useParams } from "react-router-dom";
+import { GrFormTrash } from "react-icons/gr"
 
 const FriendList = (props) => {
   const [deleteFriend, { error }] = useMutation(DELETE_FRIEND);
@@ -22,22 +23,41 @@ const FriendList = (props) => {
   };
   return (
     <Container>
-        <div className="border p-3 d-flex">
-        <h3>Your Friends: {props.friends.length}</h3>
-        {props.friends.length === 0 ? (
-          <p>You have no friends yet.</p>
+      <div className="border">
+        <div className="favorites0">
+          <div className="favorites1">
+            <h3>Your Friends: {props.friends.length}</h3>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className="favorites0">
+          {props.friends.length === 0 ? (
+            <p className="favorites1">You have no friends yet.</p>
           ) : (
             <ListGroup>
-            {props.friends.map((friend, i) => (
-              <ListGroup.Item key={`friend-list-${i}`}>
-                <a className='friend-list' href={`/profiles/${friend.username}`}>{friend.username}</a>{" "}
-                <button className='friend-btn btn' onClick={() => handleDeleteFriend(friend._id)}>
-                  Delete Friend
-                </button>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        )}
+              {props.friends.map((friend, i) => (
+                <ListGroup.Item
+                  className="friends-card"
+                  key={`friend-list-${i}`}
+                >
+                  <a
+                    className="friend-list"
+                    href={`/profiles/${friend.username}`}
+                  >
+                    {friend.username}
+                  </a>{" "}
+                  <button
+                    className="friend-btn btn"
+                    onClick={() => handleDeleteFriend(friend._id)}
+                  >
+                    <GrFormTrash className="trash-icon"/>
+                  </button>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          )}
+        </div>
       </div>
     </Container>
   );
