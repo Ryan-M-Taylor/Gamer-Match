@@ -11,6 +11,7 @@ export const QUERY_ME = gql`
         postText
         postAuthor
         createdAt
+        postChannel
       }
       userFriends {
         _id
