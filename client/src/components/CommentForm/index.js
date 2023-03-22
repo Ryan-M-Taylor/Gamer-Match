@@ -69,7 +69,7 @@ const CommentForm = ({ postId }) => {
             </div>
 
             <div className="col-12 col-lg-6">
-              <button className={`btn btn-block login-btn`} type="submit">
+              <button className={`btn btn-block login-btn friend-btn`} type="submit">
                 Add Comment
               </button>
             </div>
