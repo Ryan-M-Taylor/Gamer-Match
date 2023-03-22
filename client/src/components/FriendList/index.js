@@ -23,7 +23,7 @@ const FriendList = (props) => {
   };
   return (
     <Container>
-      <div className="border">
+      <div>
         <div className="favorites0">
           <div className="favorites1">
             <h3>Your Friends: {props.friends.length}</h3>

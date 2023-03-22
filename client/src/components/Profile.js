@@ -61,7 +61,7 @@ const Profile = () => {
     switch (currentPage) {
       case "Profile":
         result = (
-          <div className="border">
+          <div>
             <div className="favorites0">
               <div className="favorites1">
                 <h3>My Favorite Genres:</h3>
@@ -171,7 +171,7 @@ const Profile = () => {
           ))}
         </h2>
         {!userParam ? (
-          <div className="d-flex flex-column align-items-center">
+          <div className="d-flex flex-column align-items-center mb-2">
             <ProfileNav
               currentPage={currentPage}
               handlePageChange={handlePageChange}
