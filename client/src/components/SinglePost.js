@@ -38,10 +38,10 @@ const SinglePost = () => {
           </blockquote>
         </div>
       </div>
-      <div>
+      <div className={`${post.postChannel}-border mt-2`}>
         <CommentList comments={post.comments} />
       </div>
-      <div className={`m-3 p-2 ${post.postChannel}`}>
+      <div className={`m-3 p-2 ${post.postChannel}-form ${post.postChannel}-border`}>
         <CommentForm postId={post._id} />
       </div>
     </div>
