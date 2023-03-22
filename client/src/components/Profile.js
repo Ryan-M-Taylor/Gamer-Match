@@ -9,6 +9,7 @@ import { ADD_FRIEND } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 import { SiPlaystation, SiNintendoswitch, SiXbox } from "react-icons/si";
 import { FaMouse } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 // -------------Optional Components----------------
 import ProfileNav from "./Profile/ProfileNav";
@@ -66,7 +67,7 @@ const Profile = () => {
               <li key={elem._id}>{elem}</li>
             ))}
           </ul>
-          <h3>Casual or Competitive:</h3>
+          <h3>Playstyle:</h3>
           <p>{user.competitive ? "Casual" : "Competitive"}</p>
           <h3>Solo or Co-Op:</h3>
           <p> {user.coOp ? "Solo" : "Co-Op"}</p>
@@ -78,12 +79,27 @@ const Profile = () => {
         break;
       case 'Posts':
         result = (<div>
-          {posts?.map((post) => {
-            return (<div>
-              <h4> Created at {post.createdAt} in the {post.postChannel} channel.</h4>
-              <p key={post._id}> {post.postText} </p>
-            </div>);
-          })}
+          {posts &&
+            posts.map((post) => (
+              <div key={post._id} className="card post-border mb-3">
+                <h4 className="card-header p-2 m-0">
+                  {post.postAuthor} <br />
+                  <span style={{ fontSize: '1rem' }}>
+                    posted on {post.createdAt} to {post.postChannel}
+                  </span>
+                </h4>
+                <div className="card-body p-2">
+                  <p>{post.postText}</p>
+                </div>
+                <Link
+                  className="btn btn-block btn-squared join-btn"
+                  to={`/posts/${post._id}`}
+                >
+                  Join the discussion on this thread.
+                </Link>
+
+              </div>
+            ))}
         </div>);
         break;
       // case 'Comments':
@@ -137,7 +153,7 @@ const Profile = () => {
         <h2 className="col-12 col-md-10 question-form p-3 mb-5">
           {userParam
             ? `${user.username}'s Profile`
-            
+
             : `${user.username}`}
           {user.favoriteConsole?.map((elem) => consoleIcons[elem])}
           {!userParam
@@ -167,9 +183,9 @@ const Profile = () => {
             <li key={index}>{elem}</li>
           ))}
         </ul> */}
-        {userParam
+        {/* {userParam
           ? `You are currently viewing ${user.username}'s Profile ${user._id}`
-          : `Hi ${user.username}!`}{" "}
+          : `Hi ${user.username}!`}{" "} */}
         {/* <ul>
           {user.favoriteConsole?.map((elem) => (
             <li key={elem._id}>{elem}</li>
@@ -190,6 +206,16 @@ const Profile = () => {
           {userParam ? (
             <div>
               {/* This is someone elses profile */}
+              <h3>My Favorite Genres:</h3>
+              <ul>
+                {user.genres?.map((elem) => (
+                  <li key={elem._id}>{elem}</li>
+                ))}
+              </ul>
+              <h3>Casual or Competitive:</h3>
+              <p>{user.competitive ? "Casual" : "Competitive"}</p>
+              <h3>Solo or Co-Op:</h3>
+              <p> {user.coOp ? "Solo" : "Co-Op"}</p>
 
               <button onClick={handleAddFriend}>Add Friend</button>
             </div>
