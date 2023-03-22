@@ -13,7 +13,7 @@ function PC() {
 
   return (
     <div className="pc text-center">
-      <h1>
+      <h1 className="post-border">
         PC <FaMouse />
       </h1>
       <div>

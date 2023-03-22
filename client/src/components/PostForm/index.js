@@ -71,7 +71,7 @@ const PostForm = (props) => {
   };
 
   return (
-    <div>
+    <div className='mt-3'>
       {Auth.loggedIn() ? (
         <>
           <p
@@ -97,7 +97,7 @@ const PostForm = (props) => {
             </div>
 
             <div className="col-12 mb-4">
-              <button className="btn btn-block" type="submit">
+              <button className="btn btn-block join-btn" type="submit">
                 Add Post
               </button>
             </div>
@@ -109,7 +109,7 @@ const PostForm = (props) => {
           </form>
         </>
       ) : (
-        <p>
+        <p className='mb-5 mt-1'>
           You need to be logged in to share your posts. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>

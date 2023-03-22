@@ -19,7 +19,6 @@
 /* Indexjs Page (App name) */
 
 .header-div{
-  border-bottom: solid;
   background-color: #060C1F;
 }
 
@@ -35,7 +34,7 @@
 .app-name, .description{
     display: flex;
     justify-content: center;
-    z-index: 4;
+    z-index: 5;
     font-family: 'Orbitron', sans-serif;
     color: white;
 }
@@ -43,6 +42,11 @@
 @media screen and (max-width: 576px) {
     .app-name{
         font-size: 47px;
+    }
+    .nav-links{
+        font-size: 8px;
+       padding-bottom: 0px;
+       padding-top: 15px;
     }
 }
 
@@ -295,4 +299,102 @@ width: 100%;
      .nav-links p:hover {
         text-decoration: underline;
      }
-     
+
+     .post-border{
+        border: solid 3px #060C1F;
+        border-radius: 7px;
+     }
+
+     .join-btn:hover {
+        color: #060C1F;
+     }
+
+     .nav-links{
+        position: sticky;
+        top: 0;
+        background-color: #060C1F;
+        justify-content: center;
+        z-index: 5;
+        height: 45px;
+     }
+
+    .Nintendo-form{
+        background-color: #e60012;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .Nintendo-border{
+        border: solid 3px #e60012;
+        border-radius: 7px;
+    }
+
+    .Xbox-form{
+        background-color: #107C10;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .Xbox-border{
+        border: solid 3px #107C10;
+        border-radius: 7px;
+    }
+
+    .Playstation-form{
+        background-color: #00439C;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .Playstation-border{
+        border: solid 3px #00439C;
+        border-radius: 7px;
+    }
+
+    .PC-form{
+        background-color: #5663F7;
+        color: white;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .PC-border{
+        border: solid 3px #5663F7;
+        border-radius: 7px;
+    }
+
+
+
+/* -----------------------ACCORDIAN----------------- */
+.prof-accordian-item {
+    width: max-content;
+}
+
+.prof-accordian {
+    width: max-content;
+}
+
+.prof-accordian-head {
+    width: max-content;
+}
+
+.prof-accordian-body {
+    background-color: #060C1F;
+    color: white;
+}
+.prof-accordian-body h3{
+    background-color: #060C1F;
+    color: grey;
+}
+/* -----------------------ACCORDIAN----------------- */

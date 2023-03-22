@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +11,10 @@ import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 
 function Navigation() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
+    
   const [showPlaystation, setShowPlaystation] = useState(true);
   const [showNintendo, setShowNintendo] = useState(false);
   const [showXbox, setShowXbox] = useState(false);
@@ -63,19 +66,21 @@ function Navigation() {
     Auth.logout();
   };
 
+
   return (
     <>
-      <Nav className="me-auto nav-links">
+    <Navbar className="nav-links align-items-center">
+      <Nav>
         {Auth.loggedIn() ? (
           <>
             <Nav.Item>
               <Nav.Link className="login" href="/me">
-                {Auth.getProfile().data.username}'s profile
+                <p className="login">{Auth.getProfile().data.username}'s profile</p>
               </Nav.Link>
             </Nav.Item>
             <Nav.Item>
               <Nav.Link className="signup" onClick={logout}>
-                Logout
+                <p className="signup">Logout</p>
               </Nav.Link>
             </Nav.Item>
           </>
@@ -93,11 +98,6 @@ function Navigation() {
             </Nav.Item>
           </>
         )}
-        {/* <Nav.Item>
-              <Nav.Link className="navigation-text" href="/profile" onClick={handleProfileClick}>
-                Profile
-              </Nav.Link>
-            </Nav.Item> */}
         <Nav.Item>
           <Nav.Link
             className="navigation-text"
@@ -135,7 +135,8 @@ function Navigation() {
           </Nav.Link>
         </Nav.Item>
       </Nav>
-    </>
+      </Navbar>
+      </>
   );
 }
 
