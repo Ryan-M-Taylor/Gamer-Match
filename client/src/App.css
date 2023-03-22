@@ -364,12 +364,14 @@ width: 100%;
 }
 
 .friend-btn{
-    background-color: #060C1F;
-    color: white
+    background-color: #7081b9;
+    color: rgb(247, 247, 247);
+    border: rgb(33, 44, 92) 3px ridge;
 }
 
 .friend-btn:hover{
     color: #060C1F;
+    background-color: rgb(67, 110, 153);
 }
 
 .friend-list{
@@ -399,4 +401,26 @@ width: 100%;
     border: ridge 10px #060C1F;
     border-radius: 10px;
     background-color: rgb(10, 85, 146);
+}
+
+.favorites0 {
+    border: ridge 5px #060C1F;
+    border-radius: 10px;
+    width: 100%;
+    margin-right: 150px;
+}
+
+.favorites1 {
+    border-bottom: ridge 10px #263770;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: #060C1F;
+    color: white;
+}
+
+.genre-container {
+    background-color: rgb(179, 20, 20);
 }
