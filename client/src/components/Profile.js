@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import ProfileNav from "./Profile/ProfileNav";
 // -------------Optional Components----------------
 
+
 const Profile = () => {
   const { username: userParam } = useParams();
 
@@ -65,11 +66,13 @@ const Profile = () => {
               <div className="favorites1">
                 <h3>My Favorite Genres:</h3>
               </div>
+              <div className="border">
               <ul>
                 {user.genres?.map((elem) => (
                   <li key={elem._id}>{elem}</li>
                 ))}
               </ul>
+              </div>
 
               <h3 className="favorites1">Playstyle:</h3>
               <p className="text-center">
@@ -86,7 +89,7 @@ const Profile = () => {
         break;
       case "Posts":
         result = (
-          <div>
+          <div className="p-1">
             {posts &&
               posts.map((post) => (
                 <div key={post._id} className="card post-border mb-3 ">
