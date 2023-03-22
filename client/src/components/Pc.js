@@ -8,6 +8,7 @@ import { FaMouse } from "react-icons/fa";
 function PC() {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
+  // filters posts to only include those posted to PC channel
   const pcPosts = posts.filter((post) => post.postChannel === "PC");
   const postChannel = 'PC';
 

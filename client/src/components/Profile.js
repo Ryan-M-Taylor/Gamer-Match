@@ -17,7 +17,7 @@ import ProfileNav from "./Profile/ProfileNav";
 
 const Profile = () => {
   const { username: userParam } = useParams();
-  console.log("userParam", userParam);
+  // console.log("userParam", userParam);
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -25,10 +25,8 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
 
-  console.log(user);
-  console.log(user.genres);
-
-  // -------------Add Friend Logic below----------------
+  // console.log(user);
+  // console.log(user.genres);
 
   const userId = user._id;
   const friends = user.userFriends;
@@ -49,8 +47,8 @@ const Profile = () => {
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
   const handleAddFriend = () => {
-    console.log("USER ID!!!!!!!!" + userId);
-    console.log("USER NAME!!!!!!" + userParam);
+    // console.log("USER ID!!!!!!!!" + userId);
+    // console.log("USER NAME!!!!!!" + userParam);
     addFriend({ variables: { friendId: userId } });
   };
 
@@ -65,8 +63,6 @@ const Profile = () => {
       case "Profile":
         result = (
           <div className="border p-4">
-            {/* <h3>Favorite Consoles:</h3>
-          <p>{user.favoriteConsole?.map((elem) => consoleIcons[elem])}</p> */}
             <h3 className="favorites">My Favorite Genres:</h3>
             <ul>
               {user.genres?.map((elem) => (
@@ -81,7 +77,7 @@ const Profile = () => {
         );
         break;
       case "Friends":
-        console.log("friends", friends);
+        // console.log("friends", friends);
         result = (<FriendList friends={friends} />);
         break;
       case "Posts":
@@ -156,7 +152,7 @@ const Profile = () => {
     );
   }
 
-  console.log("favoriteconsolelist", user);
+  // console.log("favoriteconsolelist", user);
   return (
     <div>
       <div className="d-flex flex-column align-items-center">
@@ -175,40 +171,6 @@ const Profile = () => {
           <div></div>
         )}
 
-        {/* <ul>
-          {[
-            user.favoriteConsole, // Include the user's favorite console as the first item
-            user.favoriteConsole, // Spread the array of favorite consoles after the first item
-          ].map((elem, index) => (
-            <li key={index}>{elem}</li>
-          ))}
-        </ul>
-        
-        <ul>
-          {[
-            user.genres, // Include the user's favorite console as the first item
-            ...user.genres, // Spread the array of favorite consoles after the first item
-          ].map((elem, index) => (
-            <li key={index}>{elem}</li>
-          ))}
-        </ul> */}
-        {/* {userParam
-          ? `You are currently viewing ${user.username}'s Profile ${user._id}`
-          : `Hi ${user.username}!`}{" "} */}
-        {/* <ul>
-          {user.favoriteConsole?.map((elem) => (
-            <li key={elem._id}>{elem}</li>
-          ))}
-        </ul>
-        <ul>
-          {user.genres?.map((elem) => (
-            <li key={elem._id}>{elem}</li>
-          ))}
-        </ul>
-        <p>
-          Casual or Competitive : {user.competitive ? "Casual" : "Competitive"}
-        </p>
-        <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p> */}
         <div className="col-12 col-md-10 mb-5">
           {userParam ? (
             <div>
@@ -229,8 +191,6 @@ const Profile = () => {
             </div>
           ) : (
             <div>
-              {/* This is your profile */}
-
               {renderPage()}
             </div>
           )}

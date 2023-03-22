@@ -9,7 +9,7 @@ const Header = () => {
       <header className="header-div">
         <div className="d-flex flex-column align-items-center">
           <div>
-            <Link className="" to="/mainpage">
+            <Link className="" to="/me">
               <h1 className="app-name main-div1">Gamer Match</h1>
             </Link>
             <p className="description">Link up with fellow gamers</p>

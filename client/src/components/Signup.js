@@ -6,6 +6,7 @@ import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
+// allows user to create new account
 const Signup = () => {
   const [formState, setFormState] = useState({
     username: '',
@@ -47,7 +48,7 @@ const Signup = () => {
             {data ? (
               <p>
                 Success! You may now head{' '}
-                <Link to="/questions">back to the homepage.</Link>
+                <Link to="/questions">back to the profile.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>

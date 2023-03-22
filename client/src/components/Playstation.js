@@ -9,8 +9,8 @@ function Playstation() {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
   const postChannel = "Playstation";
+  // filters posts to only include those posted to Playstation channel
   const psPosts = posts.filter((post) => post.postChannel === "Playstation");
-
   return (
     <div className="playstation text-center">
       <h1 className="post-border">

@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
@@ -14,33 +13,31 @@ const SinglePost = () => {
   const { postId } = useParams();
 
   const { loading, data } = useQuery(QUERY_SINGLE_POST, {
-    // pass URL parameter
     variables: { postId: postId },
   });
 
   const post = data?.post || {};
-console.log('****',post.postChannel)
+  // console.log('****',post.postChannel)
   if (loading) {
     return <div>Loading...</div>;
   }
   return (
     <div className="my-3">
       <div className={`${post.postChannel}-border`}>
-      <h3 className={`card-header ${post.postChannel}-form p-2 m-0`}>
-        {post.postAuthor} <br />
-        <span style={{ fontSize: '1rem' }}>
-          had this post on {post.createdAt}
-        </span>
-      </h3>
-      <div>
-        <blockquote
-          className="p-3 text-center"
-        >
-          {post.postText}
-        </blockquote>
+        <h3 className={`card-header ${post.postChannel}-form p-2 m-0`}>
+          {post.postAuthor} <br />
+          <span style={{ fontSize: '1rem' }}>
+            had this post on {post.createdAt}
+          </span>
+        </h3>
+        <div>
+          <blockquote
+            className="p-3 text-center"
+          >
+            {post.postText}
+          </blockquote>
+        </div>
       </div>
-      </div>
-
       <div>
         <CommentList comments={post.comments} />
       </div>
