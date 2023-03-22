@@ -188,7 +188,7 @@ const Profile = () => {
             <div className="border">
               <div className="favorites0">
                 <div className="favorites1">
-                  <h3>My Favorite Genres:</h3>
+                  <h3>Favorite Genres:</h3>
                 </div>  
                 <ul>
                   {user.genres?.map((elem) => (
