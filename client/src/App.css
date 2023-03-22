@@ -10,12 +10,6 @@
     color: white;
 }
 
-.login-btn{
-    background-color: #060C1F;
-    color: white;
-}
-
-
 /* Indexjs Page (App name) */
 
 .header-div{
@@ -47,6 +41,13 @@
         font-size: 10px;
        padding-bottom: 0px;
        padding-top: 15px;
+    }
+    .prof-header{
+        font-size: 20px;
+    }
+    .favorites{
+        font-size: 18px;
+        text-decoration: underline;
     }
 }
 
@@ -83,12 +84,6 @@
     margin-right: 10px;
 }
 
-.question-form h3 {
-    
-}
-.question-text{
-}
-
 /* Signup Page */
 
 .signup-form {
@@ -121,63 +116,6 @@ width: 100%;
     color: white;
   }
 
-
-/* ----------------START EXPERIMENTAL CODE--------------------------- */
-
-/* .start-helmet{
-    max-height: 100vh !important;
-    min-height: 100vh !important;
-    overflow-y: hidden !important;
-} */
-
-
-#helmet{   
-    /* display:flex; */
-    /* min-height: 100vh;
-    max-width: 100vw; */
-    background-size: cover;
-    position: fixed;
-    z-index: 2;
-    opacity: 0.6;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    transform: scaleY(1.04);
-    background-color: rgba(255, 255, 255, 0);
-    color: black;
-    pointer-events: none;
-} 
-
-#myVideo {
-    pointer-events: none;
-    position:absolute;
-     position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%; 
-      min-height: 100%;
-      opacity: 0.1;
-     }
-
-
-.profile-content{
-    display: flex;
-    width: 90vh;
-    height: 90vh;
-}
-
-
-.friend-list-container{
-    border: solid black;
-    height: fit-content;
-    padding:20px;
-}
-
-
-     /* ------------------------END EXPERIMENTAL CODE---------------------- */
-
-
-
      /* Posts */
 
      .add-friend-container{
@@ -188,7 +126,6 @@ width: 100%;
      .form-input {
         width: 100%;
      }
-
 
      /* Profile Nav-bar */
 
@@ -302,7 +239,7 @@ width: 100%;
 
      .post-border{
         border: solid 3px #060C1F;
-        border-radius: 7px;
+        border-radius: 8px;
      }
 
      .join-btn:hover {
@@ -332,6 +269,10 @@ width: 100%;
         border-radius: 7px;
     }
 
+    .Nintendo-icon{
+        color: #e60012;
+    }
+
     .Xbox-form{
         background-color: #107C10;
         color: white;
@@ -344,6 +285,10 @@ width: 100%;
     .Xbox-border{
         border: solid 3px #107C10;
         border-radius: 7px;
+    }
+
+    .Xbox-icon{
+        color: #107C10;
     }
 
     .Playstation-form{
@@ -360,6 +305,10 @@ width: 100%;
         border-radius: 7px;
     }
 
+    .Playstation-icon{
+        color: #00439C;
+    }
+
     .PC-form{
         background-color: #5663F7;
         color: white;
@@ -372,6 +321,10 @@ width: 100%;
     .PC-border{
         border: solid 3px #5663F7;
         border-radius: 7px;
+    }
+
+    .PC-icon{
+        color: #5663F7;
     }
 
 
@@ -396,5 +349,34 @@ width: 100%;
 .prof-accordian-body h3{
     background-color: #060C1F;
     color: grey;
+}
+
+.prof-btn{
+    background-color: #060C1F;
+    border-color: #060C1F;
+    margin-right: 5px;
+}
+
+.prof-header{
+    background-color: #060C1F;
+    color: white;
+    border-radius: 2em;
+}
+
+.friend-btn{
+    background-color: #060C1F;
+    color: white
+}
+
+.friend-btn:hover{
+    color: #060C1F;
+}
+
+.friend-list{
+    color: #060C1F;
+}
+
+.friend-list:hover{
+    color: #060C1F;
 }
 /* -----------------------ACCORDIAN----------------- */

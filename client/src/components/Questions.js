@@ -262,7 +262,7 @@ const CheckboxList = () => {
               />
             </label>
           </div>
-          <button type="submit" className="btn login-btn">Submit</button>
+          <button type="submit" className="btn login-btn friend-btn my-1">Submit</button>
         </form>
       )}
     </div>

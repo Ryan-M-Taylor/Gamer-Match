@@ -41,9 +41,9 @@ const Login = (props) => {
   };
 
 return (
-    <main className="main-container border">
-        <div className="login-container">
-          <h4 className="login-text py-1">Login</h4>
+    <main className="main-container">
+        <div className="card">
+          <h4 className="login-text p-2 card-header signup-form mb-2">Login</h4>
           {/* <div className=""> */}
             {data ? (
               <p>
@@ -69,7 +69,7 @@ return (
                   onChange={handleChange}
                 />
                 <button
-                  className="login-btn btn-block mt-2"
+                  className="btn btn-block signup-form mt-2"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >

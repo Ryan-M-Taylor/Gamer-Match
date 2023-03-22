@@ -9,7 +9,7 @@ import { ADD_FRIEND } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 import { SiPlaystation, SiNintendoswitch, SiXbox } from "react-icons/si";
 import { FaMouse } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 // -------------Optional Components----------------
 import ProfileNav from "./Profile/ProfileNav";
@@ -39,7 +39,12 @@ const Profile = () => {
     Nintendo: <SiNintendoswitch />,
     PC: <FaMouse />,
   };
-
+  const consoles = {
+    Playstation: 'Playstation',
+    Xbox: 'Xbox',
+    Nintendo: 'Nintendo',
+    PC: 'PC'
+  }
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
@@ -49,7 +54,7 @@ const Profile = () => {
     addFriend({ variables: { friendId: userId } });
   };
 
-  const [currentPage, setCurrentPage] = useState('Profile');
+  const [currentPage, setCurrentPage] = useState("Profile");
 
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
 
@@ -57,50 +62,55 @@ const Profile = () => {
     let result = null;
 
     switch (currentPage) {
-      case 'Profile':
-        result = (<div>
-          {/* <h3>Favorite Consoles:</h3>
+      case "Profile":
+        result = (
+          <div className="border p-4">
+            {/* <h3>Favorite Consoles:</h3>
           <p>{user.favoriteConsole?.map((elem) => consoleIcons[elem])}</p> */}
-          <h3>My Favorite Genres:</h3>
-          <ul>
-            {user.genres?.map((elem) => (
-              <li key={elem._id}>{elem}</li>
-            ))}
-          </ul>
-          <h3>Playstyle:</h3>
-          <p>{user.competitive ? "Casual" : "Competitive"}</p>
-          <h3>Solo or Co-Op:</h3>
-          <p> {user.coOp ? "Solo" : "Co-Op"}</p>
-        </div>);
+            <h3 className="favorites">My Favorite Genres:</h3>
+            <ul>
+              {user.genres?.map((elem) => (
+                <li key={elem._id}>{elem}</li>
+              ))}
+            </ul>
+            <h3 className="favorites">Playstyle:</h3>
+            <p className="text-center">{user.competitive ? "Casual" : "Competitive"}</p>
+            <h3 className="favorites">Solo or Co-Op:</h3>
+            <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
+          </div>
+        );
         break;
-      case 'Friends':
+      case "Friends":
         console.log("friends", friends);
         result = (<FriendList friends={friends} />);
         break;
-      case 'Posts':
-        result = (<div>
-          {posts &&
-            posts.map((post) => (
-              <div key={post._id} className="card post-border mb-3 ">
-                <h4 className={`card-header ${post.postChannel}-form p-2 m-0`}>
-                  {post.postAuthor} <br />
-                  <span style={{ fontSize: '1rem' }}>
-                    posted on {post.createdAt} to {post.postChannel}
-                  </span>
-                </h4>
-                <div className="card-body p-2">
-                  <p>{post.postText}</p>
+      case "Posts":
+        result = (
+          <div>
+            {posts &&
+              posts.map((post) => (
+                <div key={post._id} className="card post-border mb-3 ">
+                  <h4
+                    className={`card-header ${post.postChannel}-form p-2 m-0`}
+                  >
+                    {post.postAuthor} <br />
+                    <span style={{ fontSize: "1rem" }}>
+                      posted on {post.createdAt} to {post.postChannel}
+                    </span>
+                  </h4>
+                  <div className="card-body p-2 text-center">
+                    <p>{post.postText}</p>
+                  </div>
+                  <Link
+                  className={`btn btn-block btn-squared ${post.postChannel}-form m-0`}
+                    to={`/posts/${post._id}`}
+                  >
+                    Join the discussion on this thread.
+                  </Link>
                 </div>
-                <Link
-                  className="btn btn-block btn-squared join-btn"
-                  to={`/posts/${post._id}`}
-                >
-                  Join the discussion on this thread.
-                </Link>
-
-              </div>
-            ))}
-        </div>);
+              ))}
+          </div>
+        );
         break;
       // case 'Comments':
       //   console.log("Comments************", posts)
@@ -119,7 +129,7 @@ const Profile = () => {
       //   </div>);
       //   break;
       default:
-        result = (<div>Use the menu to explore your profile!</div>);
+        result = <div>Use the menu to explore your profile!</div>;
         break;
     }
 
@@ -149,23 +159,22 @@ const Profile = () => {
   console.log("favoriteconsolelist", user);
   return (
     <div>
-      <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 question-form p-3 mb-5">
-          {userParam
-            ? `${user.username}'s Profile`
-
-            : `${user.username}`}
-          {user.favoriteConsole?.map((elem) => consoleIcons[elem])}
-          {!userParam
-            ? (<div className="flex-row justify-center">
-              <ProfileNav currentPage={currentPage} handlePageChange={handlePageChange} />
-            </div>)
-            : (
-              <div></div>
-            )
-          }
-
+      <div className="d-flex flex-column align-items-center">
+        <h2 className="col-12 col-md-10 p-3 mb-2 text-center prof-header">
+          {userParam ? `${user.username}'s Profile` : `${user.username}`}{' '}
+          {user.favoriteConsole?.map((elem) => <span className={`${consoles[elem]}-icon`}>{consoleIcons[elem]} </span>)}
         </h2>
+        {!userParam ? (
+          <div className="d-flex flex-column align-items-center">
+            <ProfileNav
+              currentPage={currentPage}
+              handlePageChange={handlePageChange}
+            />
+          </div>
+        ) : (
+          <div></div>
+        )}
+
         {/* <ul>
           {[
             user.favoriteConsole, // Include the user's favorite console as the first item
@@ -204,25 +213,25 @@ const Profile = () => {
           {userParam ? (
             <div>
               {/* This is someone elses profile */}
-              <h3>My Favorite Genres:</h3>
+              <h3 className="favorites">My Favorite Genres:</h3>
               <ul>
                 {user.genres?.map((elem) => (
                   <li key={elem._id}>{elem}</li>
                 ))}
               </ul>
-              <h3>Casual or Competitive:</h3>
-              <p>{user.competitive ? "Casual" : "Competitive"}</p>
-              <h3>Solo or Co-Op:</h3>
-              <p> {user.coOp ? "Solo" : "Co-Op"}</p>
-
-              <button onClick={handleAddFriend}>Add Friend</button>
+              <h3 className="favorites">Casual or Competitive:</h3>
+              <p className="text-center">{user.competitive ? "Casual" : "Competitive"}</p>
+              <h3 className="favorites">Solo or Co-Op:</h3>
+              <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
+              <div className="d-flex justify-content-center">
+              <button className='btn friend-btn' onClick={handleAddFriend}>Add Friend</button>
+              </div>
             </div>
           ) : (
             <div>
               {/* This is your profile */}
 
               {renderPage()}
-
             </div>
           )}
         </div>
@@ -232,4 +241,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
