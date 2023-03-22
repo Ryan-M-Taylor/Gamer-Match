@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { QUERY_FRIENDS, QUERY_ME } from "../../utils/queries";
-import { useQuery } from "@apollo/client";
+// import { QUERY_FRIENDS, QUERY_ME } from "../../utils/queries";
+// import { useQuery } from "@apollo/client";
 import { Container, ListGroup } from "react-bootstrap";
 import { DELETE_FRIEND } from "../../utils/mutations";
-import { Navigate, useParams } from "react-router-dom";
+// import { Navigate, useParams } from "react-router-dom";
 
 const FriendList = (props) => {
   const [deleteFriend, { error }] = useMutation(DELETE_FRIEND);
@@ -22,16 +22,16 @@ const FriendList = (props) => {
   };
   return (
     <Container>
-      <div>
+        <div className="border p-3 d-flex">
         <h3>Your Friends: {props.friends.length}</h3>
         {props.friends.length === 0 ? (
           <p>You have no friends yet.</p>
-        ) : (
-          <ListGroup>
+          ) : (
+            <ListGroup>
             {props.friends.map((friend, i) => (
               <ListGroup.Item key={`friend-list-${i}`}>
-                <a href={`/profiles/${friend.username}`}>{friend.username}</a>{" "}
-                <button onClick={() => handleDeleteFriend(friend._id)}>
+                <a className='friend-list' href={`/profiles/${friend.username}`}>{friend.username}</a>{" "}
+                <button className='friend-btn btn' onClick={() => handleDeleteFriend(friend._id)}>
                   Delete Friend
                 </button>
               </ListGroup.Item>

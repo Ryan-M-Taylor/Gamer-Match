@@ -10,7 +10,7 @@ import Auth from '../../utils/auth';
 const PostForm = (props) => {
   const [postText, setPostText] = useState('');
   const [postChannel, setPostChannel] = useState(props.postChannel);
-  console.log(postChannel)
+  // console.log(postChannel)
   const [characterCount, setCharacterCount] = useState(0);
 
   const [addPost, { error }] = useMutation(ADD_POST);
