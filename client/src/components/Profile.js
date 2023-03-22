@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Auth from "../utils/auth.js";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 import FriendList from "./FriendList";
 import { ADD_FRIEND } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
@@ -47,7 +47,7 @@ const Profile = () => {
   }
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
-
+  
   const handleAddFriend = () => {
     // console.log("USER ID!!!!!!!!" + userId);
     // console.log("USER NAME!!!!!!" + userParam);
@@ -57,6 +57,10 @@ const Profile = () => {
   const [currentPage, setCurrentPage] = useState("Profile");
 
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
+
+if(!Auth.loggedIn()){
+
+}
 
   const renderPage = () => {
     let result = null;
@@ -208,7 +212,7 @@ const Profile = () => {
               <h3 className="favorites">Solo or Co-Op:</h3>
               <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
               <div className="d-flex justify-content-center">
-              <button className='btn friend-btn' onClick={handleAddFriend}>Add Friend</button>
+              { !Auth.loggedIn() ? (<button className='btn friend-btn'><a href= "/login" style={{color : "white"}}>Login To Add friend!</a></button>) : (<button className='btn friend-btn' onClick={handleAddFriend}>Add Friend</button>)}
               </div>
             </div>
           ) : (
