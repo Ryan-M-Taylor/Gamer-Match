@@ -212,7 +212,7 @@ if(!Auth.loggedIn()){
               <h3 className="favorites">Solo or Co-Op:</h3>
               <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
               <div className="d-flex justify-content-center">
-              { !Auth.loggedIn() ? (<button className='btn friend-btn'><a href= "/login" style={{color : "white"}}>Login To Add friend!</a></button>) : (<button className='btn friend-btn' onClick={handleAddFriend}>Add Friend</button>)}
+              { !Auth.loggedIn() ? (<button className='btn friend-btn'><a href= "/login" style={{color : "white"}}>Login To Add Friend!</a></button>) : (<button className='btn friend-btn' onClick={handleAddFriend}>Add Friend</button>)}
               </div>
             </div>
           ) : (
