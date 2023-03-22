@@ -184,6 +184,7 @@ const Profile = () => {
         <div className="col-12 col-md-10 mb-5">
           {/* This is someone elses profile */}
           {userParam ? (
+
             <div className="border">
               <div className="favorites0">
                 <div className="favorites1">
@@ -205,7 +206,7 @@ const Profile = () => {
                   {!Auth.loggedIn() ? (
                     <button className="btn friend-btn">
                       <a href="/login" style={{ color: "white" }}>
-                        Login To Add friend!
+                        Login To Add Friend!
                       </a>
                     </button>
                   ) : (
@@ -217,6 +218,7 @@ const Profile = () => {
                     </button>
                   )}
                 </div>
+
               </div>
             </div>
           ) : (
