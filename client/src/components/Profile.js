@@ -1,19 +1,20 @@
 // import React from 'react';
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import React from "react";
-import Auth from "../utils/auth";
+import React, { useState } from "react";
+import Auth from "../utils/auth.js";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
 import FriendList from "./FriendList";
 import { ADD_FRIEND } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 import { SiPlaystation, SiNintendoswitch, SiXbox } from "react-icons/si";
 import { FaMouse } from "react-icons/fa";
-import Accordion from "react-bootstrap/Accordion";
-import NavDropdown from "react-bootstrap/NavDropdown";
+
+// -------------Optional Components----------------
+import ProfileNav from "./Profile/ProfileNav";
+// -------------Optional Components----------------
 
 const Profile = () => {
-// -------------userParam----------------  
   const { username: userParam } = useParams();
   console.log("userParam", userParam);
 
@@ -23,7 +24,14 @@ const Profile = () => {
 
   const user = data?.me || data?.user || {};
 
-// -------------Bring Console Icons----------------
+  console.log(user);
+  console.log(user.genres);
+
+  // -------------Add Friend Logic below----------------
+
+  const userId = user._id;
+  const friends = user.userFriends;
+  const posts = user.posts;
   const consoleIcons = {
     Playstation: <SiPlaystation />,
     Xbox: <SiXbox />,
@@ -32,23 +40,77 @@ const Profile = () => {
   };
 
 
-  // -------------Add Friend Logic below----------------
-  const userId = user._id;
-  const friends = user.userFriends;
-
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
 
   const handleAddFriend = () => {
     console.log("USER ID!!!!!!!!" + userId);
     console.log("USER NAME!!!!!!" + userParam);
-
     addFriend({ variables: { friendId: userId } });
-
-    if (!Auth.loggedIn()) {
-      alert("Login to add people!");
-    }
   };
-  // -------------Add Friend Logic above ----------------
+
+  const [currentPage, setCurrentPage] = useState('Profile');
+
+  // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
+
+  const renderPage = () => {
+    let result = null;
+
+    switch (currentPage) {
+      case 'Profile':
+        result = (<div>
+          {/* <h3>Favorite Consoles:</h3>
+          <p>{user.favoriteConsole?.map((elem) => consoleIcons[elem])}</p> */}
+          <h3>My Favorite Genres:</h3>
+          <ul>
+            {user.genres?.map((elem) => (
+              <li key={elem._id}>{elem}</li>
+            ))}
+          </ul>
+          <h3>Casual or Competitive:</h3>
+          <p>{user.competitive ? "Casual" : "Competitive"}</p>
+          <h3>Solo or Co-Op:</h3>
+          <p> {user.coOp ? "Solo" : "Co-Op"}</p>
+        </div>);
+        break;
+      case 'Friends':
+        console.log("friends", friends);
+        result = (<FriendList friends={friends} />);
+        break;
+      case 'Posts':
+        result = (<div>
+          {posts?.map((post) => {
+            return (<div>
+              <h4> Created at {post.createdAt} in the {post.postChannel} channel.</h4>
+              <p key={post._id}> {post.postText} </p>
+            </div>);
+          })}
+        </div>);
+        break;
+      // case 'Comments':
+      //   console.log("Comments************", posts)
+      //   for (let i = 0; i < posts.length; i++){
+      //     if (posts[i].comments){
+
+      //     }
+      //   }
+      //   result = (<div>
+      //     {posts.comments?.map((comment) => {
+      //       return (<div>
+      //         <h4> Commented on {comment.createdAt} </h4>
+      //         <p key={comment._id}> {comment.commentText} </p>
+      //       </div>);
+      //     })}
+      //   </div>);
+      //   break;
+      default:
+        result = (<div>Use the menu to explore your profile!</div>);
+        break;
+    }
+
+    return result;
+  };
+
+  const handlePageChange = (page) => setCurrentPage(page);
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -68,92 +130,75 @@ const Profile = () => {
     );
   }
 
+  console.log("favoriteconsolelist", user);
   return (
     <div>
-      <div>
-        <h2 className="col-12 question-form p-3 mb-2">
+      <div className="flex-row justify-center mb-3">
+        <h2 className="col-12 col-md-10 question-form p-3 mb-5">
           {userParam
-            ? `You are currently viewing ${user.username}'s Profile ${user._id}`
-            : `Hi ${user.username}!`}{" "}
+            ? `${user.username}'s Profile`
+            
+            : `${user.username}`}
           {user.favoriteConsole?.map((elem) => consoleIcons[elem])}
-{/* 
-          // -------------Drop-down underneath Name----------------           */}
-          <NavDropdown title="User Preferences" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              <div className="prof-accordian-body">
-                <h3>Favorite Consoles:</h3>
-                <p>{user.favoriteConsole?.map((elem) => consoleIcons[elem])}</p>
-                <h3>Favorite Genres:</h3>
-                <ul>
-                  {user.genres?.map((elem) => (
-                    <li key={elem._id}>{elem}</li>
-                  ))}
-                </ul>
-                <h3>Casual or Competitive:</h3>
-                <p>{user.competitive ? "Casual" : "Competitive"}</p>
-                <h3>Solo or Co-Op:</h3>
-                <p> {user.coOp ? "Solo" : "Co-Op"}</p>
-              </div>
-            </NavDropdown.Item>
-          </NavDropdown>
-        </h2>
+          {!userParam
+            ? (<div className="flex-row justify-center">
+              <ProfileNav currentPage={currentPage} handlePageChange={handlePageChange} />
+            </div>)
+            : (
+              <div></div>
+            )
+          }
 
+        </h2>
+        {/* <ul>
+          {[
+            user.favoriteConsole, // Include the user's favorite console as the first item
+            user.favoriteConsole, // Spread the array of favorite consoles after the first item
+          ].map((elem, index) => (
+            <li key={index}>{elem}</li>
+          ))}
+        </ul>
+        
+        <ul>
+          {[
+            user.genres, // Include the user's favorite console as the first item
+            ...user.genres, // Spread the array of favorite consoles after the first item
+          ].map((elem, index) => (
+            <li key={index}>{elem}</li>
+          ))}
+        </ul> */}
+        {userParam
+          ? `You are currently viewing ${user.username}'s Profile ${user._id}`
+          : `Hi ${user.username}!`}{" "}
+        {/* <ul>
+          {user.favoriteConsole?.map((elem) => (
+            <li key={elem._id}>{elem}</li>
+          ))}
+        </ul>
+        <ul>
+          {user.genres?.map((elem) => (
+            <li key={elem._id}>{elem}</li>
+          ))}
+        </ul>
+        <p>
+          Casual or Competitive : {user.competitive ? "Casual" : "Competitive"}
+        </p>
+        <p> Solo or Co-Op : {user.coOp ? "Solo" : "Co-Op"}</p> */}
         <div className="col-12 col-md-10 mb-5">
-          {/* ------------- */}
+          -------------
 
           {userParam ? (
             <div>
-              This is someone elses profile
+              {/* This is someone elses profile */}
+
               <button onClick={handleAddFriend}>Add Friend</button>
             </div>
           ) : (
-            <div className="prof-accordian">
-              {/* // -------------Nested Inside Accordian---------------- */}
-              <Accordion>
-                <Accordion.Item eventKey="1">
-                  <Accordion.Header>Friends List</Accordion.Header>
-                  <Accordion.Body>
-                    <FriendList friends={friends} />
-                  </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="2">
-                  <Accordion.Header>Post Stuff</Accordion.Header>
-                  <Accordion.Body>
-                    <ul>
-                      Put Post Stuff Here
-                      <li>Post Stuff</li>
-                    </ul>
-                  </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="3">
-                  <Accordion.Header>Comment Stuff</Accordion.Header>
-                  <Accordion.Body>
-                    <ul>
-                      Put Comment Stuff Here
-                      <li>Comment Stuff</li>
-                    </ul>
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
+            <div>
+              {/* This is your profile */}
 
+              {renderPage()}
 
-
-
-              {/* // -------------Optional Components---------------- */}
-              <div>
-                {/* <h1>Hello, {user.username}!</h1> */}
-                {/* <h2>Your Friends:</h2> */}
-
-                {/* <ul>
-                      {user.userFriends?.map((friend, i) => (
-                        <li key={`friend-${friend._id}-${i}`}>{friend.username}</li>
-                      ))}
-                    </ul> */}                    
-              </div>
-           
-           
-           
             </div>
           )}
         </div>
@@ -163,3 +208,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
