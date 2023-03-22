@@ -2,12 +2,12 @@
 .main-container{
     display: flex;
     justify-content: center;
-    background-color: #060C1F;
 }
 
 .login-text{
-    color: white;
+    background-color: #060C1F;
     text-align: center;
+    color: white;
 }
 
 .login-btn{

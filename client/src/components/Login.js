@@ -41,7 +41,7 @@ const Login = (props) => {
   };
 
 return (
-    <main className="main-container">
+    <main className="main-container border">
         <div className="login-container">
           <h4 className="login-text py-1">Login</h4>
           {/* <div className=""> */}
@@ -51,7 +51,7 @@ return (
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
+              <form onSubmit={handleFormSubmit} className='text-center'>
                 <input
                   className="formInput"
                   placeholder="Your email"
@@ -69,7 +69,7 @@ return (
                   onChange={handleChange}
                 />
                 <button
-                  className="login-btn btn-block"
+                  className="login-btn btn-block mt-2"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
