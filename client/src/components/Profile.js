@@ -4,6 +4,8 @@ import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import Auth from "../utils/auth.js";
 import { QUERY_USER, QUERY_ME } from "../utils/queries";
+
+// import Auth from "../utils/auth";
 import FriendList from "./FriendList";
 import { ADD_FRIEND } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
@@ -45,7 +47,7 @@ const Profile = () => {
   }
 
   const [addFriend, { error }] = useMutation(ADD_FRIEND);
-
+  
   const handleAddFriend = () => {
     // console.log("USER ID!!!!!!!!" + userId);
     // console.log("USER NAME!!!!!!" + userParam);
@@ -55,6 +57,10 @@ const Profile = () => {
   const [currentPage, setCurrentPage] = useState("Profile");
 
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
+
+if(!Auth.loggedIn()){
+
+}
 
   const renderPage = () => {
     let result = null;
@@ -154,6 +160,26 @@ const Profile = () => {
 
   // console.log("favoriteconsolelist", user);
   return (
+    // <div>
+    //   <div className="flex-row justify-center mb-3">
+    //     <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+    //       Viewing {userParam ? `${user.username}'s` : 'your'} profile.
+    //     </h2>
+
+    //     <div className="col-12 col-md-10 mb-5">
+    //       Insert component here
+    //     </div>
+    //     {!userParam && (
+    //       <div
+    //         className="col-12 col-md-10 mb-3 p-3"
+    //         style={{ border: '1px dotted #1a1a1a' }}
+    //       >
+    //         Insert another component here
+    //       </div>
+    //     )}
+    //   </div>
+    // </div>
+
     <div>
       <div className="d-flex flex-column align-items-center">
         <h2 className="col-12 col-md-10 p-3 mb-2 text-center prof-header">
@@ -186,7 +212,7 @@ const Profile = () => {
               <h3 className="favorites">Solo or Co-Op:</h3>
               <p className="text-center"> {user.coOp ? "Solo" : "Co-Op"}</p>
               <div className="d-flex justify-content-center">
-              <button className='btn friend-btn' onClick={handleAddFriend}>Add Friend</button>
+              { !Auth.loggedIn() ? (<button className='btn friend-btn'><a href= "/login" style={{color : "white"}}>Login To Add friend!</a></button>) : (<button className='btn friend-btn' onClick={handleAddFriend}>Add Friend</button>)}
               </div>
             </div>
           ) : (
