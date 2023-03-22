@@ -72,6 +72,10 @@ export const QUERY_USER = gql`
       postAuthor
       createdAt
     }
+      favoriteConsole
+      competitive
+      coOp
+      genres
     }
   }
 
